@@ -12,7 +12,7 @@ public class projectMain{
 
         CoreMode modes[] = {CoreMode.E, CoreMode.E, CoreMode.OFF, CoreMode.OFF};
 
-        ProcessorManager.getInstance().initProcessor(modes);
+        CoreManager.getInstance().initCore(modes);
 
         ScheduleManager.getInstance().setMethod(RR.getInstance());   
         SyncManager.getInstance().Update(20); // run

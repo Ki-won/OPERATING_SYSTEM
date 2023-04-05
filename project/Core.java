@@ -5,7 +5,7 @@ enum State{
     Sleep
 }
 
-public class Processor { // Core
+public class Core { // Core
     private int id; // 프로세서 ID, ex) 1코어, 2코어 ...
     private CoreMode mode; // 프로세서 모드, E/P/OFF
     private State state = State.Sleep; // 프로세서가 깨어 있는지 판별하는 변수
@@ -14,7 +14,7 @@ public class Processor { // Core
 
     private Process process; // 할당된 프로세스
 
-    Processor(int id, CoreMode mode){
+    Core(int id, CoreMode mode){
         this.id = id;
         this.mode = mode;
     }

@@ -20,7 +20,7 @@ public class SyncManager{ // 동기식 동작을 위한 기준(주체), Clock �
             System.out.println("\n--- time: "+time +" ---");  
             ProcessManager.getInstance().clockUpdate(); 
             ScheduleManager.getInstance().clockUpdate(); 
-            ProcessorManager.getInstance().clockUpdate(); 
+            CoreManager.getInstance().clockUpdate(); 
             ++time;
         }
     }
