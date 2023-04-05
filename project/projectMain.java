@@ -10,11 +10,11 @@ public class projectMain{
 
         ProcessManager.getInstance().printInfo();
 
-        CoreMode modes[] = {CoreMode.E, CoreMode.E, CoreMode.OFF, CoreMode.OFF};
+        CoreMode modes[] = {CoreMode.E, CoreMode.E, CoreMode.E, CoreMode.E};
 
         CoreManager.getInstance().initCore(modes);
 
-        ScheduleManager.getInstance().setMethod(RR.getInstance());   
+        ScheduleManager.getInstance().setMethod(FCFS.getInstance());
         SyncManager.getInstance().Update(20); // run
     }
 }
