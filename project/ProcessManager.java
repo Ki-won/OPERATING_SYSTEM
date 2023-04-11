@@ -1,6 +1,7 @@
 package project;
 
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class ProcessManager { // Base Scheduling Model .....? 
@@ -12,7 +13,7 @@ public class ProcessManager { // Base Scheduling Model .....?
         return instance;
     }
 
-    private Queue<Process> processQ = new LinkedList<Process>(); // 전체 프로세스 담는 큐
+    private PriorityQueue<Process> processQ = new PriorityQueue<>(); // 전체 프로세스 담는 큐
     private Queue<Process> readyQ = new LinkedList<Process>(); // 프로세스가 도착하여 기다리는 큐
     private int nextId = 1;
 
@@ -25,9 +26,12 @@ public class ProcessManager { // Base Scheduling Model .....?
         processQ.add(new Process(nextId++, arrivalTime, burstTime));
     }
 
+    public Process peek_processQueue(){ // 우선순위 큐 잘 작동하는지 확인 위해 넣은것(나중에 삭제하자)
+        return processQ.poll();
+    }
     public Process poll_readyQueue(){ // readyQueue에서 요소 추출 
         return readyQ.poll();
-    } 
+    }  // readyQueue에서 요소 추출
 
     public Process peek_readyQueue(){ // readyQueue에서 요소 접근
         return readyQ.peek();

@@ -1,6 +1,6 @@
 package project;
 
-class Process {
+class Process implements Comparable<Process> {
     private String id; // Process ID, ex) p1, p2, p3 ....
     private int arrivalTime; // 도착 시간
     private int currentTime; // 현재 시간(남은 시간)
@@ -34,5 +34,14 @@ class Process {
         }else currentTime -= amount;
     }
 
-    
+    // 도착시간을 비교하여 정렬함
+    @Override
+    public int compareTo(Process o) {
+        if(this.arrivalTime > o.getArrivalTime())
+            return 1;
+        else if(this.arrivalTime < o.getArrivalTime())
+            return -1;
+        else
+            return 0;
+    }
 }
