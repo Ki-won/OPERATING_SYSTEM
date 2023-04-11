@@ -25,6 +25,9 @@ public class ProcessManager { // Base Scheduling Model .....?
     public void addProcess(int arrivalTime, int burstTime){ // 프로세스 추가
         processQ.add(new Process(nextId++, arrivalTime, burstTime));
     }
+    public int getProcessQueueSize(){ //레디 큐에 들어가지 않은 프로세스 수 계산
+        return processQ.size();
+    }
 
     public Process peek_processQueue(){ // 우선순위 큐 잘 작동하는지 확인 위해 넣은것(나중에 삭제하자)
         return processQ.poll();

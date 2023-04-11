@@ -38,6 +38,15 @@ public class CoreManager{
     public Core getCore(int index){ // 프로세서 getter
         return coreList.get(index);
     }
+
+    public boolean isDoneCore(){
+        int count = 0;
+        for(int i = 0; i < coreNum; ++i){
+            if(!flag[i])
+                ++count;
+        }
+        return count == coreNum;
+    } //모든 코어가 작동을 멈췄는지 확인
     
     public boolean allocateAt(Process process){ // 프로세스 할당 // void 
         Integer selectedIndex = selectCore();
@@ -47,6 +56,9 @@ public class CoreManager{
         return true;
     }
 
+    public void maintainCore(int selectedIndex, Process process){
+        coreList.get(selectedIndex).allocate(process);
+    }
     public void removeProcess(int index){ // 프로세스 삭제
         flag[index] = false;
         coreList.get(index).allocate(null);
@@ -66,7 +78,6 @@ public class CoreManager{
         Core getCore = coreList.get(index);
         getCore.operate();
         if(getCore.isComplete()){  // 프로세스 처리 종료
-            flag[index] = false;
             return true;
         }
         return false;

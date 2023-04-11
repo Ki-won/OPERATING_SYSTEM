@@ -43,13 +43,19 @@ public class RR implements ScheduleMethod{
             Core getCore = CoreManager.getInstance().getCore(i);
             if(getCore.getProcess() != null){
                 if(CoreManager.getInstance().operating(i)){ // 프로세스 처리 완료
-                    CoreManager.getInstance().removeProcess(i); 
+                    if(!ProcessManager.getInstance().empty_readyQueue()){
+                        Process getProcess = ProcessManager.getInstance().poll_readyQueue();
+                        CoreManager.getInstance().maintainCore(i, getProcess);
+                    }
+                    else
+                        CoreManager.getInstance().removeProcess(i);
                     roundTime[i] = 0;
                 }else{
                     ++roundTime[i];
                     if(roundTime[i] == limitTime){ // 제한 시간 만료되었을 때
-                        Process getProcess = CoreManager.getInstance().getCore(i).getProcess(); // 프로세스 가져옴
-                        CoreManager.getInstance().removeProcess(i); // 프로세스 삭제
+                        Process getProcess = CoreManager.getInstance().getCore(i).getProcess(); // 코어에 있는 프로세스 가져옴
+                        Process getProcessFromReadyQ = ProcessManager.getInstance().poll_readyQueue();
+                        CoreManager.getInstance().maintainCore(i,getProcessFromReadyQ); // 프로세스 삭제
                         ProcessManager.getInstance().push_readyQueue(getProcess); // 프로세스 readyQ에 다시 삽입
                         roundTime[i] = 0;
                     }

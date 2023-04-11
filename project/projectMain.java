@@ -12,7 +12,7 @@ public class projectMain{
         ProcessManager.getInstance().addProcess(3, 2);
         ProcessManager.getInstance().addProcess(1, 7);
         ProcessManager.getInstance().addProcess(6, 3);
-        ProcessManager.getInstance().addProcess(5, 5); // 위 정보 순서반 바꿈
+        ProcessManager.getInstance().addProcess(5, 5); // 위 정보 순서만 바꿈
 
         ProcessManager.getInstance().printInfo();
 
@@ -20,7 +20,10 @@ public class projectMain{
 
         CoreManager.getInstance().initCore(modes);
 
-        ScheduleManager.getInstance().setMethod(FCFS.getInstance());
-        SyncManager.getInstance().Update(20); // run
+        ScheduleManager.getInstance().setMethod(RR.getInstance());
+
+        do{
+            SyncManager.getInstance().Update();
+        } while(ProcessManager.getInstance().getProcessQueueSize() > 0 || !CoreManager.getInstance().isDoneCore());
     }
 }
