@@ -1,12 +1,12 @@
 package project;
 
-public class FCFS implements ScheduleMethod{
-    private static FCFS instance = new FCFS();
-    private FCFS(){
-        System.out.println("FCFS()");
+public class SPN implements ScheduleMethod{
+    private static SPN instance = new SPN();
+    private SPN(){
+        System.out.println("SPN()");
         init();
     }
-    public static FCFS getInstance(){
+    public static SPN getInstance(){
         return instance;
     }
 
@@ -31,7 +31,7 @@ public class FCFS implements ScheduleMethod{
         // 1. readyQ에서 프로세스 받아오기 && 할당
 
         while(!ProcessManager.getInstance().empty_readyQueue() && CoreManager.getInstance().selectable()){
-            Process getProcess = ProcessManager.getInstance().poll_readyQueue(); // readyQ가 비어있을수도 있지. 이때 getProcess = null
+            Process getProcess = ProcessManager.getInstance().getMinBrustProcess(); // readyQ가 비어있을수도 있지. 이때 getProcess = null
             if(getProcess == null) break; // useless 이거 필요한가?
 
             CoreManager.getInstance().allocateAt(getProcess); // 코어에 프로세스 할당 시도
@@ -47,7 +47,7 @@ public class FCFS implements ScheduleMethod{
                     ProcessManager.getInstance().pushResultList(process); // 프로세스가 종료되면 그 정보를 넣어줌
 
                     if(!ProcessManager.getInstance().empty_readyQueue()){ //레디 큐에 프로세스가 기다리고 있으면
-                        Process getProcess = ProcessManager.getInstance().poll_readyQueue(); // 그 프로세스 가져와서
+                        Process getProcess = ProcessManager.getInstance().getMinBrustProcess(); // 그 프로세스 가져와서
                         CoreManager.getInstance().maintainCore(i, getProcess); // 코어를 종료하지 않고 바로 넣음
                     }
                     else
@@ -61,4 +61,4 @@ public class FCFS implements ScheduleMethod{
         }
     }
 
-};
+}

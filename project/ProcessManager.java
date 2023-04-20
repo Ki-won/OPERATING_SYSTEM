@@ -75,13 +75,44 @@ public class ProcessManager { // Base Scheduling Model .....?
         }
         return minP;
     } // 짧은 버스트 타임을 가진 프로세스를 찾는 것
+
+    public Process getMinRemainProcess(){
+        Process minP = readyQ.poll();
+        int lenQ = readyQ.size();
+        for(int i = 0; i < lenQ; ++i){
+            Process tmp = readyQ.poll();
+            if(minP.getCurrentTime() > tmp.getCurrentTime()){
+                readyQ.add(minP);
+                minP = tmp;
+            }
+            else readyQ.add(tmp);
+        }
+        return minP;
+    } // 짧은 실행 시간을 가진 프로세스를 찾음
+
+    public Process getMinRRProcess(int cur_time){
+        Process maxP = readyQ.poll();
+        double maxRR = (cur_time - maxP.getArrivalTime()) / maxP.getBurstTime();
+        int lenQ = readyQ.size();
+        for(int i = 0; i < lenQ; ++i){
+            Process tmp = readyQ.poll();
+            double tmpRR = (cur_time - tmp.getArrivalTime()) / tmp.getBurstTime();
+            if(maxRR < tmpRR){
+                readyQ.add(maxP);
+                maxP = tmp;
+            }
+            else readyQ.add(tmp);
+        }
+        return maxP;
+    } // 큰 rr을 찾는 것
+
     public void clockUpdate(){ // Clock 주기
         Ready();
     }
 
     private void Ready(){ // 각 프로세스의 arrivalTime에, readyQueue로 이동시킴
         Process getProcess = processQ.peek();
-        while(getProcess != null && getProcess.getArrivalTime() <= SyncManager.getInstance().getTime()){
+        while(getProcess != null && getProcess.getArrivalTime() <= SyncManager.getInstance().getTime() + 1){
             readyQ.add(processQ.poll());
             getProcess = processQ.peek();
         }

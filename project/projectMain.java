@@ -16,11 +16,11 @@ public class projectMain{
 
         ProcessManager.getInstance().printInfo();
 
-        CoreMode modes[] = {CoreMode.E, CoreMode.E, CoreMode.OFF, CoreMode.OFF};
+        CoreMode modes[] = {CoreMode.E, CoreMode.OFF, CoreMode.OFF, CoreMode.OFF};
 
         CoreManager.getInstance().initCore(modes);
 
-        ScheduleManager.getInstance().setMethod(FCFS.getInstance());
+        ScheduleManager.getInstance().setMethod(HRRN.getInstance());
 
         do{
             SyncManager.getInstance().Update();

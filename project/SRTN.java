@@ -1,15 +1,15 @@
 package project;
 
-public class RR implements ScheduleMethod{
-    private static RR instance = new RR();
-    private RR(){
-        System.out.println("RR()");
+public class SRTN implements ScheduleMethod{
+    private static SRTN instance = new SRTN();
+    private SRTN(){
+        System.out.println("SRTN()");
         init();
     }
-    public static RR getInstance(){
+    public static SRTN getInstance(){
         return instance;
     }
-    
+
     private int coreNum;
     private int limitTime;
     private int roundTime[];
@@ -22,7 +22,7 @@ public class RR implements ScheduleMethod{
             roundTime[i] = 0;
         }
     }
-    
+
     @Override
     public void clock() {
         CoreManager.getInstance().printInfo();
@@ -33,7 +33,7 @@ public class RR implements ScheduleMethod{
         // 1. readyQ에서 프로세스 받아오기 && 할당
 
         while(!ProcessManager.getInstance().empty_readyQueue() && CoreManager.getInstance().selectable()){
-            Process getProcess = ProcessManager.getInstance().poll_readyQueue(); // readyQ가 비어있을수도 있지. 이때 getProcess = null
+            Process getProcess = ProcessManager.getInstance().getMinRemainProcess(); // 남은 시간이 적은 프로세스 가져옴
             if(getProcess == null) break; // useless
 
             CoreManager.getInstance().allocateAt(getProcess); // 코어에 프로세스 할당 시도
@@ -49,30 +49,21 @@ public class RR implements ScheduleMethod{
                     ProcessManager.getInstance().pushResultList(process); // 프로세스가 종료되면 그 정보를 넣어줌
 
                     if(!ProcessManager.getInstance().empty_readyQueue()){
-                        Process getProcess = ProcessManager.getInstance().poll_readyQueue();
+                        Process getProcess = ProcessManager.getInstance().getMinRemainProcess();
                         CoreManager.getInstance().maintainCore(i, getProcess);
                     }
                     else
                         CoreManager.getInstance().removeProcess(i);
                     roundTime[i] = 0;
                 }else{
-                    ++roundTime[i];
-                    if(roundTime[i] == limitTime){ // 제한 시간 만료되었을 때
                         Process getProcess = CoreManager.getInstance().getCore(i).getProcess(); // 코어에 있는 프로세스 가져옴
                         if(!ProcessManager.getInstance().empty_readyQueue()) { // 레디큐가 비어있지 않으면
-                            Process getProcessFromReadyQ = ProcessManager.getInstance().poll_readyQueue();
+                            ProcessManager.getInstance().push_readyQueue(getProcess);
+                            Process getProcessFromReadyQ = ProcessManager.getInstance().getMinRemainProcess();
                             CoreManager.getInstance().maintainCore(i, getProcessFromReadyQ); // 프로세스 프로세스 교체
                         }
-                        else{ //레디큐가 비워져 있다면
-                            CoreManager.getInstance().removeProcess(i); //프로세스 삭제
-                        }
-                        ProcessManager.getInstance().push_readyQueue(getProcess); // 프로세스 readyQ에 다시 삽입
-                        roundTime[i] = 0;
-                    }
                 }
             }
         }
     }
-
-  
 }
