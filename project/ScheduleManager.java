@@ -9,7 +9,7 @@ public class ScheduleManager{ // 스케줄링 방식 관리
         return instance;
     }
 
-    private int value = 3; // 추가 변수, 일단은 RoundRobin을 실행할 때만 사용함
+    private int value = 2; // 추가 변수, 일단은 RoundRobin을 실행할 때만 사용함
 
     private ScheduleMethod method = null; // 스케줄링 방식
 
