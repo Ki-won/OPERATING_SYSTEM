@@ -20,7 +20,7 @@ public class projectMain{
 
         CoreManager.getInstance().initCore(modes);
 
-        ScheduleManager.getInstance().setMethod(RR.getInstance());
+        ScheduleManager.getInstance().setMethod(FCFS.getInstance());
 
         do{
             SyncManager.getInstance().Update();
