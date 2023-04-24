@@ -51,7 +51,7 @@ public class Core { // Core
 
     public void operate(){ // 실행 = 프로세스 처리
         if(state == State.Sleep) awake(); // 휴면 상태면, 가동
-        lastOperateTime = SyncManager.getInstance().getTime();
+        lastOperateTime = SyncManager.getInstance().getClock();
         
         if(mode == CoreMode.E){
             process.burst(1);
@@ -63,7 +63,7 @@ public class Core { // Core
     }
 
     public boolean isComplete(){ // 프로세스 처리가 완료되었는가 = 프로세스가 종료되었는가
-        if(process.getCurrentTime() == 0){
+        if(process.getRemainTime() == 0){
             System.out.println(process.getId()+" 프로세스 종료\n");
             return true;
         }

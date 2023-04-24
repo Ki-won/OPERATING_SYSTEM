@@ -9,15 +9,15 @@ public class SyncManager{ // 동기식 동작을 위한 기준(주체), Clock �
         return instance;
     }
 
-    private int time = 0; // 전체적인 시간
+    private int clock = 0; // 전체적인 시간
 
-    public int getTime(){ // 시간 getter
-        return time;
+    public int getClock(){ // 시간 getter
+        return clock;
     }
     
     public void Update(){ // 객체들에게 clock 주기 송신
-            System.out.println("\n--- time: "+ time +" ---");
-            if(time == 0){
+            System.out.println("\n--- time: "+ clock +" ---");
+            if(clock == 0){
                 ProcessManager.getInstance().clockUpdate();
             }
             else {
@@ -25,7 +25,7 @@ public class SyncManager{ // 동기식 동작을 위한 기준(주체), Clock �
                 CoreManager.getInstance().clockUpdate();
                 ProcessManager.getInstance().clockUpdate();
             }// 여기 부분을 건드려야 할 같다.
-            ++time;
+            ++clock;
     }
     
 }

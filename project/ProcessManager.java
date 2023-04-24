@@ -81,7 +81,7 @@ public class ProcessManager { // Base Scheduling Model .....?
         int lenQ = readyQ.size();
         for(int i = 0; i < lenQ; ++i){
             Process tmp = readyQ.poll();
-            if(minP.getCurrentTime() > tmp.getCurrentTime()){
+            if(minP.getRemainTime() > tmp.getRemainTime()){
                 readyQ.add(minP);
                 minP = tmp;
             }
@@ -112,7 +112,7 @@ public class ProcessManager { // Base Scheduling Model .....?
 
     private void Ready(){ // 각 프로세스의 arrivalTime에, readyQueue로 이동시킴
         Process getProcess = processQ.peek();
-        while(getProcess != null && getProcess.getArrivalTime() <= SyncManager.getInstance().getTime() + 1){
+        while(getProcess != null && getProcess.getArrivalTime() <= SyncManager.getInstance().getClock() + 1){
             readyQ.add(processQ.poll());
             getProcess = processQ.peek();
         }

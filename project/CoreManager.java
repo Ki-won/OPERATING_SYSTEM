@@ -68,7 +68,7 @@ public class CoreManager{
         for(int i = 0; i <coreNum; ++i){
             Core getCore = coreList.get(i);
             // 프로세서의 마지막 가동 시간과 현재 시간이 1보다 많이 차이나면, 미가동 상태로 판단, 해당 프로세서를 휴면 상태로 전환
-            if(SyncManager.getInstance().getTime() - getCore.getLastOperateTime() > 1){
+            if(SyncManager.getInstance().getClock() - getCore.getLastOperateTime() > 1){
                 getCore.sleep();
             }
         }
@@ -104,7 +104,7 @@ public class CoreManager{
             int currTime = 0;
             if(getCore.getProcess() != null){
                 processId = getCore.getProcess().getId();
-                currTime = getCore.getProcess().getCurrentTime();
+                currTime = getCore.getProcess().getRemainTime();
             }
             System.out.println(coreId + "코어 현황: " + processId + ", " + currTime + "초 남음");
         }
