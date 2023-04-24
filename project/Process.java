@@ -4,10 +4,10 @@ class Process implements Comparable<Process> {
     private String id; // Process ID, ex) p1, p2, p3 ....
     private int arrivalTime; // 도착 시간
     private int remainTime; // 남은 시간
-    private int burstTime; // 총 실행 시간
+    private int burstTime; // 총 실행에 필요한 시간
     private int turnaroundTime; // 반환 시간
     private int waitTime; // 대기 시간
-    private double normalizedTT; // 정규화 반환시간
+    private int operateTime; // 총 operate 횟수 (코어에서 실행한 clock)
     
     Process(int id, int arrivalTime, int burstTime){
         this.id = "p"+id;
@@ -15,7 +15,7 @@ class Process implements Comparable<Process> {
         remainTime = this.burstTime = burstTime;
         turnaroundTime = 0;
         waitTime = 0;
-        normalizedTT = 0.0;
+        operateTime = 0;
     }
 
     public String getId(){ // ID getter
@@ -42,11 +42,12 @@ class Process implements Comparable<Process> {
 
     public void printInfo(){
         System.out.print(id + ": ");
-        System.out.printf("AT: %d BT: %d WT: %d TT: %d NTT: %f", arrivalTime, burstTime, waitTime, turnaroundTime, (float)(turnaroundTime/burstTime ));
+        System.out.printf("AT: %d BT: %d WT: %d TT: %d NTT: %f", arrivalTime, operateTime, waitTime, turnaroundTime, (float)(turnaroundTime/burstTime ));
         System.out.println();
     }
 
-    public void burst(int amount){ // 실행, 현재 시간 감소시킴
+    public void burst(int amount) { // 실행, 현재 시간 감소시킴
+        ++operateTime; // 
         if(remainTime - amount < 0){
             remainTime = 0;
         }else remainTime -= amount;
