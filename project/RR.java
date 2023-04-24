@@ -43,10 +43,7 @@ public class RR implements ScheduleMethod{
             Core getCore = CoreManager.getInstance().getCore(i);
             if(getCore.getProcess() != null){
                 if(CoreManager.getInstance().operating(i)){ // 프로세스 처리 완료
-                    Process process = getCore.getProcess();
-                    process.setTurnaroundTime(SyncManager.getInstance().getClock() - process.getArrivalTime());
-                    process.setWaitTime(process.getTurnaroundTime() - process.getBurstTime());
-                    ProcessManager.getInstance().pushResultList(process); // 프로세스가 종료되면 그 정보를 넣어줌
+                    ProcessManager.getInstance().saveProcessResult(getCore.getProcess()); // 프로세스가 종료되면 그 정보를 넣어줌
 
                     if(!ProcessManager.getInstance().empty_readyQueue()){
                         Process getProcess = ProcessManager.getInstance().poll_readyQueue();

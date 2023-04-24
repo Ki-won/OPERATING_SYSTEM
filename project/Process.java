@@ -7,6 +7,8 @@ class Process implements Comparable<Process> {
     private int burstTime; // 총 실행에 필요한 시간
     private int turnaroundTime; // 반환 시간
     private int waitTime; // 대기 시간
+
+    private double normalizedTT;
     private int operateTime; // 총 operate 횟수 (코어에서 실행한 clock)
     
     Process(int id, int arrivalTime, int burstTime){
@@ -34,6 +36,10 @@ class Process implements Comparable<Process> {
         return burstTime;
     }
 
+    public int getOperateTime(){ // 총 실행 시간 getter
+        return operateTime;
+    }
+
     public int getTurnaroundTime(){return turnaroundTime;}
 
     public void setTurnaroundTime(int time){this.turnaroundTime = time;}
@@ -42,7 +48,7 @@ class Process implements Comparable<Process> {
 
     public void printInfo(){
         System.out.print(id + ": ");
-        System.out.printf("AT: %d BT: %d WT: %d TT: %d NTT: %f", arrivalTime, operateTime, waitTime, turnaroundTime, (float)(turnaroundTime/burstTime ));
+        System.out.printf("AT: %d BT: %d WT: %d TT: %d NTT: %.3f", arrivalTime, operateTime, waitTime, turnaroundTime, ((double)turnaroundTime/(double)operateTime ));
         System.out.println();
     }
 

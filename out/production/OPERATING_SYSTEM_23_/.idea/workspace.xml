@@ -7,11 +7,7 @@
     <list default="true" id="a5d32ada-ccc3-46d6-aa56-8070bf751617" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/FCFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/FCFS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/HRRN.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/HRRN.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/Process.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/ProcessManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/ProcessManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/RR.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/RR.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/SPN.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/SPN.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/SRTN.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/SRTN.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/projectMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/projectMain.java" afterDir="false" />
