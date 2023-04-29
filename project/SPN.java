@@ -42,7 +42,7 @@ public class SPN implements ScheduleMethod{
             if(getCore.getProcess() != null){
                 if(CoreManager.getInstance().operating(i)){ // 프로세스 처리 완료
                     ProcessManager.getInstance().saveProcessResult(getCore.getProcess()); // 프로세스가 종료되면 그 정보를 넣어줌
-
+                    ProcessManager.getInstance().clockUpdate();
                     if(!ProcessManager.getInstance().empty_readyQueue()){ //레디 큐에 프로세스가 기다리고 있으면
                         Process getProcess = ProcessManager.getInstance().getMinBrustProcess(); // 그 프로세스 가져와서
                         CoreManager.getInstance().maintainCore(i, getProcess); // 코어를 종료하지 않고 바로 넣음

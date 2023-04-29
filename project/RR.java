@@ -25,7 +25,6 @@ public class RR implements ScheduleMethod{
     
     @Override
     public void clock() {
-        CoreManager.getInstance().printInfo();
         run();
     }
 
@@ -44,7 +43,7 @@ public class RR implements ScheduleMethod{
             if(getCore.getProcess() != null){
                 if(CoreManager.getInstance().operating(i)){ // 프로세스 처리 완료
                     ProcessManager.getInstance().saveProcessResult(getCore.getProcess()); // 프로세스가 종료되면 그 정보를 넣어줌
-
+                    ProcessManager.getInstance().clockUpdate();
                     if(!ProcessManager.getInstance().empty_readyQueue()){
                         Process getProcess = ProcessManager.getInstance().poll_readyQueue();
                         CoreManager.getInstance().maintainCore(i, getProcess);
@@ -56,6 +55,7 @@ public class RR implements ScheduleMethod{
                     ++roundTime[i];
                     if(roundTime[i] == limitTime){ // 제한 시간 만료되었을 때
                         Process getProcess = CoreManager.getInstance().getCore(i).getProcess(); // 코어에 있는 프로세스 가져옴
+                        ProcessManager.getInstance().clockUpdate();
                         if(!ProcessManager.getInstance().empty_readyQueue()) { // 레디큐가 비어있지 않으면
                             Process getProcessFromReadyQ = ProcessManager.getInstance().poll_readyQueue();
                             CoreManager.getInstance().maintainCore(i, getProcessFromReadyQ); // 프로세스 프로세스 교체

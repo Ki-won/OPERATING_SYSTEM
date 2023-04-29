@@ -42,6 +42,8 @@ public class SRTN implements ScheduleMethod{
         for(int i = 0; i < coreNum; ++i){
             Core getCore = CoreManager.getInstance().getCore(i);
             if(getCore.getProcess() != null){
+                ProcessManager.getInstance().clockUpdate();
+
                 if(CoreManager.getInstance().operating(i)){ // 프로세스 처리 완료
                     ProcessManager.getInstance().saveProcessResult(getCore.getProcess()); // 프로세스가 종료되면 그 정보를 넣어줌
 
