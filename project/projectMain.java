@@ -20,7 +20,7 @@ public class projectMain{
 
         CoreManager.getInstance().initCore(modes);
 
-        ScheduleManager.getInstance().setMethod(HRRN.getInstance());
+        ScheduleManager.getInstance().setMethod(RR.getInstance());
 
         do{
             SyncManager.getInstance().Update();

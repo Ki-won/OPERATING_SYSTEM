@@ -6,15 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a5d32ada-ccc3-46d6-aa56-8070bf751617" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPERATING_SYSTEM_23_/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OPERATING_SYSTEM_23_/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPERATING_SYSTEM_23_/project/projectMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OPERATING_SYSTEM_23_/project/projectMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/FCFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/FCFS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/HRRN.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/HRRN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/RR.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/RR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/SPN.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/SPN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/SRTN.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/SRTN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/SyncManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/SyncManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/projectMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/projectMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

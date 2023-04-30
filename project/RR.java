@@ -25,6 +25,7 @@ public class RR implements ScheduleMethod{
     
     @Override
     public void clock() {
+        CoreManager.getInstance().printInfo();
         run();
     }
 
