@@ -1,7 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5d32ada-ccc3-46d6-aa56-8070bf751617" name="Changes" comment="" />
+    <list default="true" id="3f608134-c39c-41fc-80d9-7d62481dacac" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OPERATING_SYSTEM_23_.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/Core.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/CoreManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/CoreMode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FCFS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/Process.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/ProcessManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/RR.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/ScheduleManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/ScheduleMethod.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/SyncManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/Core.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/CoreManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/CoreMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/FCFS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/Process.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/ProcessManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/RR.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/ScheduleManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/ScheduleMethod.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/State.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/SyncManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/projectMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/projectMain.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +54,15 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2O041hibxl9JnnlZf4s5O53mZ3q" />
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2P9E3Uxtp18PLgIzF1xQhCBMvo6" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -21,18 +70,94 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/user/OPERATING_SYSTEM_23_/project"
+    "WebServerToolWindowFactoryState": "false",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/seo/Desktop/BCSD/OPERATING_SYSTEM",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "프로젝트",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\seo\Desktop\BCSD\OPERATING_SYSTEM\src\main\java\com\koreatech\ifteam\operating_system\UI" />
+      <recent name="C:\Users\seo\Desktop\BCSD\OPERATING_SYSTEM\src\main\java\com\koreatech\ifteam\operating_system\model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="애플리케이션.ProcessListUI">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.koreatech.ifteam.operating_system.UI.HelloApplication" />
+      <module name="OPERATING_SYSTEM" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.koreatech.ifteam.operating_system.UI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProcessListUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.koreatech.ifteam.operating_system.UI.ProcessListUI" />
+      <module name="OPERATING_SYSTEM" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.koreatech.ifteam.operating_system.UI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="projectMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.koreatech.ifteam.operating_system.model.projectMain" />
+      <module name="OPERATING_SYSTEM" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.koreatech.ifteam.operating_system.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="애플리케이션.ProcessListUI" />
+        <item itemvalue="애플리케이션.projectMain" />
+        <item itemvalue="애플리케이션.HelloApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="a5d32ada-ccc3-46d6-aa56-8070bf751617" name="Changes" comment="" />
-      <created>1680683956960</created>
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="3f608134-c39c-41fc-80d9-7d62481dacac" name="변경" comment="" />
+      <created>1682860699781</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1680683956960</updated>
+      <updated>1682860699781</updated>
+      <workItem from="1682860700807" duration="1063000" />
+      <workItem from="1682861794185" duration="197000" />
+      <workItem from="1682862003147" duration="336000" />
+      <workItem from="1682862401872" duration="40000" />
+      <workItem from="1682862493527" duration="92000" />
+      <workItem from="1682862729482" duration="92000" />
+      <workItem from="1682862838374" duration="569000" />
+      <workItem from="1682863430130" duration="29000" />
+      <workItem from="1682863742433" duration="20000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
