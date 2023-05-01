@@ -5,48 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f608134-c39c-41fc-80d9-7d62481dacac" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OPERATING_SYSTEM_23_.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/Core.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/CoreManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/CoreMode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/FCFS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/Process.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/ProcessManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/RR.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/ScheduleManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/ScheduleMethod.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/SyncManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/Core.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/CoreManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/CoreMode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/FCFS.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/Process.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/ProcessManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/RR.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/ScheduleManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/ScheduleMethod.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/State.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/SyncManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/project.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/out/production/project/project/projectMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/project.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/projectMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/UI/ProcessInputUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/UI/ProcessListUI.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,22 +40,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/seo/Desktop/BCSD/OPERATING_SYSTEM",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "프로젝트",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/seo/Desktop/BCSD/OPERATING_SYSTEM&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;프로젝트&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\seo\Desktop\BCSD\OPERATING_SYSTEM\src\main\java\com\koreatech\ifteam\operating_system\UI" />
@@ -154,6 +127,9 @@
       <workItem from="1682862838374" duration="569000" />
       <workItem from="1682863430130" duration="29000" />
       <workItem from="1682863742433" duration="20000" />
+      <workItem from="1682917070728" duration="3009000" />
+      <workItem from="1682920339895" duration="789000" />
+      <workItem from="1682921255978" duration="7000" />
     </task>
     <servers />
   </component>
