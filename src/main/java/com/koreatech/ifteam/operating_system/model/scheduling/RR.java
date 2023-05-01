@@ -48,7 +48,7 @@ public class RR implements ScheduleMethod {
                     ProcessManager.getInstance().clockUpdate();
                     if(!ProcessManager.getInstance().empty_readyQueue()){
                         com.koreatech.ifteam.operating_system.model.Process getProcess = ProcessManager.getInstance().poll_readyQueue();
-                        CoreManager.getInstance().maintainCore(i, getProcess);
+                        CoreManager.getInstance().overwriteAt(i, getProcess);
                     }
                     else
                         CoreManager.getInstance().removeProcess(i);
@@ -60,7 +60,7 @@ public class RR implements ScheduleMethod {
                         ProcessManager.getInstance().clockUpdate();
                         if(!ProcessManager.getInstance().empty_readyQueue()) { // 레디큐가 비어있지 않으면
                             com.koreatech.ifteam.operating_system.model.Process getProcessFromReadyQ = ProcessManager.getInstance().poll_readyQueue();
-                            CoreManager.getInstance().maintainCore(i, getProcessFromReadyQ); // 프로세스 프로세스 교체
+                            CoreManager.getInstance().overwriteAt(i, getProcessFromReadyQ); // 프로세스 프로세스 교체
                         }
                         else{ //레디큐가 비워져 있다면
                             CoreManager.getInstance().removeProcess(i); //프로세스 삭제

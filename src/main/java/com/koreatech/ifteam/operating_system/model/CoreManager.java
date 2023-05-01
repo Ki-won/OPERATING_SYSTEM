@@ -75,7 +75,7 @@ public class CoreManager{
         return true;
     }
 
-    public void maintainCore(int selectedIndex, Process process) {
+    public void overwriteAt(int selectedIndex, Process process) { // 현재 코어의 작동을 중지시키지 않고, 프로세스 교체(덮어쓰기 개념)
         coreList.get(selectedIndex).allocate(process);
     }
     

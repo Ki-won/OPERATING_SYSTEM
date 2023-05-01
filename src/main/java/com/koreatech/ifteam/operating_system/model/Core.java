@@ -42,7 +42,7 @@ public class Core { // Core
     }
     
     public CorePacket getPacket() {
-        return new CorePacket(id, powerUsage);
+        return new CorePacket(process.id, powerUsage);
     }
 
     // Setter
