@@ -133,6 +133,7 @@ public class CoreManager{
     }
     
     public void printPowerUsage() {
+        System.out.println();
         for (int i = 0; i < coreNum; ++i) {
             Core getCore = coreList.get(i);
             System.out.println(getCore.getId()+"코어 전력 사용량: " + getCore.getPowerUsage()+" W");

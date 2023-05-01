@@ -19,7 +19,7 @@ public class projectMain{
 
         ProcessManager.getInstance().printInfo();
 
-        CoreMode modes[] = {CoreMode.P, CoreMode.P, CoreMode.OFF, CoreMode.OFF};
+        CoreMode modes[] = {CoreMode.P, CoreMode.E, CoreMode.OFF, CoreMode.OFF};
 
         CoreManager.getInstance().initCore(modes);
 

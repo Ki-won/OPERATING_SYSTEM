@@ -135,7 +135,7 @@ public class ProcessManager { // Base Scheduling Model .....?
     }
 
     public void saveToResultList(Process process) { // 처리 완료된 프로세스들은 ResultList에 저장
-        process.setTurnaroundTime(SyncManager.getInstance().getClock() - process.getArrivalTime());
+        process.setTurnaroundTime(SyncManager.getInstance().getClock() - process.getArrivalTime() + 1);
         process.setWaitTime(process.getTurnaroundTime() - process.getOperateTime());
         ProcessManager.getInstance().pushResultList(process);
         UIController.getInstance().resultSend(process);
