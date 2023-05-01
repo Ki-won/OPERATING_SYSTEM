@@ -9,7 +9,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class ProcessInputUI extends Application {
-
     @Override
     public void start(Stage primaryStage) {
 
@@ -27,7 +26,7 @@ public class ProcessInputUI extends Application {
         TextField btTextField = new TextField();
         HBox btHBox = new HBox(10, btLabel, btTextField);
 
-        // 프로세스의 AT을 입력받는 TextField와 라벨을 생성합니다.
+        // 프로세스의 AT을 입력받는 TextField와 라벨을 생성합니다.```
         Label atLabel = new Label("AT:");
         TextField atTextField = new TextField();
         HBox atHBox = new HBox(10, atLabel, atTextField);

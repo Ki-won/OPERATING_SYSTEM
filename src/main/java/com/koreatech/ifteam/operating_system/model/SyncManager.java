@@ -33,7 +33,7 @@ public class SyncManager{ // 동기식 동작을 위한 기준(주체), Clock �
         ScheduleManager.getInstance().clockUpdate();
         CoreManager.getInstance().clockUpdate();
         ProcessManager.getInstance().clockUpdate();
-        UIController.getInstance().coreSend();
+        UIController.getInstance().processingStatusSend();
         ++clock;
     }
 

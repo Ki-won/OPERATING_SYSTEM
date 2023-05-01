@@ -34,7 +34,7 @@ public class UIController {
     
     // Packet Send
 
-    public void coreSend() { // 현재 코어들의 정보를 GUI에 송신
+    public void processingStatusSend() { // 현재 처리중인 정보를 GUI에 송신
         coreUpdateFromModel(CoreManager.getInstance().getPackets());
     }
 
@@ -51,7 +51,6 @@ public class UIController {
         StateUpdateFromModel(state);
     }
     
-
     // Packet Handle
 
     public void StateHandle(int state) { // 상태 정보를 GUI로부터 수신
