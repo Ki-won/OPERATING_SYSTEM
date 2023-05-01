@@ -42,6 +42,9 @@ public class Core { // Core
     }
     
     public CorePacket getPacket() {
+        if (process == null) {
+            return new CorePacket(-1, powerUsage);
+        }
         return new CorePacket(process.id, powerUsage);
     }
 
@@ -49,6 +52,10 @@ public class Core { // Core
 
     public void allocate(Process process) { // 프로세스 할당
         this.process = process;
+        if (process == null) 
+            System.out.println(id + "코어 Empty");
+        else
+        System.out.println(id+"코어를"+" p"+process.id+" 에 할당");
     }
     
     // Functions
@@ -56,31 +63,42 @@ public class Core { // Core
     public void awake(){ // 프로세서 가동 
         state = State.Awake;
         if(mode == CoreMode.E) powerUsage += 0.1f;
-        else if(mode == CoreMode.P) powerUsage += 0.5f;
+        else if (mode == CoreMode.P)
+            powerUsage += 0.5f;
+        System.out.println(id+"코어 Awake");
     }
 
     public void sleep(){ // 프로세서 휴면
         state = State.Sleep;
+        System.out.println(id + "코어 Sleep");
     }
 
     public void operate(){ // 실행 = 프로세스 처리
         if(state == State.Sleep) awake(); // 휴면 상태면, 가동
         lastOperateTime = SyncManager.getInstance().getClock();
         
-        if(mode == CoreMode.E){
+        if (mode == CoreMode.E) {
+            System.out.println(id + "코어 동작: p" + process.id + " 처리(-1)");
             process.burst(1);
             powerUsage += 1.0f;
-        }else if(mode == CoreMode.P){
+        } else if (mode == CoreMode.P) {
+            System.out.println(id + "코어 동작: p" + process.id + " 처리(-2)");
             process.burst(2);
             powerUsage += 3.0f;
         }
     }
 
-    public boolean isComplete(){ // 프로세스 처리가 완료되었는가 = 프로세스가 종료되었는가
-        if(process.getRemainTime() == 0){
-            System.out.println(process.getId()+" 프로세스 종료\n");
+    public boolean isComplete() { // 프로세스 처리가 완료되었는가 = 프로세스가 종료되었는가
+        if (process.getRemainTime() == 0) {
+            System.out.println("                        [ " + process.getId() + " 프로세스 종료 ]");
             return true;
         }
         return false;
+    }
+
+    public void identifyStatus() {
+        if (SyncManager.getInstance().getClock() - lastOperateTime >= 1) {
+            sleep();
+        }
     }
 }

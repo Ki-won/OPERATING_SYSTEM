@@ -86,11 +86,7 @@ public class CoreManager{
 
     private void manageCoreState(){ // 프로세서 상태 관리
         for(int i = 0; i <coreNum; ++i){
-            Core getCore = coreList.get(i);
-            // 프로세서의 마지막 가동 시간과 현재 시간이 1보다 많이 차이나면, 미가동 상태로 판단, 해당 프로세서를 휴면 상태로 전환
-            if(SyncManager.getInstance().getClock() - getCore.getLastOperateTime() > 1){
-                getCore.sleep();
-            }
+            coreList.get(i).identifyStatus(); // 프로세서의 마지막 가동 시간과 현재 시간이 1보다 많이 차이나면, 미가동 상태로 판단, 해당 프로세서를 휴면 상태로 전환
         }
     }
 
@@ -116,18 +112,32 @@ public class CoreManager{
         return selectCore() != null;
     }
 
-    public void printInfo(){
-        for(int i = 0; i < coreNum; ++i){
+    public void printInfo() {
+        System.out.println(" #");
+        for (int i = 0; i < coreNum; ++i) {
             Core getCore = coreList.get(i);
             int coreId = getCore.getId();
             int processId = 0;
             int currTime = 0;
-            if(getCore.getProcess() != null){
+            if (getCore.getProcess() != null) {
                 processId = getCore.getProcess().getId();
                 currTime = getCore.getProcess().getRemainTime();
+                System.out.println(coreId + "코어 현황: p" + processId + ", " + currTime + "초 남음");
+            } else {
+                System.out.println(coreId + "코어 현황: " + getCore.getProcess() + ", " + currTime + "초 남음");
             }
-            System.out.println(coreId + "코어 현황: p" + processId + ", " + currTime + "초 남음");
+            
+        }
+        
+        printPowerUsage();
+    }
+    
+    public void printPowerUsage() {
+        for (int i = 0; i < coreNum; ++i) {
+            Core getCore = coreList.get(i);
+            System.out.println(getCore.getId()+"코어 전력 사용량: " + getCore.getPowerUsage()+" W");
         }
     }
+
     
 }

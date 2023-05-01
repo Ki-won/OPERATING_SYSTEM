@@ -65,10 +65,10 @@ public class Process implements Comparable<Process> {
 
     // function    
 
-    public void printInfo(){ // 현재 프로세스 정보 출력
-        System.out.print(id + ": ");
-        System.out.printf("AT: %d BT: %d WT: %d TT: %d NTT: %.3f", arrivalTime, operateTime, waitTime, turnaroundTime, ((double)turnaroundTime/(double)operateTime ));
+    public void printInfo() { // 현재 프로세스 정보 출력
         System.out.println();
+        System.out.print("p"+id + ": ");
+        System.out.printf("AT: %d BT: %d WT: %d TT: %d NTT: %.3f", arrivalTime, operateTime, waitTime, turnaroundTime, ((double)turnaroundTime/(double)operateTime ));
     }
 
     public void burst(int amount) { // 실행, 현재 시간 감소

@@ -1,5 +1,6 @@
 package com.koreatech.ifteam.operating_system.model;
 
+import com.koreatech.ifteam.operating_system.model.scheduling.FCFS;
 import com.koreatech.ifteam.operating_system.model.scheduling.HRRN;
 
 public class projectMain{
@@ -18,14 +19,15 @@ public class projectMain{
 
         ProcessManager.getInstance().printInfo();
 
-        CoreMode modes[] = {CoreMode.P, CoreMode.P, CoreMode.E, CoreMode.E};
+        CoreMode modes[] = {CoreMode.P, CoreMode.P, CoreMode.OFF, CoreMode.OFF};
 
         CoreManager.getInstance().initCore(modes);
 
-        ScheduleManager.getInstance().setMethod(HRRN.getInstance());
+        ScheduleManager.getInstance().setMethod(FCFS.getInstance());
 
         SyncManager.getInstance().run();
 
         ProcessManager.getInstance().printResult();
+        CoreManager.getInstance().printPowerUsage();
     }
 }

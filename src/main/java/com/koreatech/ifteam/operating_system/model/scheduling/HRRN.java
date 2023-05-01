@@ -25,7 +25,6 @@ public class HRRN implements ScheduleMethod {
 
     @Override
     public void clock() {
-        CoreManager.getInstance().printInfo();
         run();
     }
 

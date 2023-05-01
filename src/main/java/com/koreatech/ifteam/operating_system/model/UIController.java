@@ -9,7 +9,7 @@ public class UIController {
     private static UIController instance = new UIController(); // singleton
 
     private UIController(){
-        System.out.println("UIController()");
+        //System.out.println("UIController()");
     }
 
     public static UIController getInstance() {// ddd
