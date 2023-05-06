@@ -44,7 +44,7 @@ public class SyncManager{ // 동기식 동작을 위한 기준(주체), Clock �
         do {
             SyncManager.getInstance().Update();
         } while ((ProcessManager.getInstance().getProcessQueueSize() > 0 || !CoreManager.getInstance().isDoneCore()
-                || ProcessManager.getInstance().getReadyQueueSize() > 0) && !interrupt);
+                || ProcessManager.getInstance().getReadyQueueSize() > 0 || ProcessManager.getInstance().getOneBrustQueueSize() > 0) && !interrupt);
         if (interrupt) {
             interrupt = false;
             UIController.getInstance().StateSend(1);
