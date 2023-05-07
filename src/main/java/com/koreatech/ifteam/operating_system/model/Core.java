@@ -40,6 +40,8 @@ public class Core { // Core
     public Process getProcess() { // 할당된 프로세스 getter
         return process;
     }
+
+    public CoreMode getMode() {return mode;}
     
     public CorePacket getPacket() {
         if (process == null) {
