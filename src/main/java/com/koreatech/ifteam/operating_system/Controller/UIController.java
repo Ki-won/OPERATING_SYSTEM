@@ -1,6 +1,8 @@
-package com.koreatech.ifteam.operating_system.model;
+package com.koreatech.ifteam.operating_system.Controller;
 
 
+import com.koreatech.ifteam.operating_system.model.*;
+import com.koreatech.ifteam.operating_system.model.Process;
 import com.koreatech.ifteam.operating_system.model.packet.CorePacket;
 import com.koreatech.ifteam.operating_system.model.packet.InitPacket;
 import com.koreatech.ifteam.operating_system.model.packet.ProcessPacket;

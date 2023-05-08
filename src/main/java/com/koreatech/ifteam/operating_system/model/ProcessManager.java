@@ -1,5 +1,6 @@
 package com.koreatech.ifteam.operating_system.model;
 
+import com.koreatech.ifteam.operating_system.Controller.UIController;
 import com.koreatech.ifteam.operating_system.model.packet.ProcessPacket;
 
 import java.util.LinkedList;
