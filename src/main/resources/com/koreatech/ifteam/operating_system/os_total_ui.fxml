@@ -19,7 +19,7 @@
                     </font>
                 </Label>
                 <!-- 이름 받는 텍스트 필드-->
-                <TextField fx:id="nameTextField" layoutX="14.0" layoutY="60.0"/>
+                <TextField fx:id="nameTextField" layoutX="14.0" layoutY="60.0" text="P"/>
                 <Label layoutX="14.0" layoutY="38.0" text="Name">
                     <font>
                         <Font name="Microsoft New Tai Lue" size="14.0"/>
@@ -167,14 +167,14 @@
                 </Label>
                 <ScrollPane layoutX="14.0" layoutY="38.0" prefHeight="268.0" prefWidth="268.0">
                     <content>
-                        <TableView prefHeight="266.0" prefWidth="266.0">
+                        <TableView fx:id="outputTable"prefHeight="266.0" prefWidth="266.0">
                             <columns>
-                                <TableColumn prefWidth="48.79995805025101" text="name"/>
-                                <TableColumn minWidth="0.0" prefWidth="41.600032806396484" text="AT"/>
-                                <TableColumn prefWidth="36.79998779296875" text="BT"/>
-                                <TableColumn prefWidth="43.20001220703125" text="WT"/>
-                                <TableColumn prefWidth="43.199951171875" text="TT"/>
-                                <TableColumn prefWidth="58.40003967285156" text="NTT"/>
+                                <TableColumn fx:id="outputnameColumn" prefWidth="48.79995805025101" text="name"/>
+                                <TableColumn fx:id="outputatColumn" minWidth="0.0" prefWidth="41.600032806396484" text="AT"/>
+                                <TableColumn fx:id="outputbtColumn" prefWidth="36.79998779296875" text="BT"/>
+                                <TableColumn fx:id="outputwtColumn" prefWidth="43.20001220703125" text="WT"/>
+                                <TableColumn fx:id="outputttColumn" prefWidth="43.199951171875" text="TT"/>
+                                <TableColumn fx:id="outputnttColumn" prefWidth="58.40003967285156" text="NTT"/>
                             </columns>
                         </TableView>
                     </content>
@@ -367,25 +367,30 @@
         <AnchorPane layoutX="756.0" layoutY="21.0" prefHeight="314.0" prefWidth="134.0"
                     style="-fx-border-color: #000000;">
             <children>
+                <!-- 전력양 창 제목 -->
                 <Label layoutX="14.0" layoutY="14.0" text="UseElectric">
                     <font>
                         <Font name="Microsoft New Tai Lue" size="20.0"/>
                     </font>
                 </Label>
+                <!--1번 코어 전력 -->
                 <AnchorPane layoutX="5.0" layoutY="38.0" prefHeight="52.0" prefWidth="117.0">
                     <children>
-                        <Label layoutX="20.0" layoutY="8.0" text="Core">
-                            <font>
-                                <Font name="Microsoft New Tai Lue" size="14.0"/>
-                            </font>
-                        </Label>
-                        <Label layoutX="98.0" layoutY="39.0" text="W">
+                        <Label layoutX="20.0" layoutY="8.0" text="Core1">
                             <font>
                                 <Font name="Microsoft New Tai Lue" size="14.0"/>
                             </font>
                         </Label>
                         <TextField layoutX="10.0" layoutY="39.0" prefHeight="22.0" prefWidth="82.0"/>
+
+                        <Label layoutX="98.0" layoutY="39.0" text="W">
+                            <font>
+                                <Font name="Microsoft New Tai Lue" size="14.0"/>
+                            </font>
+                        </Label>
+
                     </children>
+
                 </AnchorPane>
                 <AnchorPane layoutX="4.0" layoutY="100.0" prefHeight="59.0" prefWidth="117.0">
                     <children>
