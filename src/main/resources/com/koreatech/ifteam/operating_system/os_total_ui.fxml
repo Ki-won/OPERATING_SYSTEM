@@ -167,7 +167,7 @@
                 </Label>
                 <ScrollPane layoutX="14.0" layoutY="38.0" prefHeight="268.0" prefWidth="268.0">
                     <content>
-                        <TableView fx:id="outputTable"prefHeight="266.0" prefWidth="266.0">
+                        <TableView fx:id="outputTable" prefHeight="266.0" prefWidth="266.0">
                             <columns>
                                 <TableColumn fx:id="outputnameColumn" prefWidth="48.79995805025101" text="name"/>
                                 <TableColumn fx:id="outputatColumn" minWidth="0.0" prefWidth="41.600032806396484" text="AT"/>

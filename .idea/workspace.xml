@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3f608134-c39c-41fc-80d9-7d62481dacac" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/UI/ProcessInputUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/UI/ProcessListUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/os_total_ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/os_total_ui.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +153,8 @@
       <workItem from="1682863430130" duration="29000" />
       <workItem from="1682863742433" duration="20000" />
       <workItem from="1683698302707" duration="61000" />
-      <workItem from="1683698447476" duration="138000" />
+      <workItem from="1683698447476" duration="410000" />
+      <workItem from="1683698892275" duration="234000" />
     </task>
     <servers />
   </component>
