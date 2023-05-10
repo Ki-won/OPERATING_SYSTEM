@@ -25,7 +25,6 @@ public class SPN implements ScheduleMethod {
 
     @Override
     public void clock() {
-        CoreManager.getInstance().printInfo();
         run();
     }
 
@@ -47,7 +46,7 @@ public class SPN implements ScheduleMethod {
                     ProcessManager.getInstance().clockUpdate();
                     if(!ProcessManager.getInstance().empty_readyQueue()){ //레디 큐에 프로세스가 기다리고 있으면
                         com.koreatech.ifteam.operating_system.model.Process getProcess = ProcessManager.getInstance().getMinBrustProcess(); // 그 프로세스 가져와서
-                        CoreManager.getInstance().maintainCore(i, getProcess); // 코어를 종료하지 않고 바로 넣음
+                        CoreManager.getInstance().overwriteAt(i, getProcess); // 코어를 종료하지 않고 바로 넣음
                     }
                     else
                         CoreManager.getInstance().removeProcess(i);

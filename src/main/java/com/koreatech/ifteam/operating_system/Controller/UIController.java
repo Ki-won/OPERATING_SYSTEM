@@ -1,8 +1,6 @@
-package com.koreatech.ifteam.operating_system.Controller;
+package com.koreatech.ifteam.operating_system.model;
 
 
-import com.koreatech.ifteam.operating_system.model.*;
-import com.koreatech.ifteam.operating_system.model.Process;
 import com.koreatech.ifteam.operating_system.model.packet.CorePacket;
 import com.koreatech.ifteam.operating_system.model.packet.InitPacket;
 import com.koreatech.ifteam.operating_system.model.packet.ProcessPacket;
@@ -11,18 +9,18 @@ public class UIController {
     private static UIController instance = new UIController(); // singleton
 
     private UIController(){
-        System.out.println("UIController()");
+        //System.out.println("UIController()");
     }
 
     public static UIController getInstance() {// ddd
         return instance;
     }
 
-    private void coreUpdateFromModel(CorePacket[] corePackets) { // GUI func
+    private void coreStatusHandle(CorePacket[] corePackets) { // GUI func
 
     }
 
-    private void resultSendFromModel(ProcessPacket processPacket) { // GUI func
+    private void resultHandle(ProcessPacket processPacket) { // GUI func
 
     }
     
@@ -36,12 +34,12 @@ public class UIController {
     
     // Packet Send
 
-    public void coreSend() { // 현재 코어들의 정보를 GUI에 송신
-        coreUpdateFromModel(CoreManager.getInstance().getPackets());
+    public void coreStatusSend() { // 현재 처리중인 정보를 GUI에 송신
+        coreStatusHandle(CoreManager.getInstance().getPackets());
     }
 
     public void resultSend(Process process) { // 처리 완료된 프로세스 정보를 GUI에 송신
-        resultSendFromModel(process.getPacket());
+        resultHandle(process.getPacket());
     }
 
     public void readyProcessSend(Process process, int IOstate) { // ReadyQ에 들어오거나 나간 프로세스 정보를 GUI에 송신
@@ -53,7 +51,6 @@ public class UIController {
         StateUpdateFromModel(state);
     }
     
-
     // Packet Handle
 
     public void StateHandle(int state) { // 상태 정보를 GUI로부터 수신

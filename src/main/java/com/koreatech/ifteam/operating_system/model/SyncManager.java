@@ -1,7 +1,5 @@
 package com.koreatech.ifteam.operating_system.model;
 
-import com.koreatech.ifteam.operating_system.Controller.UIController;
-
 public class SyncManager{ // 동기식 동작을 위한 기준(주체), Clock 관리
     private static SyncManager instance = new SyncManager();
     protected SyncManager(){
@@ -31,11 +29,14 @@ public class SyncManager{ // 동기식 동작을 위한 기준(주체), Clock �
     // Functions
     
     public void Update() { // 객체들에게 clock 주기 송신
-        System.out.println("\n--- time: " + clock + " ---");
+        System.out.println("\n---- Clock: " + clock + " ----");
+        ProcessManager.getInstance().clockUpdate();
         ScheduleManager.getInstance().clockUpdate();
         CoreManager.getInstance().clockUpdate();
-        ProcessManager.getInstance().clockUpdate();
-        UIController.getInstance().coreSend();
+
+        UIController.getInstance().coreStatusSend();
+
+        CoreManager.getInstance().printInfo();
         ++clock;
     }
 
@@ -43,7 +44,7 @@ public class SyncManager{ // 동기식 동작을 위한 기준(주체), Clock �
         do {
             SyncManager.getInstance().Update();
         } while ((ProcessManager.getInstance().getProcessQueueSize() > 0 || !CoreManager.getInstance().isDoneCore()
-                || ProcessManager.getInstance().getReadyQueueSize() > 0) && !interrupt);
+                || ProcessManager.getInstance().getReadyQueueSize() > 0 || ProcessManager.getInstance().getOneBrustQueueSize() > 0) && !interrupt);
         if (interrupt) {
             interrupt = false;
             UIController.getInstance().StateSend(1);

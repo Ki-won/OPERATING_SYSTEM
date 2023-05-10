@@ -1,6 +1,5 @@
 package com.koreatech.ifteam.operating_system.model;
 
-import com.koreatech.ifteam.operating_system.Controller.UIController;
 import com.koreatech.ifteam.operating_system.model.packet.ProcessPacket;
 
 import java.util.LinkedList;
@@ -23,6 +22,8 @@ public class ProcessManager { // Base Scheduling Model .....?
     private PriorityQueue<Process> processQ = new PriorityQueue<>(); // 전체 프로세스 담는 큐 // chan: 이건 우선순위 큐 안해도 되지 않나
     private Queue<Process> readyQ = new LinkedList<Process>(); // 프로세스가 도착하여 기다리는 큐
 
+    private Queue<Process> oneBrustTimeQ = new LinkedList<Process>(); // 버스트 타임이 1초인 프로세스의 집합
+
     private List<Process> resultList = new LinkedList<Process>(); // 프로세스의 결과가 담긴 리스트
     private int nextId = 1;
 
@@ -44,6 +45,8 @@ public class ProcessManager { // Base Scheduling Model .....?
     public int getReadyQueueSize() { //레디 큐에 들어가지 않은 프로세스 수 계산
         return readyQ.size();
     }
+
+    public int getOneBrustQueueSize() {return oneBrustTimeQ.size();}
     
     public Process peek_processQueue(){ // 우선순위 큐 잘 작동하는지 확인 위해 넣은것(나중에 삭제하자)
         return processQ.poll();
@@ -54,6 +57,12 @@ public class ProcessManager { // Base Scheduling Model .....?
         UIController.getInstance().readyProcessSend(getProcess, 1);
         return getProcess;
         
+    }
+
+    public Process pollOneBrustQ() { // oneBrustQueue에서 요소 추출
+        Process getProcess = oneBrustTimeQ.poll();
+        return getProcess;
+
     }
 
     public Process peek_readyQueue() { // readyQueue에서 요소 접근
@@ -118,6 +127,10 @@ public class ProcessManager { // Base Scheduling Model .....?
         readyQ.add(process);
         UIController.getInstance().readyProcessSend(process, 0);
     }
+
+    public void pushOneBrustQ(Process process){
+        oneBrustTimeQ.add(process);
+    }
     
     public void pushResultList(Process process) {
         resultList.add(process);
@@ -129,6 +142,8 @@ public class ProcessManager { // Base Scheduling Model .....?
         return readyQ.isEmpty();
     }
 
+    public boolean emptyOneBrustQueue() {return oneBrustTimeQ.isEmpty();}
+
     public void printResult(){
         for(int i = 0; i < resultList.size(); ++i){  //ui 구축되면 없어져도 되는거
             resultList.get(i).printInfo();
@@ -136,14 +151,19 @@ public class ProcessManager { // Base Scheduling Model .....?
     }
 
     public void saveToResultList(Process process) { // 처리 완료된 프로세스들은 ResultList에 저장
-        process.setTurnaroundTime(SyncManager.getInstance().getClock() - process.getArrivalTime());
+        process.setTurnaroundTime(SyncManager.getInstance().getClock() - process.getArrivalTime() + 1);
         process.setWaitTime(process.getTurnaroundTime() - process.getOperateTime());
         ProcessManager.getInstance().pushResultList(process);
         UIController.getInstance().resultSend(process);
     }
 
     public void clockUpdate(){ // Clock 주기
-        Ready();
+        if (ScheduleManager.getInstance().getMethodName() == "CUSTOM"){
+            readyForCustom();
+        }
+        else {
+            Ready();
+        }
     }
 
     private void Ready(){ // 각 프로세스의 arrivalTime에, readyQueue로 이동시킴
@@ -153,6 +173,21 @@ public class ProcessManager { // Base Scheduling Model .....?
             readyQ.add(pollProcess);
             getProcess = processQ.peek();
             UIController.getInstance().readyProcessSend(pollProcess, 0);
+        }
+    }
+
+    private void readyForCustom(){
+        Process getProcess = processQ.peek();
+        while (getProcess != null && getProcess.getArrivalTime() <= SyncManager.getInstance().getClock()) {
+            Process pollProcess = processQ.poll();
+            if (pollProcess.getBurstTime() == 1){
+                oneBrustTimeQ.add(pollProcess);
+            }
+            else{
+                readyQ.add(pollProcess);
+            }
+            getProcess = processQ.peek();
+            UIController.getInstance().readyProcessSend(pollProcess, 0); //이거 onebrust는 어떻게 하지?
         }
     }
 }

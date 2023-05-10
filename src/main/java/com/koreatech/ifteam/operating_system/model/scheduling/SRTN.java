@@ -27,7 +27,6 @@ public class SRTN implements ScheduleMethod {
 
     @Override
     public void clock() {
-        CoreManager.getInstance().printInfo();
         run();
     }
 
@@ -51,7 +50,7 @@ public class SRTN implements ScheduleMethod {
 
                     if(!ProcessManager.getInstance().empty_readyQueue()){
                         com.koreatech.ifteam.operating_system.model.Process getProcess = ProcessManager.getInstance().getMinRemainProcess();
-                        CoreManager.getInstance().maintainCore(i, getProcess);
+                        CoreManager.getInstance().overwriteAt(i, getProcess);
                     }
                     else
                         CoreManager.getInstance().removeProcess(i);
@@ -61,7 +60,7 @@ public class SRTN implements ScheduleMethod {
                         if(!ProcessManager.getInstance().empty_readyQueue()) { // 레디큐가 비어있지 않으면
                             ProcessManager.getInstance().push_readyQueue(getProcess);
                             com.koreatech.ifteam.operating_system.model.Process getProcessFromReadyQ = ProcessManager.getInstance().getMinRemainProcess();
-                            CoreManager.getInstance().maintainCore(i, getProcessFromReadyQ); // 프로세스 프로세스 교체
+                            CoreManager.getInstance().overwriteAt(i, getProcessFromReadyQ); // 프로세스 프로세스 교체
                         }
                 }
             }
