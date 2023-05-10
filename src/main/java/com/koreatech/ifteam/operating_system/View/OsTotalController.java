@@ -11,6 +11,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class OsTotalController {
+
+    int count = 0; // P값 개수 카운팅
     //processinput보여주는 창
     @FXML
     private TableView<UiProcess> inputTable;
@@ -29,6 +31,7 @@ public class OsTotalController {
     @FXML
     private TextField btTextField;
 
+    //core 선택 버튼 토글들
     @FXML
     private ToggleGroup core1ToggleGroup;
     @FXML
@@ -42,12 +45,16 @@ public class OsTotalController {
     private final ObservableList<UiProcess> processList = FXCollections.observableArrayList();
 
     public void initialize() {
+        //inputlist 컬럼을 수정하는 부분
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         atColumn.setCellValueFactory(new PropertyValueFactory<>("AT"));
         btColumn.setCellValueFactory(new PropertyValueFactory<>("BT"));
 
         inputTable.setItems(processList);
 
+
+
+        //토글 버튼 그룹 세팅
         core1ToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
@@ -95,18 +102,24 @@ public class OsTotalController {
 
     }
 
-
-
     @FXML
     private void onAddButtonClick(ActionEvent event) {
         String name = nameTextField.getText();
         int at = Integer.parseInt(atTextField.getText());
         int bt = Integer.parseInt(btTextField.getText());
 
+        if (name.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Name을 추가해주세요!!");
+            alert.showAndWait();
+            return;
+        }
         UiProcess process = new UiProcess(at, bt, name); // 변경
         processList.add(process);
 
-        nameTextField.clear();
+        nameTextField.setText("P");
         atTextField.clear();
         btTextField.clear();
     }
