@@ -154,7 +154,6 @@ public class ProcessManager { // Base Scheduling Model .....?
         process.setTurnaroundTime(SyncManager.getInstance().getClock() - process.getArrivalTime() + 1);
         process.setWaitTime(process.getTurnaroundTime() - process.getOperateTime());
         ProcessManager.getInstance().pushResultList(process);
-        OsTotalController.getInstance().updateResult(process);
         UIController.getInstance().resultSend(process);
     }
 

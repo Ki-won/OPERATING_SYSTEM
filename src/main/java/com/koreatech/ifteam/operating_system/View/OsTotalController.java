@@ -3,6 +3,8 @@ package com.koreatech.ifteam.operating_system.View;
 import com.koreatech.ifteam.operating_system.View.Data.UiProcess;
 import com.koreatech.ifteam.operating_system.model.*;
 import com.koreatech.ifteam.operating_system.model.Process;
+import com.koreatech.ifteam.operating_system.model.packet.InitPacket;
+import com.koreatech.ifteam.operating_system.model.packet.ProcessPacket;
 import com.koreatech.ifteam.operating_system.model.scheduling.CUSTOM;
 import com.koreatech.ifteam.operating_system.model.scheduling.FCFS;
 import com.koreatech.ifteam.operating_system.model.scheduling.SPN;
@@ -20,7 +22,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.security.auth.login.CredentialException;
+import java.lang.reflect.Array;
 import java.lang.reflect.ParameterizedType;
+import java.util.LinkedList;
+import java.util.List;
 
 public class OsTotalController {
 
@@ -35,7 +40,7 @@ public class OsTotalController {
     private TableView<UiProcess> inputTable;
 
     @FXML
-    private TableView<Process> outputTable;
+    private TableView<ProcessPacket> outputTable;
 
     @FXML
     private TableColumn<UiProcess, String> nameColumn;
@@ -45,17 +50,17 @@ public class OsTotalController {
     private TableColumn<UiProcess, Integer> btColumn;
     // 입력 테이블
     @FXML
-    private TableColumn<Process, String> outputnameColumn;
+    private TableColumn<ProcessPacket, String> outputnameColumn;
     @FXML
-    private TableColumn<Process, Integer> outputatColumn;
+    private TableColumn<ProcessPacket, Integer> outputatColumn;
     @FXML
-    private TableColumn<Process, Integer> outputbtColumn;
+    private TableColumn<ProcessPacket, Integer> outputbtColumn;
     @FXML
-    private TableColumn<Process, Integer> outputwtColumn;
+    private TableColumn<ProcessPacket, Integer> outputwtColumn;
     @FXML
-    private TableColumn<Process, Integer> outputttColumn;
+    private TableColumn<ProcessPacket, Integer> outputttColumn;
     @FXML
-    private TableColumn<Process, Double> outputnttColumn;
+    private TableColumn<ProcessPacket, Double> outputnttColumn;
 
     //process input받는 곳
     @FXML
@@ -75,9 +80,9 @@ public class OsTotalController {
     @FXML
     private ToggleGroup core4ToggleGroup;
 
-
+    private String[] modeList = new String[4];
     private final ObservableList<UiProcess> processList = FXCollections.observableArrayList();
-    private final ObservableList<Process> resultList = FXCollections.observableArrayList();
+    private final ObservableList<ProcessPacket> resultList = FXCollections.observableArrayList();
 
     public void initialize() {
         //inputlist 컬럼을 수정하는 부분
@@ -108,6 +113,7 @@ public class OsTotalController {
                 } else {
                     RadioButton selectedRadio = (RadioButton) newValue;
                     System.out.println("Core1: " + selectedRadio.getText());
+                    modeList[0] =  selectedRadio.getText();
                 }
             }
         });
@@ -119,6 +125,7 @@ public class OsTotalController {
                 } else {
                     RadioButton selectedRadio = (RadioButton) newValue;
                     System.out.println("Core2: " + selectedRadio.getText());
+                    modeList[1] =  selectedRadio.getText();
                 }
             }
         });
@@ -130,6 +137,7 @@ public class OsTotalController {
                 } else {
                     RadioButton selectedRadio = (RadioButton) newValue;
                     System.out.println("Core3: " + selectedRadio.getText());
+                    modeList[2] =  selectedRadio.getText();
                 }
             }
         });
@@ -141,6 +149,7 @@ public class OsTotalController {
                 } else {
                     RadioButton selectedRadio = (RadioButton) newValue;
                     System.out.println("Core4: " + selectedRadio.getText());
+                    modeList[3] =  selectedRadio.getText();
                 }
             }
         });
@@ -171,22 +180,15 @@ public class OsTotalController {
 
     @FXML
     private void onStartButtonClick(ActionEvent actionEvent) {
-
-        CoreMode modes[] = {CoreMode.P, CoreMode.E, CoreMode.OFF, CoreMode.OFF};
-        CoreManager.getInstance().initCore(modes);
-
-        ScheduleManager.getInstance().setMethod(FCFS.getInstance(), "FCFS");
-
-        System.out.println("입력된 알고리즘");
-
-        SyncManager.getInstance().run();
-
+        UIController.getInstance().initHandle(new InitPacket(processList, modeList, 0));
+        UIController.getInstance().StateHandle(0);
         ProcessManager.getInstance().printResult();
         CoreManager.getInstance().printPowerUsage();
+
+
     }
-    @FXML
-    public void updateResult(Process p){
-        resultList.add(p);
+    public void resultHandle(ProcessPacket processPacket){
+        resultList.add(processPacket);
     }
 }
 
