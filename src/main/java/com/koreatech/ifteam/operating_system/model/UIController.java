@@ -64,7 +64,7 @@ public class UIController {
     
     public void initHandle(InitPacket initPacket) { // 시작 전 초기 정보를 GUI로부터 수신
         for (int i = 0; i < initPacket.processTimes.size(); ++i) {
-            ProcessManager.getInstance().addProcess(initPacket.processTimes.get(i).x, initPacket.processTimes.get(i).y);
+            //ProcessManager.getInstance().addProcess(initPacket.processTimes.get(i).x, initPacket.processTimes.get(i).y);
         }
         CoreManager.getInstance().initCore(initPacket.coreModes);
         ScheduleManager.getInstance().setMethod(initPacket.scheduleMethod);

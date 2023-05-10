@@ -1,6 +1,15 @@
 package com.koreatech.ifteam.operating_system.View;
 
 import com.koreatech.ifteam.operating_system.View.Data.UiProcess;
+import com.koreatech.ifteam.operating_system.model.*;
+import com.koreatech.ifteam.operating_system.model.Process;
+import com.koreatech.ifteam.operating_system.model.scheduling.CUSTOM;
+import com.koreatech.ifteam.operating_system.model.scheduling.FCFS;
+import com.koreatech.ifteam.operating_system.model.scheduling.SPN;
+import com.koreatech.ifteam.operating_system.model.scheduling.SRTN;
+import com.koreatech.ifteam.operating_system.model.scheduling.RR;
+import com.koreatech.ifteam.operating_system.model.scheduling.HRRN;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -10,18 +19,43 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.security.auth.login.CredentialException;
+import java.lang.reflect.ParameterizedType;
+
 public class OsTotalController {
 
+    private static OsTotalController instance = new OsTotalController(); // singleton
+
+    public static OsTotalController getInstance() {
+        return instance;
+    }
     int count = 0; // P값 개수 카운팅
     //processinput보여주는 창
     @FXML
     private TableView<UiProcess> inputTable;
+
+    @FXML
+    private TableView<Process> outputTable;
+
     @FXML
     private TableColumn<UiProcess, String> nameColumn;
     @FXML
     private TableColumn<UiProcess, Integer> atColumn;
     @FXML
     private TableColumn<UiProcess, Integer> btColumn;
+    // 입력 테이블
+    @FXML
+    private TableColumn<Process, String> outputnameColumn;
+    @FXML
+    private TableColumn<Process, Integer> outputatColumn;
+    @FXML
+    private TableColumn<Process, Integer> outputbtColumn;
+    @FXML
+    private TableColumn<Process, Integer> outputwtColumn;
+    @FXML
+    private TableColumn<Process, Integer> outputttColumn;
+    @FXML
+    private TableColumn<Process, Double> outputnttColumn;
 
     //process input받는 곳
     @FXML
@@ -43,6 +77,7 @@ public class OsTotalController {
 
 
     private final ObservableList<UiProcess> processList = FXCollections.observableArrayList();
+    private final ObservableList<Process> resultList = FXCollections.observableArrayList();
 
     public void initialize() {
         //inputlist 컬럼을 수정하는 부분
@@ -51,6 +86,16 @@ public class OsTotalController {
         btColumn.setCellValueFactory(new PropertyValueFactory<>("BT"));
 
         inputTable.setItems(processList);
+
+        //outputlist 컬럼 수정하는 부분
+        outputnameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        outputatColumn.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
+        outputbtColumn.setCellValueFactory(new PropertyValueFactory<>("operateTime"));
+        outputwtColumn.setCellValueFactory(new PropertyValueFactory<>("waitTime"));
+        outputttColumn.setCellValueFactory(new PropertyValueFactory<>("turnaroundTime"));
+        //outputnttColumn.setCellValueFactory(new PropertyValueFactory<>("normalizeTT"));
+
+        outputTable.setItems(resultList);
 
 
 
@@ -117,13 +162,32 @@ public class OsTotalController {
             return;
         }
         UiProcess process = new UiProcess(at, bt, name); // 변경
+        ProcessManager.getInstance().addProcess(name, at, bt); // 프로세스 삽입
         processList.add(process);
-
-        nameTextField.setText("P");
+        nameTextField.clear();
         atTextField.clear();
         btTextField.clear();
     }
 
+    @FXML
+    private void onStartButtonClick(ActionEvent actionEvent) {
+
+        CoreMode modes[] = {CoreMode.P, CoreMode.E, CoreMode.OFF, CoreMode.OFF};
+        CoreManager.getInstance().initCore(modes);
+
+        ScheduleManager.getInstance().setMethod(FCFS.getInstance(), "FCFS");
+
+        System.out.println("입력된 알고리즘");
+
+        SyncManager.getInstance().run();
+
+        ProcessManager.getInstance().printResult();
+        CoreManager.getInstance().printPowerUsage();
+    }
+    @FXML
+    public void updateResult(Process p){
+        resultList.add(p);
+    }
 }
 
 

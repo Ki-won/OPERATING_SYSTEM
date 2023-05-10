@@ -150,12 +150,12 @@ public class CoreManager{
         for (int i = 0; i < coreNum; ++i) {
             Core getCore = coreList.get(i);
             int coreId = getCore.getId();
-            int processId = 0;
+            String processName = "";
             int currTime = 0;
             if (getCore.getProcess() != null) {
-                processId = getCore.getProcess().getId();
+                processName = getCore.getProcess().getName();
                 currTime = getCore.getProcess().getRemainTime();
-                System.out.println(coreId + "코어 현황: p" + processId + ", " + currTime + "초 남음");
+                System.out.println(coreId + "코어 현황: " + processName + ", " + currTime + "초 남음");
             } else {
                 System.out.println(coreId + "코어 현황: " + getCore.getProcess() + ", " + currTime + "초 남음");
             }

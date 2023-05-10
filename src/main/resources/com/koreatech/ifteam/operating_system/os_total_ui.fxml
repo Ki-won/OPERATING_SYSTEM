@@ -444,7 +444,7 @@
                     style="-fx-border-color: #000000;">
             <children>
                 <ChoiceBox layoutX="22.0" layoutY="14.0" prefWidth="150.0"/>
-                <Button layoutX="14.0" layoutY="51.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="162.0"
+                <Button layoutX="14.0" layoutY="51.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="162.0"  onAction="#onStartButtonClick"
                         text="RUN">
                     <font>
                         <Font name="Microsoft New Tai Lue" size="20.0"/>

@@ -92,7 +92,7 @@ public class Core { // Core
 
     public boolean isComplete() { // 프로세스 처리가 완료되었는가 = 프로세스가 종료되었는가
         if (process.getRemainTime() == 0) {
-            System.out.println("                        [ " + process.getId() + " 프로세스 종료 ]");
+            System.out.println("                        [ " + process.getName() + " 프로세스 종료 ]");
             return true;
         }
         return false;

@@ -1,5 +1,6 @@
 package com.koreatech.ifteam.operating_system.model;
 
+import com.koreatech.ifteam.operating_system.View.OsTotalController;
 import com.koreatech.ifteam.operating_system.model.packet.ProcessPacket;
 
 import java.util.LinkedList;
@@ -18,7 +19,6 @@ public class ProcessManager { // Base Scheduling Model .....?
     }
     
     // Variables
-
     private PriorityQueue<Process> processQ = new PriorityQueue<>(); // 전체 프로세스 담는 큐 // chan: 이건 우선순위 큐 안해도 되지 않나
     private Queue<Process> readyQ = new LinkedList<Process>(); // 프로세스가 도착하여 기다리는 큐
 
@@ -32,8 +32,8 @@ public class ProcessManager { // Base Scheduling Model .....?
         System.out.println("[info] readyQ size: "+readyQ.size());
     }
 
-    public void addProcess(int arrivalTime, int burstTime) { // 프로세스 추가
-        processQ.add(new Process(nextId++, arrivalTime, burstTime));
+    public void addProcess(String name, int arrivalTime, int burstTime) { // 프로세스 추가
+        processQ.add(new Process(name, arrivalTime, burstTime));
     }
     
     // Getter
@@ -154,6 +154,7 @@ public class ProcessManager { // Base Scheduling Model .....?
         process.setTurnaroundTime(SyncManager.getInstance().getClock() - process.getArrivalTime() + 1);
         process.setWaitTime(process.getTurnaroundTime() - process.getOperateTime());
         ProcessManager.getInstance().pushResultList(process);
+        OsTotalController.getInstance().updateResult(process);
         UIController.getInstance().resultSend(process);
     }
 
