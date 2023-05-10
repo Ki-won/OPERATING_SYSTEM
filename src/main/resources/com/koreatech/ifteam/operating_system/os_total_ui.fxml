@@ -24,24 +24,27 @@
                         <Font name="Microsoft New Tai Lue" size="20.0" />
                     </font>
                 </Label>
-                <Label layoutX="14.0" layoutY="38.0" text="Name">
+                <!-- 이름 받는 텍스트 필드-->
+                <TextField fx:id="nameTextField" layoutX="14.0" layoutY="60.0" />
+                <Label  layoutX="14.0" layoutY="38.0" text="Name">
                     <font>
                         <Font name="Microsoft New Tai Lue" size="14.0" />
                     </font>
                 </Label>
+                <!-- at 받는 텍스트 필드-->
+                <TextField fx:id="atTextField" layoutX="14.0" layoutY="104.0" />
                 <Label layoutX="14.0" layoutY="82.0" text="AT">
                     <font>
                         <Font name="Microsoft New Tai Lue" size="14.0" />
                     </font>
                 </Label>
-                <TextField layoutX="14.0" layoutY="60.0" />
-                <TextField layoutX="14.0" layoutY="104.0" />
+                <!-- bt 받는 텍스트 필드-->
+                <TextField fx:id="btTextField" layoutX="14.0" layoutY="149.0" />
                 <Label layoutX="14.0" layoutY="127.0" text="BT">
                     <font>
                         <Font name="Microsoft New Tai Lue" size="14.0" />
                     </font>
                 </Label>
-                <TextField layoutX="14.0" layoutY="149.0" />
                 <Button layoutX="130.0" layoutY="160.0" mnemonicParsing="false" onAction="#onAddButtonClick" text="Add" >
                     <font>
                         <Font name="Microsoft New Tai Lue" size="14.0" />
