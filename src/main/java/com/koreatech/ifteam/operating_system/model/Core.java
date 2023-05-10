@@ -43,12 +43,6 @@ public class Core { // Core
 
     public CoreMode getMode() {return mode;}
     
-    public CorePacket getPacket() {
-        if (process == null) {
-            return new CorePacket(-1, powerUsage);
-        }
-        return new CorePacket(process.id, powerUsage);
-    }
 
     // Setter
 

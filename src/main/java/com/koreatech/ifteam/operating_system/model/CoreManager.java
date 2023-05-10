@@ -35,12 +35,15 @@ public class CoreManager{
         return coreList.get(index);
     }
 
-    public CorePacket[] getPackets() { // 패킷들 getter
-        CorePacket[] corePackets = new CorePacket[coreNum];
+    public CorePacket getPackets() { // 패킷들 getter
+        int[] prcoessIdList = new int[coreNum];
+        float[] powerUsageList = new float[coreNum];
         for (int i = 0; i < coreNum; ++i) {
-            corePackets[i] = coreList.get(i).getPacket();
+            Core getCore = coreList.get(i);
+            prcoessIdList[i] = getCore.getId();
+            powerUsageList[i] = getCore.getPowerUsage();
         }
-        return corePackets;
+        return new CorePacket(prcoessIdList, powerUsageList);
     }
 
     // Setter

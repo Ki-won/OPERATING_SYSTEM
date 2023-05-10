@@ -16,7 +16,7 @@ public class UIController {
         return instance;
     }
 
-    private void coreStatusHandle(CorePacket[] corePackets) { // GUI func
+    private void coreStatusHandle(CorePacket corePackets) { // GUI func
 
     }
 
