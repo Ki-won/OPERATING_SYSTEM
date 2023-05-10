@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f608134-c39c-41fc-80d9-7d62481dacac" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/scheduling/CUSTOM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/Core.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/CoreManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/CoreManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/ProcessManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/ProcessManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/ScheduleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/ScheduleManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/SyncManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/SyncManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/projectMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/projectMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/UI/ProcessInputUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/UI/ProcessListUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +47,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/hsgo2/OPERATING_SYSTEM&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/seo/Desktop/BCSD/OPERATING_SYSTEM&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -68,7 +64,7 @@
       <recent name="C:\Users\seo\Desktop\BCSD\OPERATING_SYSTEM\src\main\java\com\koreatech\ifteam\operating_system\model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.projectMain">
+  <component name="RunManager" selected="애플리케이션.UiMain">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.koreatech.ifteam.operating_system.UI.HelloApplication" />
       <module name="OPERATING_SYSTEM" />
@@ -108,12 +104,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UiMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.koreatech.ifteam.operating_system.View.UiMain" />
+      <module name="OPERATING_SYSTEM" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.koreatech.ifteam.operating_system.View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="projectMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.koreatech.ifteam.operating_system.model.projectMain" />
       <module name="OPERATING_SYSTEM" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.koreatech.ifteam.operating_system.model.*" />
+          <option name="PATTERN" value="com.koreatech.ifteam.operating_system.Controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -123,8 +132,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.projectMain" />
-        <item itemvalue="Application.ProcessInputUI" />
+        <item itemvalue="애플리케이션.UiMain" />
       </list>
     </recent_temporary>
   </component>
@@ -145,6 +153,8 @@
       <workItem from="1682862838374" duration="569000" />
       <workItem from="1682863430130" duration="29000" />
       <workItem from="1682863742433" duration="20000" />
+      <workItem from="1683698302707" duration="61000" />
+      <workItem from="1683698447476" duration="138000" />
     </task>
     <servers />
   </component>
