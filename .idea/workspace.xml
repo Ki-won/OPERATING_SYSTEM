@@ -5,21 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f608134-c39c-41fc-80d9-7d62481dacac" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/process_in_put.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/UI/CoreGraph.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/UI/CoreInput.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/UI/ProcessInPut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/ProcessInPut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/UI/ProcessList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/UI/ProcessResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/UI/UiMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/UiMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/Pair.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/ProcessManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/ProcessManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/SyncManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/SyncManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/UIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/Controller/UIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/Data/UiProcessList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/Data/UiInputDataList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/ProcessInPut.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/ProcessInPutList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/RootController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/UiMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/UiMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/process_in_put.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/process_in_put_list.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,23 +47,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/seo/Desktop/BCSD/OPERATING_SYSTEM",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "프로젝트",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/seo/Desktop/BCSD/OPERATING_SYSTEM&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;프로젝트&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\seo\Desktop\BCSD\OPERATING_SYSTEM\src\main\java\com\koreatech\ifteam\operating_system\UI" />
@@ -175,7 +169,13 @@
       <workItem from="1683527533824" duration="515000" />
       <workItem from="1683528173105" duration="1459000" />
       <workItem from="1683530194805" duration="11818000" />
-      <workItem from="1683547437819" duration="189000" />
+      <workItem from="1683547437819" duration="3187000" />
+      <workItem from="1683559226197" duration="99000" />
+      <workItem from="1683566751250" duration="691000" />
+      <workItem from="1683590430071" duration="4321000" />
+      <workItem from="1683595043023" duration="215000" />
+      <workItem from="1683628994097" duration="412000" />
+      <workItem from="1683679489088" duration="1829000" />
     </task>
     <servers />
   </component>
