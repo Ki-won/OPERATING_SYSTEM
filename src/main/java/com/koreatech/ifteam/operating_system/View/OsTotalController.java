@@ -1,19 +1,17 @@
 package com.koreatech.ifteam.operating_system.View;
 
 import com.koreatech.ifteam.operating_system.View.Data.UiProcess;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class OsTotalController {
+    //processinput보여주는 창
     @FXML
     private TableView<UiProcess> inputTable;
     @FXML
@@ -23,6 +21,7 @@ public class OsTotalController {
     @FXML
     private TableColumn<UiProcess, Integer> btColumn;
 
+    //process input받는 곳
     @FXML
     private TextField nameTextField;
     @FXML
@@ -30,7 +29,17 @@ public class OsTotalController {
     @FXML
     private TextField btTextField;
 
-    private ObservableList<UiProcess> processList = FXCollections.observableArrayList();
+    @FXML
+    private ToggleGroup core1ToggleGroup;
+    @FXML
+    private ToggleGroup core2ToggleGroup;
+    @FXML
+    private ToggleGroup core3ToggleGroup;
+    @FXML
+    private ToggleGroup core4ToggleGroup;
+
+
+    private final ObservableList<UiProcess> processList = FXCollections.observableArrayList();
 
     public void initialize() {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -38,7 +47,54 @@ public class OsTotalController {
         btColumn.setCellValueFactory(new PropertyValueFactory<>("BT"));
 
         inputTable.setItems(processList);
+
+        core1ToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+                if (newValue == null) {
+                    System.out.println("Core1: NULL");
+                } else {
+                    RadioButton selectedRadio = (RadioButton) newValue;
+                    System.out.println("Core1: " + selectedRadio.getText());
+                }
+            }
+        });
+        core2ToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+                if (newValue == null) {
+                    System.out.println("Core2: NULL");
+                } else {
+                    RadioButton selectedRadio = (RadioButton) newValue;
+                    System.out.println("Core2: " + selectedRadio.getText());
+                }
+            }
+        });
+        core3ToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+                if (newValue == null) {
+                    System.out.println("Core3: NULL");
+                } else {
+                    RadioButton selectedRadio = (RadioButton) newValue;
+                    System.out.println("Core3: " + selectedRadio.getText());
+                }
+            }
+        });
+        core4ToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+                if (newValue == null) {
+                    System.out.println("Core4: NULL");
+                } else {
+                    RadioButton selectedRadio = (RadioButton) newValue;
+                    System.out.println("Core4: " + selectedRadio.getText());
+                }
+            }
+        });
+
     }
+
 
 
     @FXML
