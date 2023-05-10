@@ -35,6 +35,10 @@ public class ProcessManager { // Base Scheduling Model .....?
     public void addProcess(String name, int arrivalTime, int burstTime) { // 프로세스 추가
         processQ.add(new Process(name, arrivalTime, burstTime));
     }
+
+    public void addProcess(Process process) { // 프로세스 추가
+        processQ.add(process);
+    }
     
     // Getter
 
@@ -155,6 +159,7 @@ public class ProcessManager { // Base Scheduling Model .....?
         process.setWaitTime(process.getTurnaroundTime() - process.getOperateTime());
         ProcessManager.getInstance().pushResultList(process);
         UIController.getInstance().resultSend(process);
+
     }
 
     public void clockUpdate(){ // Clock 주기

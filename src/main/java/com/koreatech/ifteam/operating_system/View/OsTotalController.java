@@ -2,16 +2,9 @@ package com.koreatech.ifteam.operating_system.View;
 
 import com.koreatech.ifteam.operating_system.View.Data.UiProcess;
 import com.koreatech.ifteam.operating_system.model.*;
-import com.koreatech.ifteam.operating_system.model.Process;
+import com.koreatech.ifteam.operating_system.model.packet.CorePacket;
 import com.koreatech.ifteam.operating_system.model.packet.InitPacket;
 import com.koreatech.ifteam.operating_system.model.packet.ProcessPacket;
-import com.koreatech.ifteam.operating_system.model.scheduling.CUSTOM;
-import com.koreatech.ifteam.operating_system.model.scheduling.FCFS;
-import com.koreatech.ifteam.operating_system.model.scheduling.SPN;
-import com.koreatech.ifteam.operating_system.model.scheduling.SRTN;
-import com.koreatech.ifteam.operating_system.model.scheduling.RR;
-import com.koreatech.ifteam.operating_system.model.scheduling.HRRN;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,12 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-import javax.security.auth.login.CredentialException;
-import java.lang.reflect.Array;
-import java.lang.reflect.ParameterizedType;
-import java.util.LinkedList;
-import java.util.List;
 
 public class OsTotalController {
 
@@ -50,7 +37,7 @@ public class OsTotalController {
     private TableColumn<UiProcess, Integer> btColumn;
     // 입력 테이블
     @FXML
-    private TableColumn<ProcessPacket, String> outputnameColumn;
+    private TableColumn<ProcessPacket, Integer> outputnameColumn;
     @FXML
     private TableColumn<ProcessPacket, Integer> outputatColumn;
     @FXML
@@ -79,29 +66,28 @@ public class OsTotalController {
     private ToggleGroup core3ToggleGroup;
     @FXML
     private ToggleGroup core4ToggleGroup;
-
     private String[] modeList = new String[4];
     private final ObservableList<UiProcess> processList = FXCollections.observableArrayList();
-    private final ObservableList<ProcessPacket> resultList = FXCollections.observableArrayList();
-
+    private final ObservableList<ProcessPacket> resultList = FXCollections.observableArrayList(
+            new ProcessPacket(3,4,5,6,7,8),
+            new ProcessPacket(5,4,5,6,7,8),
+    new ProcessPacket(3,4,5,6,7,8)
+    );
     public void initialize() {
         //inputlist 컬럼을 수정하는 부분
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         atColumn.setCellValueFactory(new PropertyValueFactory<>("AT"));
         btColumn.setCellValueFactory(new PropertyValueFactory<>("BT"));
-
-        inputTable.setItems(processList);
-
         //outputlist 컬럼 수정하는 부분
-        outputnameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+       // outputnameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         outputatColumn.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
         outputbtColumn.setCellValueFactory(new PropertyValueFactory<>("operateTime"));
         outputwtColumn.setCellValueFactory(new PropertyValueFactory<>("waitTime"));
         outputttColumn.setCellValueFactory(new PropertyValueFactory<>("turnaroundTime"));
-        //outputnttColumn.setCellValueFactory(new PropertyValueFactory<>("normalizeTT"));
+        outputnttColumn.setCellValueFactory(new PropertyValueFactory<>("normalizedTT"));
 
+        inputTable.setItems(processList);
         outputTable.setItems(resultList);
-
 
 
         //토글 버튼 그룹 세팅
@@ -162,16 +148,8 @@ public class OsTotalController {
         int at = Integer.parseInt(atTextField.getText());
         int bt = Integer.parseInt(btTextField.getText());
 
-        if (name.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Name을 추가해주세요!!");
-            alert.showAndWait();
-            return;
-        }
-        UiProcess process = new UiProcess(at, bt, name); // 변경
-        ProcessManager.getInstance().addProcess(name, at, bt); // 프로세스 삽입
+        UiProcess process = new UiProcess(at, bt, Integer.parseInt(name)); // 변경
+
         processList.add(process);
         nameTextField.clear();
         atTextField.clear();
@@ -187,8 +165,20 @@ public class OsTotalController {
 
 
     }
+    //프로세싱 완료 결과값 받는 함수
     public void resultHandle(ProcessPacket processPacket){
-        resultList.add(processPacket);
+        System.out.println("AT: "+processPacket.getArrivalTime());
+        resultList.add(processPacket); // add the countype object to the resultList
+        System.out.println(resultList.size());
+        System.out.println("AT: "+resultList.get(0).getArrivalTime());
+
+    }
+
+    public void coreStatusHandle(CorePacket corePacket){
+        System.out.println("Core1: "+corePacket.processIdList[0]+" power: "+corePacket.powerUsageList[0]);
+        System.out.println("Core2: "+corePacket.processIdList[1]+" power: "+corePacket.powerUsageList[1]);
+        System.out.println("Core3: "+corePacket.processIdList[2]+" power: "+corePacket.powerUsageList[2]);
+        System.out.println("Core4: "+corePacket.processIdList[3]+" power: "+corePacket.powerUsageList[3]);
     }
 }
 

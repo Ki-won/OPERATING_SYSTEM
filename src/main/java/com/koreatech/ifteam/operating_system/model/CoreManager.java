@@ -36,12 +36,17 @@ public class CoreManager{
     }
 
     public CorePacket getPackets() { // 패킷들 getter
-        int[] prcoessIdList = new int[coreNum];
-        float[] powerUsageList = new float[coreNum];
-        for (int i = 0; i < coreNum; ++i) {
+        int[] prcoessIdList = new int[4];
+        float[] powerUsageList = new float[4];
+        for (int i = 0; i < 4; ++i) {
             Core getCore = coreList.get(i);
-            prcoessIdList[i] = getCore.getId();
-            powerUsageList[i] = getCore.getPowerUsage();
+            if(getCore == null){
+                prcoessIdList[i] = -1;
+                powerUsageList[i] = -1.0f;
+            }else {
+                prcoessIdList[i] = getCore.getId();
+                powerUsageList[i] = getCore.getPowerUsage();
+            }
         }
         return new CorePacket(prcoessIdList, powerUsageList);
     }
@@ -55,6 +60,8 @@ public class CoreManager{
             if (modes[i] != CoreMode.OFF) {
                 ++coreNum;
                 coreList.add(new Core(i + 1, modes[i]));
+            }else{
+                coreList.add(null);
             }
         }
         flag = new boolean[coreNum];

@@ -3,9 +3,9 @@ public class UiProcess {
 
     private int AT;
     private int BT;
-    private String name;
+    private int name;
 
-    public UiProcess(int AT, int BT, String name) {
+    public UiProcess(int AT, int BT, int name) {
         this.AT = AT;
         this.BT = BT;
         this.name = name;
@@ -19,7 +19,7 @@ public class UiProcess {
         return BT;
     }
 
-    public String getName() {
+    public int getName() {
         return name;
     }
 }

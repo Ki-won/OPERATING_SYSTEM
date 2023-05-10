@@ -1,6 +1,7 @@
 package com.koreatech.ifteam.operating_system.model;
 
 
+import com.koreatech.ifteam.operating_system.View.OsTotalController;
 import com.koreatech.ifteam.operating_system.model.packet.CorePacket;
 import com.koreatech.ifteam.operating_system.model.packet.InitPacket;
 import com.koreatech.ifteam.operating_system.model.packet.ProcessPacket;
@@ -16,13 +17,6 @@ public class UIController {
         return instance;
     }
 
-    private void coreStatusHandle(CorePacket corePackets) { // GUI func
-
-    }
-
-    private void resultHandle(ProcessPacket processPacket) { // GUI func
-
-    }
     
     private void StateUpdateFromModel(int state) { // GUI func
 
@@ -35,11 +29,13 @@ public class UIController {
     // Packet Send
 
     public void coreStatusSend() { // 현재 처리중인 정보를 GUI에 송신
-        coreStatusHandle(CoreManager.getInstance().getPackets());
+        OsTotalController.getInstance().coreStatusHandle(CoreManager.getInstance().getPackets());
     }
 
     public void resultSend(Process process) { // 처리 완료된 프로세스 정보를 GUI에 송신
-        resultHandle(process.getPacket());
+        ProcessPacket tmp = process.getPacket();
+        System.out.println("resultSend: "+tmp);
+        OsTotalController.getInstance().resultHandle(tmp);
     }
 
     public void readyProcessSend(Process process, int IOstate) { // ReadyQ에 들어오거나 나간 프로세스 정보를 GUI에 송신
@@ -64,7 +60,8 @@ public class UIController {
     
     public void initHandle(InitPacket initPacket) { // 시작 전 초기 정보를 GUI로부터 수신
         for (int i = 0; i < initPacket.processTimes.size(); ++i) {
-            //ProcessManager.getInstance().addProcess(initPacket.processTimes.get(i).x, initPacket.processTimes.get(i).y);
+            Process process = new Process(Integer.toString(initPacket.processTimes.get(i).getName()),initPacket.processTimes.get(i).getAT(), initPacket.processTimes.get(i).getBT());
+            ProcessManager.getInstance().addProcess(process);
         }
         CoreManager.getInstance().initCore(initPacket.coreModes);
         ScheduleManager.getInstance().setMethod(initPacket.scheduleMethod);
