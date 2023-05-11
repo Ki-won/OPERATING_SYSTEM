@@ -1,12 +1,13 @@
 package com.koreatech.ifteam.operating_system.View;
 
 import com.koreatech.ifteam.operating_system.View.Data.UiProcess;
-import com.koreatech.ifteam.operating_system.model.*;
+import com.koreatech.ifteam.operating_system.model.CoreManager;
+import com.koreatech.ifteam.operating_system.model.ProcessManager;
+import com.koreatech.ifteam.operating_system.model.ScheduleManager;
+import com.koreatech.ifteam.operating_system.model.UIController;
 import com.koreatech.ifteam.operating_system.model.packet.CorePacket;
 import com.koreatech.ifteam.operating_system.model.packet.InitPacket;
 import com.koreatech.ifteam.operating_system.model.packet.ProcessPacket;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,40 +16,37 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class OsTotalController {
-
-    private static OsTotalController instance = new OsTotalController(); // singleton
-
-    public static OsTotalController getInstance() {
-        return instance;
-    }
-    int count = 0; // P값 개수 카운팅
-    //processinput보여주는 창
+    private static final OsTotalController instance = new OsTotalController(); // singleton
+    private final ObservableList<UiProcess> processList = FXCollections.observableArrayList();
+    private final String[] modeList = new String[4];
+    private final ObservableList<ProcessPacket> resultList = FXCollections.observableArrayList();
+    String algorithmChoice = "";
+    int choiceNum = 0;
+    //두개의 table
     @FXML
     private TableView<UiProcess> inputTable;
-
-    @FXML
-    private TableView<ProcessPacket> outputTable;
-
+    //입력 테이블
     @FXML
     private TableColumn<UiProcess, String> nameColumn;
     @FXML
     private TableColumn<UiProcess, Integer> atColumn;
     @FXML
     private TableColumn<UiProcess, Integer> btColumn;
-    // 입력 테이블
     @FXML
-    private TableColumn<ProcessPacket, Integer> outputnameColumn;
+    private TableView<ProcessPacket> outputTable;
+    // 출력 테이블
     @FXML
-    private TableColumn<ProcessPacket, Integer> outputatColumn;
+    private TableColumn<ProcessPacket, Integer> output_name;
     @FXML
-    private TableColumn<ProcessPacket, Integer> outputbtColumn;
+    private TableColumn<ProcessPacket, Integer> output_at;
     @FXML
-    private TableColumn<ProcessPacket, Integer> outputwtColumn;
+    private TableColumn<ProcessPacket, Integer> output_bt;
     @FXML
-    private TableColumn<ProcessPacket, Integer> outputttColumn;
+    private TableColumn<ProcessPacket, Integer> output_wt;
     @FXML
-    private TableColumn<ProcessPacket, Double> outputnttColumn;
-
+    private TableColumn<ProcessPacket, Integer> output_tt;
+    @FXML
+    private TableColumn<ProcessPacket, Integer> output_ntt;
     //process input받는 곳
     @FXML
     private TextField nameTextField;
@@ -56,7 +54,8 @@ public class OsTotalController {
     private TextField atTextField;
     @FXML
     private TextField btTextField;
-
+    @FXML
+    private TextField timeQuantum;
     //core 선택 버튼 토글들
     @FXML
     private ToggleGroup core1ToggleGroup;
@@ -66,77 +65,112 @@ public class OsTotalController {
     private ToggleGroup core3ToggleGroup;
     @FXML
     private ToggleGroup core4ToggleGroup;
-    private String[] modeList = new String[4];
-    private final ObservableList<UiProcess> processList = FXCollections.observableArrayList();
-    private final ObservableList<ProcessPacket> resultList = FXCollections.observableArrayList(
-            new ProcessPacket(3,4,5,6,7,8),
-            new ProcessPacket(5,4,5,6,7,8),
-    new ProcessPacket(3,4,5,6,7,8)
-    );
+    //알고리즘 종류 선택
+    @FXML
+    private ChoiceBox<String> algorithmChoiceBox; // ChoiceBox 선언
+    //전력양 추가
+    @FXML
+    private TextField core1_power = new TextField(); // Core1 정보를 표시할 TextField
+    @FXML
+    private TextField core2_power = new TextField(); // Core2 정보를 표시할 TextField
+    @FXML
+    private TextField core3_power= new TextField(); // Core3 정보를 표시할 TextField
+    @FXML
+    private TextField core4_power= new TextField(); // Core4 정보를 표시할 TextField
+
+    public static OsTotalController getInstance() {
+        return instance;
+    }
+
+
     public void initialize() {
+        algorithmChoiceBox.getItems().addAll("FCFS", "RR", "SPN", "SRTN", "HRRN", "CUSTOM"); // "FCFS"와 "RR" 추가
+
         //inputlist 컬럼을 수정하는 부분
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         atColumn.setCellValueFactory(new PropertyValueFactory<>("AT"));
         btColumn.setCellValueFactory(new PropertyValueFactory<>("BT"));
         //outputlist 컬럼 수정하는 부분
-       // outputnameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        outputatColumn.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
-        outputbtColumn.setCellValueFactory(new PropertyValueFactory<>("operateTime"));
-        outputwtColumn.setCellValueFactory(new PropertyValueFactory<>("waitTime"));
-        outputttColumn.setCellValueFactory(new PropertyValueFactory<>("turnaroundTime"));
-        outputnttColumn.setCellValueFactory(new PropertyValueFactory<>("normalizedTT"));
 
+        output_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        output_at.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
+        output_bt.setCellValueFactory(new PropertyValueFactory<>("operateTime"));
+        output_wt.setCellValueFactory(new PropertyValueFactory<>("waitTime"));
+        output_tt.setCellValueFactory(new PropertyValueFactory<>("turnaroundTime"));
+        output_ntt.setCellValueFactory(new PropertyValueFactory<>("normalizedTT"));
+        // 셀 팩토리 설정
         inputTable.setItems(processList);
         outputTable.setItems(resultList);
 
+        //알고리즘 선택버튼
+        algorithmChoiceBox.setOnAction(e -> {
+            String selectedAlgorithm = algorithmChoiceBox.getValue();
+            algorithmChoice = selectedAlgorithm;
+            switch (algorithmChoice) {
+                case "FCFS":
+                    choiceNum = 0;
+                    break;
+                case "RR":
+                    choiceNum = 1;
+                    break;
+                case "SPN":
+                    choiceNum = 2;
+                    break;
+                case "SRTN":
+                    choiceNum = 3;
+                    break;
+                case "HRRN":
+                    choiceNum = 4;
+                    break;
+                case "CUSTOM":
+                    choiceNum = 5;
+                    break;
+            }
+            System.out.println("Selected algorithm: " + selectedAlgorithm + choiceNum);
+            //전력양 초기화
+            core1_power.setText("");
+            core2_power.setText("");
+            core3_power.setText("");
+            core4_power.setText("");
+
+        });
 
         //토글 버튼 그룹 세팅
-        core1ToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            @Override
-            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-                if (newValue == null) {
-                    System.out.println("Core1: NULL");
-                } else {
-                    RadioButton selectedRadio = (RadioButton) newValue;
-                    System.out.println("Core1: " + selectedRadio.getText());
-                    modeList[0] =  selectedRadio.getText();
-                }
+        core1ToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                System.out.println("Core1: NULL");
+            } else {
+                RadioButton selectedRadio = (RadioButton) newValue;
+                System.out.println("Core1: " + selectedRadio.getText());
+                modeList[0] = selectedRadio.getText();
             }
         });
-        core2ToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            @Override
-            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-                if (newValue == null) {
-                    System.out.println("Core2: NULL");
-                } else {
-                    RadioButton selectedRadio = (RadioButton) newValue;
-                    System.out.println("Core2: " + selectedRadio.getText());
-                    modeList[1] =  selectedRadio.getText();
-                }
+
+        core2ToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                System.out.println("Core2: NULL");
+            } else {
+                RadioButton selectedRadio = (RadioButton) newValue;
+                System.out.println("Core2: " + selectedRadio.getText());
+                modeList[1] = selectedRadio.getText();
             }
         });
-        core3ToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            @Override
-            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-                if (newValue == null) {
-                    System.out.println("Core3: NULL");
-                } else {
-                    RadioButton selectedRadio = (RadioButton) newValue;
-                    System.out.println("Core3: " + selectedRadio.getText());
-                    modeList[2] =  selectedRadio.getText();
-                }
+        core3ToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                System.out.println("Core3: NULL");
+            } else {
+                RadioButton selectedRadio = (RadioButton) newValue;
+                System.out.println("Core3: " + selectedRadio.getText());
+                modeList[2] = selectedRadio.getText();
             }
         });
-        core4ToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            @Override
-            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-                if (newValue == null) {
-                    System.out.println("Core4: NULL");
-                } else {
-                    RadioButton selectedRadio = (RadioButton) newValue;
-                    System.out.println("Core4: " + selectedRadio.getText());
-                    modeList[3] =  selectedRadio.getText();
-                }
+        core4ToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                System.out.println("Core4: NULL");
+            } else {
+                RadioButton selectedRadio = (RadioButton) newValue;
+                System.out.println("Core4: " + selectedRadio.getText());
+                modeList[3] = selectedRadio.getText();
             }
         });
 
@@ -149,7 +183,6 @@ public class OsTotalController {
         int bt = Integer.parseInt(btTextField.getText());
 
         UiProcess process = new UiProcess(at, bt, Integer.parseInt(name)); // 변경
-
         processList.add(process);
         nameTextField.clear();
         atTextField.clear();
@@ -158,7 +191,14 @@ public class OsTotalController {
 
     @FXML
     private void onStartButtonClick(ActionEvent actionEvent) {
-        UIController.getInstance().initHandle(new InitPacket(processList, modeList, 0));
+        int quantum = 0;
+        if (timeQuantum.getText() != null) {
+            quantum = Integer.parseInt(timeQuantum.getText());
+            System.out.println("setTimeQuantum"+quantum);
+        }
+        ScheduleManager.getInstance().setValue(quantum);
+
+        UIController.getInstance().initHandle(new InitPacket(processList, modeList, choiceNum));
         UIController.getInstance().StateHandle(0);
         ProcessManager.getInstance().printResult();
         CoreManager.getInstance().printPowerUsage();
@@ -174,11 +214,24 @@ public class OsTotalController {
 
     }
 
-    public void coreStatusHandle(CorePacket corePacket){
-        System.out.println("Core1: "+corePacket.processIdList[0]+" power: "+corePacket.powerUsageList[0]);
-        System.out.println("Core2: "+corePacket.processIdList[1]+" power: "+corePacket.powerUsageList[1]);
-        System.out.println("Core3: "+corePacket.processIdList[2]+" power: "+corePacket.powerUsageList[2]);
-        System.out.println("Core4: "+corePacket.processIdList[3]+" power: "+corePacket.powerUsageList[3]);
+
+    public void coreStatusHandle(CorePacket corePacket) {
+        if (core1_power.getText() == null) {
+            core1_power.setText("");
+        }
+        core1_power.setText(String.valueOf(corePacket.powerUsageList[0]));
+        if (core2_power.getText() == null) {
+            core2_power.setText("");
+        }
+        core2_power.setText(String.valueOf(corePacket.powerUsageList[1]));
+        if (core3_power.getText() == null) {
+            core3_power.setText("");
+        }
+        core3_power.setText(String.valueOf(corePacket.powerUsageList[2]));
+        if (core4_power.getText() == null) {
+            core4_power.setText("");
+        }
+        core4_power.setText(String.valueOf(corePacket.powerUsageList[3]));
     }
 }
 

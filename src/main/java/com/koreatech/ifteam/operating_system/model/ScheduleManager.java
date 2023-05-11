@@ -29,6 +29,9 @@ public class ScheduleManager{ // 스케줄링 방식 관리
     public int getValue() { // 추가 변수 getter
         return value;
     }
+    public void setValue(int value){
+        this.value = value;
+    }
 
     public String getMethodName(){return methodName;}
 

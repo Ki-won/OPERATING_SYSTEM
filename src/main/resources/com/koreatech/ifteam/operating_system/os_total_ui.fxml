@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-            prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19"
+<?import javafx.scene.control.ToggleGroup?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
+            prefWidth="1024.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.koreatech.ifteam.operating_system.View.OsTotalController">
     <!--여기부터 ProcessInput 패널 -->
-    <AnchorPane layoutX="22.0" layoutY="21.0" prefHeight="194.0" prefWidth="194.0"
-                style="-fx-border-color: #000000;">
+    <AnchorPane layoutX="22.0" layoutY="32.0" prefHeight="229.0" prefWidth="194.0"
+                style="-fx-border-color: #000000; -fx-border-width: 0.5;">
         <Label layoutX="14.0" layoutY="14.0" text="ProcessInPut">
             <font>
                 <Font name="Microsoft New Tai Lue" size="20.0"/>
             </font>
         </Label>
         <!-- 이름 받는 텍스트 필드-->
-        <TextField fx:id="nameTextField" layoutX="14.0" layoutY="60.0" text="P"/>
+        <TextField fx:id="nameTextField" layoutX="14.0" layoutY="60.0"/>
         <Label layoutX="14.0" layoutY="38.0" text="Name">
             <font>
                 <Font name="Microsoft New Tai Lue" size="14.0"/>
@@ -37,17 +49,27 @@
                 <Font name="Microsoft New Tai Lue" size="14.0"/>
             </font>
         </Label>
-        <Button layoutX="130.0" layoutY="160.0" mnemonicParsing="false" onAction="#onAddButtonClick" text="Add">
+        <Button layoutX="96.0" layoutY="184.0" mnemonicParsing="false" onAction="#onAddButtonClick"
+                prefHeight="32.0" prefWidth="82.0" text="Add">
+            <font>
+                <Font name="Microsoft New Tai Lue" size="14.0"/>
+            </font>
+        </Button>
+        <Button layoutX="16.0" layoutY="184.0" mnemonicParsing="false"
+                prefHeight="32.0" prefWidth="75.0" text="Reset">
             <font>
                 <Font name="Microsoft New Tai Lue" size="14.0"/>
             </font>
         </Button>
     </AnchorPane>
-
     <!-- 여기부터 코어를 받는 부분 -->
-    <AnchorPane layoutX="22.0" layoutY="221.0" prefHeight="251.0" prefWidth="194.0"
-                style="-fx-border-color: #000000;">
+        <AnchorPane layoutX="22.0" layoutY="271.0" prefHeight="251.0" prefWidth="194.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
 
+            <Label layoutX="14.0" layoutY="14.0" text="ProcessorInPut">
+                <font>
+                    <Font name="Microsoft New Tai Lue" size="20.0" />
+                </font>
+            </Label>
         <Label layoutX="14.0" layoutY="14.0" text="ProcessorInPut">
             <font>
                 <Font name="Microsoft New Tai Lue" size="20.0"/>
@@ -107,8 +129,8 @@
         <AnchorPane layoutX="6.0" layoutY="185.0" prefHeight="59.0" prefWidth="182.0">
             <!-- 여기부터 코어4번 선택하는 부분  -->
             <fx:define>
-            <ToggleGroup fx:id="core4ToggleGroup"/>
-        </fx:define>
+                <ToggleGroup fx:id="core4ToggleGroup"/>
+            </fx:define>
             <RadioButton fx:id="core4RadioE" layoutX="20.0" layoutY="37.0" mnemonicParsing="false"
                          text="E" toggleGroup="$core4ToggleGroup"/>
             <RadioButton fx:id="core4RadioP" layoutX="73.0" layoutY="37.0" mnemonicParsing="false"
@@ -123,280 +145,116 @@
         </AnchorPane>
     </AnchorPane>
     <!-- 여기서부터 인풋 리스트 보여주는 부분 -->
-    <AnchorPane layoutX="237.0" layoutY="21.0" prefHeight="314.0" prefWidth="194.0"
-                style="-fx-border-color: #000000;">
-        <Label layoutX="14.0" layoutY="14.0" text="ProcessInPutList">
+    <AnchorPane layoutX="236.0" layoutY="58.0" prefHeight="338.0" prefWidth="222.0">
+        <Label layoutX="7.0" layoutY="-1.0" text="ProcessInPutList">
             <font>
                 <Font name="Microsoft New Tai Lue" size="20.0"/>
             </font>
         </Label>
-        <ScrollPane layoutX="7.0" layoutY="38.0" prefHeight="268.0" prefWidth="181.0">
-            <TableView fx:id="inputTable" prefHeight="266.0" prefWidth="174.0">
+        <ScrollPane layoutX="7.0" layoutY="38.0" prefHeight="268.0" prefWidth="194.0">
+            <TableView fx:id="inputTable" prefHeight="270.0" prefWidth="179.0">
                 <columns>
-                    <TableColumn fx:id="nameColumn" prefWidth="50" text="name"/>
-                    <TableColumn fx:id="atColumn" prefWidth="60" text="AT"/>
-                    <TableColumn fx:id="btColumn" prefWidth="70" text="BT"/>
+                    <TableColumn id="input_name" fx:id="nameColumn" prefWidth="60.0" text="name"/>
+                    <TableColumn id="input_at" fx:id="atColumn" prefWidth="60" text="AT"/>
+                    <TableColumn id="input_bt" fx:id="btColumn" prefWidth="60.0" text="BT"/>
                 </columns>
             </TableView>
         </ScrollPane>
     </AnchorPane>
-    <!-- 여기서부터 output리스트 보여주는 부분 -->
-    <AnchorPane layoutX="456.0" layoutY="21.0" prefHeight="314.0" prefWidth="287.0"
-                style="-fx-border-color: #000000;">
-        <Label layoutX="14.0" layoutY="14.0" text="ProcessResultList">
+    <!-- 여기서부터 output 리스트 보여주는 부분 -->
+    <AnchorPane layoutX="464.0" layoutY="55.0" prefHeight="338.0" prefWidth="323.0">
+        <Label layoutX="14.0" text="ProcessResultList">
             <font>
                 <Font name="Microsoft New Tai Lue" size="20.0"/>
             </font>
         </Label>
-        <ScrollPane layoutX="14.0" layoutY="38.0" prefHeight="268.0" prefWidth="268.0">
-            <TableView fx:id="outputTable" prefHeight="266.0" prefWidth="266.0" >
+        <ScrollPane layoutX="14.0" layoutY="38.0" prefHeight="268.0" prefWidth="306.0">
+            <TableView fx:id="outputTable" prefHeight="266.0" prefWidth="303.0" >
                 <columns>
-                    <TableColumn fx:id="outputnameColumn" prefWidth="48.79995805025101" text="name"/>
-                    <TableColumn fx:id="outputatColumn" minWidth="0.0" prefWidth="41.600032806396484" text="AT"/>
-                    <TableColumn fx:id="outputbtColumn" prefWidth="36.79998779296875" text="BT"/>
-                    <TableColumn fx:id="outputwtColumn" prefWidth="43.20001220703125" text="WT"/>
-                    <TableColumn fx:id="outputttColumn" prefWidth="43.199951171875" text="TT"/>
-                    <TableColumn fx:id="outputnttColumn" prefWidth="58.40003967285156" text="NTT"/>
+                    <TableColumn fx:id="output_name" prefWidth="50.0" text="name"/>
+                    <TableColumn fx:id="output_at" prefWidth="50.0" text="AT"/>
+                    <TableColumn fx:id="output_bt" prefWidth="50.0" text="BT"/>
+                    <TableColumn fx:id="output_wt" prefWidth="50.0" text="WT"/>
+                    <TableColumn fx:id="output_tt" prefWidth="50.0" text="TT"/>
+                    <TableColumn fx:id="output_ntt" prefWidth="50.0" text="NTT"/>
                 </columns>
             </TableView>
         </ScrollPane>
     </AnchorPane>
     <!-- 여기서부터 간트차트 만드는 부분 -->
-    <AnchorPane layoutX="234.0" layoutY="402.0" prefHeight="183.0" prefWidth="656.0"
-                style="-fx-border-color: #000000;">
-        <Label layoutX="14.0" layoutY="25.0" text="Core1">
-            <font>
-                <Font size="15.0"/>
-            </font>
-        </Label>
-        <Label layoutX="13.0" layoutY="66.0" text="Core2">
-            <font>
-                <Font size="15.0"/>
-            </font>
-        </Label>
-        <Label layoutX="13.0" layoutY="99.0" text="Core3">
-            <font>
-                <Font size="15.0"/>
-            </font>
-        </Label>
-        <Label layoutX="12.0" layoutY="135.0" text="Core4">
-            <font>
-                <Font size="15.0"/>
-            </font>
-        </Label>
-        <GridPane layoutX="63.0" layoutY="23.0" prefHeight="23.0" prefWidth="582.0"
-                  style="-fx-border-color: #000000;">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            </columnConstraints>
+    <AnchorPane layoutX="234.0" layoutY="501.0" prefHeight="183.0" prefWidth="772.0"
+                style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+        <GridPane id="chartGantt" layoutX="14.0" layoutY="5.0" prefHeight="167.0" prefWidth="750.0">
             <rowConstraints>
-                <RowConstraints maxHeight="50.599951171875" minHeight="10.0" prefHeight="36.19998779296875"
-                                vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
-        </GridPane>
-        <GridPane layoutX="63.0" layoutY="64.0" prefHeight="23.0" prefWidth="582.0"
-                  style="-fx-border-color: #000000;">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints maxWidth="43.19998779296875" minWidth="31.19998779296875"
+                                   prefWidth="43.19998779296875"/>
+                <ColumnConstraints maxWidth="719.2000122070312" minWidth="707.2000122070312"
+                                   prefWidth="707.2000122070312"/>
             </columnConstraints>
-            <rowConstraints>
-                <RowConstraints maxHeight="50.599951171875" minHeight="10.0" prefHeight="36.19998779296875"
-                                vgrow="SOMETIMES"/>
-            </rowConstraints>
-        </GridPane>
-        <GridPane layoutX="63.0" layoutY="97.0" prefHeight="23.0" prefWidth="582.0"
-                  style="-fx-border-color: #000000;">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints maxHeight="50.599951171875" minHeight="10.0" prefHeight="36.19998779296875"
-                                vgrow="SOMETIMES"/>
-            </rowConstraints>
-        </GridPane>
-        <GridPane layoutX="63.0" layoutY="133.0" prefHeight="23.0" prefWidth="582.0"
-                  style="-fx-border-color: #000000;">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints maxHeight="50.599951171875" minHeight="10.0" prefHeight="36.19998779296875"
-                                vgrow="SOMETIMES"/>
-            </rowConstraints>
+            <Label fx:id="core1Label" prefHeight="14.0" prefWidth="46.0" text="Core 1"/>
+            <Label fx:id="core2Label" text="Core 2" GridPane.rowIndex="1"/>
+            <Label fx:id="core3Label" text="Core 3" GridPane.rowIndex="2"/>
+            <Label fx:id="core4Label" text="Core 4" GridPane.rowIndex="3"/>
+            <Canvas height="168.0" width="724.0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
         </GridPane>
     </AnchorPane>
     <!-- 여기서부터 전력양 나타내는 부분 -->
-    <AnchorPane layoutX="756.0" layoutY="21.0" prefHeight="314.0" prefWidth="134.0"
-                style="-fx-border-color: #000000;">
-        <!-- 전력양 창 제목 -->
+    <AnchorPane blendMode="SRC_ATOP" layoutX="827.0" layoutY="55.0" prefHeight="337.0" prefWidth="182.0"
+                style="-fx-border-color: #000000; -fx-border-width: 0.5;">
         <Label layoutX="14.0" layoutY="14.0" text="UseElectric">
             <font>
                 <Font name="Microsoft New Tai Lue" size="20.0"/>
             </font>
         </Label>
-        <!--1번 코어 전력 -->
-        <AnchorPane layoutX="5.0" layoutY="38.0" prefHeight="52.0" prefWidth="117.0">
-
-            <Label layoutX="20.0" layoutY="8.0" text="Core1">
+        <AnchorPane layoutX="14.0" layoutY="44.0" prefHeight="52.0" prefWidth="117.0">
+            <Label layoutX="7.0" layoutY="3.0" text="Core1">
+                <font>
+                    <Font name="Microsoft New Tai Lue" size="17.0"/>
+                </font>
+            </Label>
+            <Label layoutX="86.0" layoutY="28.0" text="W">
                 <font>
                     <Font name="Microsoft New Tai Lue" size="14.0"/>
                 </font>
             </Label>
-            <TextField layoutX="10.0" layoutY="39.0" prefHeight="22.0" prefWidth="82.0"/>
-
-            <Label layoutX="98.0" layoutY="39.0" text="W">
-                <font>
-                    <Font name="Microsoft New Tai Lue" size="14.0"/>
-                </font>
-            </Label>
-
+            <TextField fx:id="core1_power" layoutY="28.0" prefHeight="22.0" prefWidth="82.0"/>
         </AnchorPane>
-        <AnchorPane layoutX="4.0" layoutY="100.0" prefHeight="59.0" prefWidth="117.0">
-            <Label layoutX="20.0" layoutY="8.0" text="Core">
+        <AnchorPane layoutX="5.0" layoutY="100.0" prefHeight="59.0" prefWidth="117.0">
+            <Label layoutX="14.0" layoutY="3.0" text="Core2">
+                <font>
+                    <Font name="Microsoft New Tai Lue" size="17.0"/>
+                </font>
+            </Label>
+            <Label layoutX="97.0" layoutY="28.0" text="W">
                 <font>
                     <Font name="Microsoft New Tai Lue" size="14.0"/>
                 </font>
             </Label>
-            <Label layoutX="98.0" layoutY="39.0" text="W">
-                <font>
-                    <Font name="Microsoft New Tai Lue" size="14.0"/>
-                </font>
-            </Label>
-            <TextField layoutX="22.0" layoutY="35.0" prefHeight="22.0" prefWidth="82.0"/>
+            <TextField fx:id="core2_power" layoutX="8.0" layoutY="28.0" prefHeight="22.0" prefWidth="82.0"/>
         </AnchorPane>
-        <AnchorPane layoutX="8.0" layoutY="162.0" prefHeight="59.0" prefWidth="117.0">
-            <Label layoutX="20.0" layoutY="8.0" text="Core">
+        <AnchorPane layoutX="5.0" layoutY="159.0" prefHeight="59.0" prefWidth="117.0">
+            <Label layoutX="14.0" layoutY="3.0" text="Core3">
+                <font>
+                    <Font name="Microsoft New Tai Lue" size="17.0"/>
+                </font>
+            </Label>
+            <Label layoutX="97.0" layoutY="28.0" text="W">
                 <font>
                     <Font name="Microsoft New Tai Lue" size="14.0"/>
                 </font>
             </Label>
-            <Label layoutX="98.0" layoutY="39.0" text="W">
-                <font>
-                    <Font name="Microsoft New Tai Lue" size="14.0"/>
-                </font>
-            </Label>
-            <TextField layoutX="3.0" layoutY="41.0" prefHeight="22.0" prefWidth="82.0"/>
+            <TextField fx:id="core3_power" layoutX="8.0" layoutY="28.0" prefHeight="22.0" prefWidth="82.0"/>
         </AnchorPane>
-        <AnchorPane layoutX="8.0" layoutY="237.0" prefHeight="59.0" prefWidth="117.0">
-            <Label layoutX="20.0" layoutY="8.0" text="Core">
+        <AnchorPane layoutX="3.0" layoutY="203.0" prefHeight="59.0" prefWidth="117.0">
+            <Label layoutX="14.0" layoutY="14.0" text="Core4">
                 <font>
-                    <Font name="Microsoft New Tai Lue" size="14.0"/>
+                    <Font name="Microsoft New Tai Lue" size="17.0"/>
                 </font>
             </Label>
             <Label layoutX="98.0" layoutY="39.0" text="W">
@@ -404,28 +262,64 @@
                     <Font name="Microsoft New Tai Lue" size="14.0"/>
                 </font>
             </Label>
-            <TextField layoutX="11.0" layoutY="37.0" prefHeight="22.0" prefWidth="82.0"/>
+            <TextField fx:id="core4_power" layoutX="8.0" layoutY="39.0" prefHeight="22.0" prefWidth="82.0"/>
+        </AnchorPane>
+        <AnchorPane layoutX="3.0" layoutY="265.0" prefHeight="59.0" prefWidth="117.0">
+            <Label layoutX="14.0" layoutY="3.0" text="Total">
+                <font>
+                    <Font name="Microsoft New Tai Lue" size="17.0"/>
+                </font>
+            </Label>
+            <Label layoutX="98.0" layoutY="39.0" text="W">
+                <font>
+                    <Font name="Microsoft New Tai Lue" size="14.0"/>
+                </font>
+            </Label>
+            <TextField id="total_power" layoutX="8.0" layoutY="39.0" prefHeight="22.0" prefWidth="82.0"/>
         </AnchorPane>
     </AnchorPane>
     <!-- 여기가 run 및 알고리즘 선택하는 부분 -->
-    <AnchorPane layoutX="22.0" layoutY="482.0" prefHeight="102.0" prefWidth="194.0"
-                style="-fx-border-color: #000000;">
-        <ChoiceBox layoutX="22.0" layoutY="14.0" prefWidth="150.0"/>
-        <Button layoutX="14.0" layoutY="51.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="162.0"
-                onAction="#onStartButtonClick"
+    <AnchorPane layoutX="22.0" layoutY="535.0" prefHeight="150.0" prefWidth="194.0"
+                style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+        <ChoiceBox fx:id="algorithmChoiceBox" layoutX="22.0" layoutY="14.0" prefWidth="150.0"/>
+        <Button fx:id="runButton" layoutX="16.0" layoutY="92.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="162.0 " onAction="#onStartButtonClick"
                 text="RUN">
             <font>
                 <Font name="Microsoft New Tai Lue" size="20.0"/>
             </font>
         </Button>
+        <TextField fx:id="timeQuantum" layoutX="16.0" layoutY="58.0"/>
+        <Label layoutX="16.0" layoutY="36.0" prefHeight="22.0" prefWidth="95.0" text="Time quantum">
+            <font>
+                <Font name="Microsoft New Tai Lue" size="14.0"/>
+            </font>
+        </Label>
     </AnchorPane>
     <!-- 여기가 레디큐 추가되는 부분 -->
-    <AnchorPane layoutX="234.0" layoutY="347.0" prefHeight="38.0" prefWidth="656.0"
-                style="-fx-border-color: #000000;">
+    <AnchorPane layoutX="234.0" layoutY="454.0" prefHeight="38.0" prefWidth="772.0"
+                style="-fx-border-color: #000000; -fx-border-width: 0.5;">
         <Label layoutX="14.0" layoutY="9.0" text="ReadyQ">
             <font>
                 <Font size="15.0"/>
             </font>
         </Label>
     </AnchorPane>
+    <AnchorPane layoutX="234.0" layoutY="404.0" prefHeight="38.0" prefWidth="772.0"
+                style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+        <Label layoutX="14.0" layoutY="9.0" text="ReadyQ">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
+    <Label layoutX="881.0" prefHeight="27.0" prefWidth="142.0" text="made by !F Team">
+        <font>
+            <Font name="Microsoft New Tai Lue" size="18.0"/>
+        </font>
+    </Label>
+    <Label layoutX="242.0" layoutY="11.0" prefHeight="27.0" prefWidth="455.0" text="Process Scheduling Simulator">
+        <font>
+            <Font name="Microsoft New Tai Lue Bold" size="28.0"/>
+        </font>
+    </Label>
 </AnchorPane>

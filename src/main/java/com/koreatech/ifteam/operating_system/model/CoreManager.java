@@ -100,9 +100,12 @@ public class CoreManager{
         coreList.get(index).allocate(null);
     }
 
-    private void manageCoreState(){ // 프로세서 상태 관리
-        for(int i = 0; i <coreNum; ++i){
-            coreList.get(i).identifyStatus(); // 프로세서의 마지막 가동 시간과 현재 시간이 1보다 많이 차이나면, 미가동 상태로 판단, 해당 프로세서를 휴면 상태로 전환
+    private void manageCoreState() {
+        for (int i = 0; i < coreList.size(); i++) {
+            Core core = coreList.get(i);
+            if (core != null) { // null 값 체크
+                core.identifyStatus();
+            }
         }
     }
 
