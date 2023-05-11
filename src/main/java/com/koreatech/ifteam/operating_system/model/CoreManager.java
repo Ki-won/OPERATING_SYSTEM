@@ -43,7 +43,7 @@ public class CoreManager{
             prcoessIdList[i] = getCore.getId();
             powerUsageList[i] = getCore.getPowerUsage();
         }
-        return new CorePacket(prcoessIdList, powerUsageList);
+        return new CorePacket(prcoessIdList, powerUsageList, SyncManager.getInstance().getClock());
     }
 
     // Setter
