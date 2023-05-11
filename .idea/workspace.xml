@@ -7,9 +7,6 @@
     <list default="true" id="3f608134-c39c-41fc-80d9-7d62481dacac" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/OsTotalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/OsTotalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/CoreManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/CoreManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/ScheduleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/ScheduleManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/packet/ProcessPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/packet/ProcessPacket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/os_total_ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/os_total_ui.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,12 +159,22 @@
       <workItem from="1683698892275" duration="5785000" />
       <workItem from="1683770542698" duration="3470000" />
       <workItem from="1683774029157" duration="5840000" />
-      <workItem from="1683803145934" duration="13084000" />
+      <workItem from="1683803145934" duration="14547000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NumberFormatException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

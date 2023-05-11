@@ -169,7 +169,7 @@
             </font>
         </Label>
         <ScrollPane layoutX="14.0" layoutY="38.0" prefHeight="268.0" prefWidth="306.0">
-            <TableView fx:id="outputTable" prefHeight="266.0" prefWidth="303.0" >
+            <TableView fx:id="outputTable" prefHeight="266.0" prefWidth="303.0" fx >
                 <columns>
                     <TableColumn fx:id="output_name" prefWidth="50.0" text="name"/>
                     <TableColumn fx:id="output_at" prefWidth="50.0" text="AT"/>

@@ -70,13 +70,13 @@ public class OsTotalController {
     private ChoiceBox<String> algorithmChoiceBox; // ChoiceBox 선언
     //전력양 추가
     @FXML
-    private TextField core1_power = new TextField(); // Core1 정보를 표시할 TextField
+    private TextField core1_power;  // Core1 정보를 표시할 TextField
     @FXML
-    private TextField core2_power = new TextField(); // Core2 정보를 표시할 TextField
+    private TextField core2_power; // Core2 정보를 표시할 TextField
     @FXML
-    private TextField core3_power= new TextField(); // Core3 정보를 표시할 TextField
+    private TextField core3_power; // Core3 정보를 표시할 TextField
     @FXML
-    private TextField core4_power= new TextField(); // Core4 정보를 표시할 TextField
+    private TextField core4_power; // Core4 정보를 표시할 TextField
 
     public static OsTotalController getInstance() {
         return instance;
@@ -128,10 +128,10 @@ public class OsTotalController {
             }
             System.out.println("Selected algorithm: " + selectedAlgorithm + choiceNum);
             //전력양 초기화
-            core1_power.setText("");
-            core2_power.setText("");
-            core3_power.setText("");
-            core4_power.setText("");
+            core1_power.setText(" ");
+            core2_power.setText(" ");
+            core3_power.setText(" ");
+            core4_power.setText(" ");
 
         });
 
@@ -192,7 +192,7 @@ public class OsTotalController {
     @FXML
     private void onStartButtonClick(ActionEvent actionEvent) {
         int quantum = 0;
-        if (timeQuantum.getText() != null) {
+        if (timeQuantum.getText() != "") {
             quantum = Integer.parseInt(timeQuantum.getText());
             System.out.println("setTimeQuantum"+quantum);
         }
@@ -216,6 +216,8 @@ public class OsTotalController {
 
 
     public void coreStatusHandle(CorePacket corePacket) {
+        core1_power = new TextField();
+
         if (core1_power.getText() == null) {
             core1_power.setText("");
         }
