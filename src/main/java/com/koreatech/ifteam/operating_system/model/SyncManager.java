@@ -43,7 +43,7 @@ public class SyncManager{ // 동기식 동작을 위한 기준(주체), Clock �
     public void run() {
         do {
             SyncManager.getInstance().Update();
-        } while ((ProcessManager.getInstance().getProcessQueueSize() > 0 || !CoreManager.getInstance().isDoneCore()
+        } while ((ProcessManager.getInstance().getProcessQueueSize() > 0 || CoreManager.getInstance().isDoneCore()
                 || ProcessManager.getInstance().getReadyQueueSize() > 0 || ProcessManager.getInstance().getOneBrustQueueSize() > 0) && !interrupt);
         if (interrupt) {
             interrupt = false;
@@ -52,8 +52,6 @@ public class SyncManager{ // 동기식 동작을 위한 기준(주체), Clock �
         } else {
             UIController.getInstance().ganttDataSend();
             UIController.getInstance().StateSend(0);
-
         }
     }
-    
 }

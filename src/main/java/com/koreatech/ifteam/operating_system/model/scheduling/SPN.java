@@ -40,15 +40,15 @@ public class SPN implements ScheduleMethod {
 
         for(int i = 0; i < coreNum; ++i){
             Core getCore = CoreManager.getInstance().getCore(i);
-            if(getCore.getProcess() != null){
+            if (getCore != null && getCore.getProcess() != null){
                 if(CoreManager.getInstance().operating(i)){ // 프로세스 처리 완료
                     ProcessManager.getInstance().saveToResultList(getCore.getProcess()); // 프로세스가 종료되면 그 정보를 넣어줌
                     ProcessManager.getInstance().clockUpdate();
-                    if(!ProcessManager.getInstance().empty_readyQueue()){ //레디 큐에 프로세스가 기다리고 있으면
-                        com.koreatech.ifteam.operating_system.model.Process getProcess = ProcessManager.getInstance().getMinBrustProcess(); // 그 프로세스 가져와서
-                        CoreManager.getInstance().overwriteAt(i, getProcess); // 코어를 종료하지 않고 바로 넣음
-                    }
-                    else
+                    // if(!ProcessManager.getInstance().empty_readyQueue()){ //레디 큐에 프로세스가 기다리고 있으면
+                    //     com.koreatech.ifteam.operating_system.model.Process getProcess = ProcessManager.getInstance().getMinBrustProcess(); // 그 프로세스 가져와서
+                    //     CoreManager.getInstance().overwriteAt(i, getProcess); // 코어를 종료하지 않고 바로 넣음
+                    // }
+                    // else
                         CoreManager.getInstance().removeProcess(i);
 
                     roundTime[i] = 0;

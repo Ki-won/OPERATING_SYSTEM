@@ -46,21 +46,27 @@ public class ScheduleManager{ // 스케줄링 방식 관리
             case 0:
                 this.method = FCFS.getInstance();
                 this.methodName = "FCFS";
+                break;
             case 1:
                 this.method = RR.getInstance();
                 this.methodName = "RR";
+                break;
             case 2:
                 this.method = SPN.getInstance();
                 this.methodName = "SPN";
+                break;
             case 3:
                 this.method = SRTN.getInstance();
                 this.methodName = "SRTN";
+                break;
             case 4:
                 this.method = HRRN.getInstance();
                 this.methodName = "HRRN";
+                break;
             case 5:
                 this.method = CUSTOM.getInstance();
                 this.methodName = "CUSTOM";
+                break;
             default:
                 System.out.println("Invalid Scheduling Method: " + methodIndex);
                 return;

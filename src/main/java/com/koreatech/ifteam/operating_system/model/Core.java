@@ -54,19 +54,18 @@ public class Core { // Core
     public void allocate(Process process) { // 프로세스 할당
         if (this.process != null && process == null) {
             endTime = SyncManager.getInstance().getClock();
-            runTime = endTime - startTime + 1;
             pushToCorePacket();
             this.process = process;
             System.out.println(id + "코어 Empty");
-        } else {
+        } else if(process != null){
             if (this.process != null) {
                 endTime = SyncManager.getInstance().getClock();
-                runTime = endTime - startTime + 1;
                 pushToCorePacket();
             }
             this.process = process;
             startTime = SyncManager.getInstance().getClock();
-            System.out.println(id + "코어를" + " p" + process.id + " 에 할당");
+            runTime = 0;
+            System.out.println(id + "코어를" + " p" + this.process.id + " 에 할당");
         }
     }
 
@@ -92,6 +91,7 @@ public class Core { // Core
     public void operate(){ // 실행 = 프로세스 처리
         if(state == State.Sleep) awake(); // 휴면 상태면, 가동
         lastOperateTime = SyncManager.getInstance().getClock();
+        ++runTime;
         
         if (mode == CoreMode.E) {
             System.out.println(id + "코어 동작: p" + process.id + " 처리(-1)");

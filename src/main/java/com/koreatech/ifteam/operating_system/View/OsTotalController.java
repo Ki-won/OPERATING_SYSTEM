@@ -221,7 +221,7 @@ public class OsTotalController {
             System.out.println("setTimeQuantum" + quantum);
         }
         ScheduleManager.getInstance().setValue(quantum);
-
+        System.out.println("before, method index: " + choiceNum);
         UIController.getInstance().initHandle(new InitPacket(processList, modeList, choiceNum));
 
         UIController.getInstance().StateHandle(0);
@@ -267,14 +267,14 @@ public class OsTotalController {
 
 
     public static void coreStatusHandle(CorePacket corePacket) {
-                for(int i = 0; i < 4; i++){
-                     CorePower.set(i, corePacket.powerUsageList[i]);
-                }
+            for(int i = 0; i < 4; i++){
+                    CorePower.set(i, corePacket.powerUsageList[i]);
+            }
     }
 
     public static void ganttStatusHandle(GanttPacket ganttPacket) {
         System.out.println("Core1");
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < ganttPacket.getSize(0); ++i) {
             CoreDataToUI data = ganttPacket.getData(0, i);
             System.out.println(data.processId+": "+data.startTime+" / "+data.runTime+" / "+data.endTime);
         }

@@ -58,11 +58,13 @@ public class UIController {
     }
     
     public void initHandle(InitPacket initPacket) { // 시작 전 초기 정보를 GUI로부터 수신
+        System.out.println("method index: " + initPacket.scheduleMethod);
         for (int i = 0; i < initPacket.processTimes.size(); ++i) {
             Process process = new Process(Integer.toString(initPacket.processTimes.get(i).getName()),initPacket.processTimes.get(i).getAT(), initPacket.processTimes.get(i).getBT());
             ProcessManager.getInstance().addProcess(process);
         }
         CoreManager.getInstance().initCore(initPacket.coreModes);
+        
         ScheduleManager.getInstance().setMethod(initPacket.scheduleMethod);
     }
 }
