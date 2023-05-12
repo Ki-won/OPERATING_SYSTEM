@@ -11,6 +11,9 @@ public class GanttPacket {
 
     public int totalTime;
 
+    public List<CoreDataToUI> getCore_1(){
+        return core_1;
+    }
     public GanttPacket() {
         core_1 = new LinkedList<CoreDataToUI>();
         core_2 = new LinkedList<CoreDataToUI>();

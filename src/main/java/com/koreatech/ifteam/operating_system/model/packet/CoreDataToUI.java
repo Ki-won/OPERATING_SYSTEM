@@ -12,4 +12,20 @@ public class CoreDataToUI {
         this.runTime = runTime;
         this.endTime = endTime;
     }
+
+    public int getProcessId() {
+        return processId;
+    }
+
+    public int getStartTime() {
+        return startTime;
+    }
+
+    public int getRunTime() {
+        return runTime;
+    }
+
+    public int getEndTime() {
+        return endTime;
+    }
 }

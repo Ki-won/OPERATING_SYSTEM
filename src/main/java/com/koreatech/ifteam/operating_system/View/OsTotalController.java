@@ -29,6 +29,13 @@ public class OsTotalController {
     private static ObservableList<CorePacket> CoreList = FXCollections.observableArrayList();
     private static ObservableList<Float> CorePower = FXCollections.observableArrayList();
 
+    private static ObservableList<CoreDataToUI> ganttData_1 = FXCollections.observableArrayList();
+
+    private static ObservableList<CoreDataToUI> ganttData_2 = FXCollections.observableArrayList();
+
+    private static ObservableList<CoreDataToUI> ganttData_3 = FXCollections.observableArrayList();
+
+    private static ObservableList<CoreDataToUI> ganttData_4 = FXCollections.observableArrayList();
     String algorithmChoice = "";
     int choiceNum = 0;
 
@@ -286,57 +293,23 @@ public class OsTotalController {
 
 
         // draw rectangles
-        int count = 30;
+
         int canvas_X = 20;
-        int canvas2_X = 50;
         int canvas_Y = 5;
         int height = 40;
-            for (int i = 1; i <= count; i++) {
-                int width = i * 10;
-                gant_core1.fillRect(canvas_X, canvas_Y, width, height);
-                String text = String.valueOf(i);
-                double textWidth = gant_core1.getFont().getSize() * text.length();
-                double textHeight = gant_core1.getFont().getSize();
-                gant_core1.setFill(Color.WHITE);
-                gant_core1.fillText(text, canvas_X + (width - textWidth) / 2, canvas_Y + (height + textHeight) / 2);
-                gant_core1.setFill(Color.BLUE);
-                canvas_X += width + 5;
-            }
-        for (int i = 1; i <= count; i++) {
-            int width = i * 10;
-            gant_core2.fillRect(canvas2_X, canvas_Y, width, height);
-            String text = String.valueOf(i);
-            double textWidth = gant_core2.getFont().getSize() * text.length();
-            double textHeight = gant_core2.getFont().getSize();
-            gant_core2.setFill(Color.WHITE);
-            gant_core2.fillText(text, canvas2_X + (width - textWidth) / 2, canvas_Y + (height + textHeight) / 2);
-            gant_core2.setFill(Color.BLUE);
-            canvas2_X += width + 5;
-        }
-        for (int i = 1; i <= count; i++) {
-            int width = i * 10;
-            gant_core3.fillRect(canvas_X, canvas_Y, width, height);
-            String text = String.valueOf(i);
-            double textWidth = gant_core3.getFont().getSize() * text.length();
-            double textHeight = gant_core3.getFont().getSize();
-            gant_core3.setFill(Color.WHITE);
-            gant_core3.fillText(text, canvas_X + (width - textWidth) / 2, canvas_Y + (height + textHeight) / 2);
-            gant_core3.setFill(Color.BLUE);
-            canvas_X += width + 5;
-        }
-        for (int i = 1; i <= count; i++) {
-            int width = i * 10;
-            gant_core4.fillRect(canvas_X, canvas_Y, width, height);
-            String text = String.valueOf(i);
-            double textWidth = gant_core4.getFont().getSize() * text.length();
-            double textHeight = gant_core4.getFont().getSize();
-            gant_core4.setFill(Color.WHITE);
-            gant_core4.fillText(text, canvas_X + (width - textWidth) / 2, canvas_Y + (height + textHeight) / 2);
-            gant_core4.setFill(Color.BLUE);
-            canvas_X += width + 5;
-        }
 
-
+        for (int i = 0; i < ganttData_1.size(); i++) {
+            System.out.println(i+"의@@@@@@@@@@@@@@@@@@@@@@@@@결과"+ganttData_1.get(i).getRunTime());
+            int width = ganttData_1.get(i).getRunTime()*10;
+            gant_core1.fillRect(canvas_X,canvas_Y, width, height);
+            String text = String.valueOf(ganttData_1.get(i).getProcessId());
+            double textWidth = gant_core1.getFont().getSize() * text.length();
+            double textHeight = gant_core1.getFont().getSize();
+            gant_core1.setFill(Color.WHITE);
+            gant_core1.fillText(text, canvas_X + (width - textWidth) / 2, canvas_Y + (height + textHeight) / 2);
+            gant_core1.setFill(Color.BLUE);
+            canvas_X += width + 10;
+        }
     }
 
     //프로세싱 완료 결과값 받는 함수
@@ -357,6 +330,11 @@ public class OsTotalController {
 
     public static void ganttStatusHandle(GanttPacket ganttPacket) {
         System.out.println("Core1");
+        for (int i = 0; i<4; i++){
+            for (int j = 0; j<ganttPacket.getSize(i); j++)
+            ganttData_1.add(ganttPacket.getData(i,j));
+
+        }
     }
 }
 
