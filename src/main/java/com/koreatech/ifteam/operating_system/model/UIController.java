@@ -27,6 +27,7 @@ public class UIController {
     }
 
     public void ganttDataSend() {
+        ganttPacket.totalTime = SyncManager.getInstance().getClock();
         OsTotalController.ganttStatusHandle(ganttPacket);
     }
 

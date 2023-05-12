@@ -9,6 +9,8 @@ public class GanttPacket {
     private List<CoreDataToUI> core_3;
     private List<CoreDataToUI> core_4;
 
+    public int totalTime;
+
     public GanttPacket() {
         core_1 = new LinkedList<CoreDataToUI>();
         core_2 = new LinkedList<CoreDataToUI>();

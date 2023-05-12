@@ -5,6 +5,7 @@ import com.koreatech.ifteam.operating_system.model.CoreManager;
 import com.koreatech.ifteam.operating_system.model.ProcessManager;
 import com.koreatech.ifteam.operating_system.model.ScheduleManager;
 import com.koreatech.ifteam.operating_system.model.UIController;
+import com.koreatech.ifteam.operating_system.model.packet.CoreDataToUI;
 import com.koreatech.ifteam.operating_system.model.packet.CorePacket;
 import com.koreatech.ifteam.operating_system.model.packet.GanttPacket;
 import com.koreatech.ifteam.operating_system.model.packet.InitPacket;
@@ -270,7 +271,16 @@ public class OsTotalController {
                      CorePower.set(i, corePacket.powerUsageList[i]);
                 }
     }
-    public static void ganttStatusHandle(GanttPacket ganttPacket){
+
+    public static void ganttStatusHandle(GanttPacket ganttPacket) {
+        System.out.println("Core1");
+        for (int i = 0; i < 3; ++i) {
+            CoreDataToUI data = ganttPacket.getData(0, i);
+            System.out.println(data.processId+": "+data.startTime+" / "+data.runTime+" / "+data.endTime);
+        }
+        
+        
+        
     }
 }
 

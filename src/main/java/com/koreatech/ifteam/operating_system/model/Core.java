@@ -54,14 +54,14 @@ public class Core { // Core
     public void allocate(Process process) { // 프로세스 할당
         if (this.process != null && process == null) {
             endTime = SyncManager.getInstance().getClock();
-            runTime = endTime - startTime +1;
+            runTime = endTime - startTime + 1;
             pushToCorePacket();
             this.process = process;
             System.out.println(id + "코어 Empty");
         } else {
             if (this.process != null) {
                 endTime = SyncManager.getInstance().getClock();
-                runTime = endTime - startTime+1;
+                runTime = endTime - startTime + 1;
                 pushToCorePacket();
             }
             this.process = process;
