@@ -10,7 +10,7 @@ enum State{
 public class Core { // Core
     // Variables
 
-    private int id; // 프로세서 ID, ex) 1코어, 2코어 ...
+    private int id; // 프로세서 ID, ex) 1코어, 2코어 ....
     private CoreMode mode; // 프로세서 모드, E/P/OFF
     private State state = State.Sleep; // 프로세서가 깨어 있는지 판별하는 변수
     private float powerUsage; // 전력 사용량?
