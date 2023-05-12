@@ -19,7 +19,7 @@ public class CoreManager{
 
     private int coreNum = 0; // 프로세서 개수
     private List<Core> coreList = new LinkedList<Core>();
-    private boolean flag[]; // 각 프로세서가 사용 가능한지 판별하는 flag
+    private boolean flag[] = new boolean[4]; // 각 프로세서가 사용 가능한지 판별하는 flag
 
     
 
@@ -59,24 +59,27 @@ public class CoreManager{
 
     public void initCore(CoreMode[] modes) { // 프로세서 초기화
         for (int i = 0; i < 4; ++i) {
-            if (modes[i] != CoreMode.OFF) {
+            flag[i] = false;
+            if (modes[i] == CoreMode.OFF) {
+                coreList.add(null);
+            }else{
                 ++coreNum;
                 coreList.add(new Core(i + 1, modes[i]));
-            }else{
-                coreList.add(null);
             }
         }
-        flag = new boolean[coreNum];
+
         System.out.println("[info] processor(Core) Num: " + coreNum);
     }
 
-    public boolean isDoneCore(){ // 모든 코어가 작동을 멈췄는지 확인 == 이거 selectable 함수랑 쓰임이 같음, 나중에 삭제할 것
-        int count = 0;
-        for(int i = 0; i < coreNum; ++i){
-            if(!flag[i])
-                ++count;
+    public boolean isDoneCore() { // 모든 코어가 작동을 멈췄는지 확인 == 이거 selectable 함수랑 쓰임이 같음, 나중에 삭제할 것
+        for (int i = 0; i < 4; ++i) {
+            if (coreList.get(i) == null)
+                continue;
+            if (flag[i]) {
+                return true;
+            }
         }
-        return count == coreNum;
+        return false;
     } 
 
     public boolean allocateAt(Process process){ // 프로세스 할당
@@ -87,9 +90,9 @@ public class CoreManager{
         return true;
     }
 
-    public boolean allocateAtForCustom(Process process, int position){ // 프로세스 할당
-        flag[position] = true;
-        coreList.get(position).allocate(process);
+    public boolean allocateAtForCustom(Process process, int index){ // 프로세스 할당
+        flag[index] = true;
+        coreList.get(index).allocate(process);
         return true;
     }
 
@@ -113,6 +116,10 @@ public class CoreManager{
 
     public boolean operating(int index){ // 프로세스 처리
         Core getCore = coreList.get(index);
+        if (getCore == null) {
+            System.out.println("Error: invalid core Index of " + index + " in operating(index)");
+            return false;
+        }
         getCore.operate();
         if(getCore.isComplete()){  // 프로세스 처리 종료
             return true;
@@ -121,7 +128,9 @@ public class CoreManager{
     }
 
     private Integer selectCore(){ // 프로세서 선택
-        for(int i=0; i < coreNum; ++i){
+        for (int i = 0; i < 4; ++i) {
+            if (coreList.get(i) == null)
+                continue;
             if(flag[i] == false){
                 return i;
             }
@@ -130,7 +139,9 @@ public class CoreManager{
     }
 
     private int selectPCore(){ // P코어 선택
-        for(int i=0; i < coreNum; ++i){
+        for (int i = 0; i < 4; ++i) {
+            if (coreList.get(i) == null)
+                continue;
             if(flag[i] == false && coreList.get(i).getMode() == CoreMode.P){
                 return i;
             }
@@ -138,7 +149,9 @@ public class CoreManager{
         return -1;
     }
     private int selectECore(){ // 프로세서 선택
-        for(int i=0; i < coreNum; ++i){
+        for (int i = 0; i < 4; ++i) {
+            if (coreList.get(i) == null)
+                continue;
             if(flag[i] == false && coreList.get(i).getMode() == CoreMode.E){
                 return i;
             }
@@ -162,7 +175,9 @@ public class CoreManager{
 
     public void printInfo() {
         System.out.println(" #");
-        for (int i = 0; i < coreNum; ++i) {
+        for (int i = 0; i < 4; ++i) {
+            if (coreList.get(i) == null)
+                continue;
             Core getCore = coreList.get(i);
             int coreId = getCore.getId();
             String processName = "";
@@ -182,7 +197,9 @@ public class CoreManager{
     
     public void printPowerUsage() {
         System.out.println();
-        for (int i = 0; i < coreNum; ++i) {
+        for (int i = 0; i < 4; ++i) {
+            if (coreList.get(i) == null)
+                continue;
             Core getCore = coreList.get(i);
             System.out.println(getCore.getId()+"코어 전력 사용량: " + getCore.getPowerUsage()+" W");
         }

@@ -13,23 +13,23 @@ public class InitPacket {
     public CoreMode[] coreModes = new CoreMode[4];
     public int scheduleMethod;
 
-    public InitPacket(ObservableList<UiProcess> processList, String[] modeList, int i) {
-        for(i = 0; i<4; i++){
-            switch (modeList[i]){
+    public InitPacket(ObservableList<UiProcess> processList, String[] modeList, int index) {
+        for(int i = 0; i<4; i++){
+            switch (modeList[i]) {
                 case "P":
                     coreModes[i] = CoreMode.P;
                     break;
                 case "E":
                     coreModes[i] = CoreMode.E;
                     break;
-                case "NULL":
+                default:
                     coreModes[i] = CoreMode.OFF;
                     break;
 
             }
         }
         this.processTimes = processList;
-        this.scheduleMethod = i;
+        this.scheduleMethod = index;
 
     }
 }

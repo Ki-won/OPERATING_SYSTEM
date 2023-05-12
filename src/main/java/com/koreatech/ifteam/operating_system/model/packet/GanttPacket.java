@@ -40,13 +40,37 @@ public class GanttPacket {
     public CoreDataToUI getData(int index, int times) {
         switch (index) {
             case 0:
+                if (core_1.isEmpty())
+                    break;
                 return core_1.get(times);
             case 1:
+                if (core_2.isEmpty())
+                    break;
                 return core_2.get(times);
             case 2:
+                if (core_3.isEmpty())
+                    break;
                 return core_3.get(times);
             case 3:
+                if (core_4.isEmpty())
+                    break;
                 return core_4.get(times);
+            default:
+                break;
+        }
+        return null;
+    }
+
+    public Integer getSize(int index) {
+        switch (index) {
+            case 0:
+                return core_1.size();
+            case 1:
+                return core_2.size();
+            case 2:
+                return core_3.size();
+            case 3:
+                return core_4.size();
             default:
                 break;
         }

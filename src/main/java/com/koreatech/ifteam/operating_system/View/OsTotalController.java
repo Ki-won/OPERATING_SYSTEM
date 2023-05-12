@@ -243,7 +243,7 @@ public class OsTotalController {
             System.out.println("setTimeQuantum" + quantum);
         }
         ScheduleManager.getInstance().setValue(quantum);
-
+        System.out.println("before, method index: " + choiceNum);
         UIController.getInstance().initHandle(new InitPacket(processList, modeList, choiceNum));
 
         UIController.getInstance().StateHandle(0);
@@ -350,9 +350,9 @@ public class OsTotalController {
 
 
     public static void coreStatusHandle(CorePacket corePacket) {
-                for(int i = 0; i < 4; i++){
-                     CorePower.set(i, corePacket.powerUsageList[i]);
-                }
+            for(int i = 0; i < 4; i++){
+                    CorePower.set(i, corePacket.powerUsageList[i]);
+            }
     }
 
     public static void ganttStatusHandle(GanttPacket ganttPacket) {

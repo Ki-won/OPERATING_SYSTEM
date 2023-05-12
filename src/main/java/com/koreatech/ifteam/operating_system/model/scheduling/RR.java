@@ -42,15 +42,15 @@ public class RR implements ScheduleMethod {
 
         for(int i = 0; i < coreNum; ++i){
             Core getCore = CoreManager.getInstance().getCore(i);
-            if(getCore.getProcess() != null){
+            if(getCore != null && getCore.getProcess() != null){
                 if(CoreManager.getInstance().operating(i)){ // 프로세스 처리 완료
                     ProcessManager.getInstance().saveToResultList(getCore.getProcess()); // 프로세스가 종료되면 그 정보를 넣어줌
                     ProcessManager.getInstance().clockUpdate();
-                    if(!ProcessManager.getInstance().empty_readyQueue()){
-                        com.koreatech.ifteam.operating_system.model.Process getProcess = ProcessManager.getInstance().poll_readyQueue();
-                        CoreManager.getInstance().overwriteAt(i, getProcess);
-                    }
-                    else
+                    // if(!ProcessManager.getInstance().empty_readyQueue()){
+                    //     com.koreatech.ifteam.operating_system.model.Process getProcess = ProcessManager.getInstance().poll_readyQueue();
+                    //     CoreManager.getInstance().overwriteAt(i, getProcess);
+                    // }
+                    // else
                         CoreManager.getInstance().removeProcess(i);
                     roundTime[i] = 0;
                 }else{
