@@ -49,8 +49,11 @@ public class SyncManager{ // 동기식 동작을 위한 기준(주체), Clock �
             interrupt = false;
             UIController.getInstance().StateSend(1);
             System.out.println("Interrupt: clock_" + clock);
-        } else
+        } else {
+            UIController.getInstance().ganttDataSend();
             UIController.getInstance().StateSend(0);
+
+        }
     }
     
 }
