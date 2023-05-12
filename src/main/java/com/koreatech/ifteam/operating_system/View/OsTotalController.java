@@ -23,8 +23,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class OsTotalController {
-    private final ObservableList<UiProcess> processList = FXCollections.observableArrayList();
+    String algorithmChoice = "";
+    int choiceNum = 0;
     private final String[] modeList = new String[4];
+    int [] saveResult = new int[6];
+    private final ObservableList<UiProcess> processList = FXCollections.observableArrayList();
     private static ObservableList<ProcessPacket> resultList = FXCollections.observableArrayList();
     private static ObservableList<CorePacket> CoreList = FXCollections.observableArrayList();
     private static ObservableList<Float> CorePower = FXCollections.observableArrayList();
@@ -36,12 +39,8 @@ public class OsTotalController {
     private static ObservableList<CoreDataToUI> ganttData_3 = FXCollections.observableArrayList();
 
     private static ObservableList<CoreDataToUI> ganttData_4 = FXCollections.observableArrayList();
-    String algorithmChoice = "";
-    int choiceNum = 0;
-
-
     ProcessPacket processPackets = new ProcessPacket(0, 0, 0, 0, 0, 0);
-    int [] saveResult = new int[6];
+
     //두개의 table
     @FXML
     private TableView<UiProcess> inputTable;
@@ -111,8 +110,6 @@ public class OsTotalController {
     @FXML
     private Canvas gantCore4;
 
-
-
     public void initialize() {
 
         for(int i = 0; i < 4; i++){
@@ -127,7 +124,6 @@ public class OsTotalController {
         core3_power.setText(" ");
         core4_power.setText(" ");
         total_power.setText(" ");
-
 
         //inputlist 컬럼을 수정하는 부분
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -144,8 +140,6 @@ public class OsTotalController {
         // 셀 팩토리 설정
         inputTable.setItems(processList);
         outputTable.setItems(resultList);
-
-
         outputTable.getSelectionModel().selectedItemProperty().addListener(
                 (ObservableValue<? extends ProcessPacket> observable, ProcessPacket oldValue, ProcessPacket newValue) -> {
                     System.out.println("Selected item: " + newValue);
@@ -219,7 +213,6 @@ public class OsTotalController {
         });
 
     }
-
     @FXML
     private void onAddButtonClick(ActionEvent event) {
         String name = nameTextField.getText();
@@ -232,7 +225,6 @@ public class OsTotalController {
         atTextField.clear();
         btTextField.clear();
     }
-
     @FXML
     private void onResetButtonClick(ActionEvent event) {
         GraphicsContext gc = gantCore1.getGraphicsContext2D();
@@ -278,6 +270,7 @@ public class OsTotalController {
                 core4_power.setEditable(false);
             }
         }
+
         total_power.setText(String.valueOf(total));
         total_power.setEditable(false);
         GraphicsContext gant_core1 = gantCore1.getGraphicsContext2D();
@@ -285,21 +278,21 @@ public class OsTotalController {
         GraphicsContext gant_core3 = gantCore3.getGraphicsContext2D();
         GraphicsContext gant_core4 = gantCore4.getGraphicsContext2D();
 
-        Font font = Font.font(14);
-        gant_core1.setFill(Color.BLUE);
-        gant_core2.setFill(Color.BLUE);
-        gant_core3.setFill(Color.BLUE);
-        gant_core4.setFill(Color.BLUE);
+        Font font = Font.font(17);
 
-
-        // draw rectangles
-
-        int canvas_X = 20;
+        int canvas_X = 10;
+        int canvas_X2 = 10;
+        int canvas_X3 = 10;
+        int canvas_X4 = 10;
         int canvas_Y = 5;
         int height = 40;
+        Color[] colorList = new Color[]{Color.RED, Color.BLUEVIOLET, Color.GREEN, Color.PURPLE, Color.GOLDENROD,
+                Color.BLACK, Color.BISQUE, Color.DARKVIOLET, Color.INDIGO, Color.DARKGREEN, Color.FORESTGREEN,
+        Color.SPRINGGREEN,Color.TOMATO};
 
         for (int i = 0; i < ganttData_1.size(); i++) {
-            System.out.println(i+"의@@@@@@@@@@@@@@@@@@@@@@@@@결과"+ganttData_1.get(i).getRunTime());
+            gant_core1.setFill(colorList[ganttData_1.get(i).getProcessId()]);
+            gant_core1.setFont(font);
             int width = ganttData_1.get(i).getRunTime()*10;
             gant_core1.fillRect(canvas_X,canvas_Y, width, height);
             String text = String.valueOf(ganttData_1.get(i).getProcessId());
@@ -309,6 +302,45 @@ public class OsTotalController {
             gant_core1.fillText(text, canvas_X + (width - textWidth) / 2, canvas_Y + (height + textHeight) / 2);
             gant_core1.setFill(Color.BLUE);
             canvas_X += width + 10;
+        }
+        for (int i = 0; i < ganttData_2.size(); i++) {
+            gant_core2.setFill(colorList[ganttData_2.get(i).getProcessId()]);
+            gant_core2.setFont(font);
+            int width = ganttData_2.get(i).getRunTime()*10;
+            gant_core2.fillRect(canvas_X2,canvas_Y, width, height);
+            String text = String.valueOf(ganttData_2.get(i).getProcessId());
+            double textWidth = gant_core2.getFont().getSize() * text.length();
+            double textHeight = gant_core2.getFont().getSize();
+            gant_core2.setFill(Color.WHITE);
+            gant_core2.fillText(text, canvas_X2 + (width - textWidth) / 2, canvas_Y + (height + textHeight) / 2);
+            gant_core2.setFill(Color.BLUE);
+            canvas_X2 += width + 10;
+        }
+        for (int i = 0; i < ganttData_3.size(); i++) {
+            gant_core3.setFill(colorList[ganttData_3.get(i).getProcessId()]);
+            gant_core3.setFont(font);
+            int width = ganttData_3.get(i).getRunTime()*10;
+            gant_core3.fillRect(canvas_X3,canvas_Y, width, height);
+            String text = String.valueOf(ganttData_3.get(i).getProcessId());
+            double textWidth = gant_core3.getFont().getSize() * text.length();
+            double textHeight = gant_core3.getFont().getSize();
+            gant_core3.setFill(Color.WHITE);
+            gant_core3.fillText(text, canvas_X3 + (width - textWidth) / 2, canvas_Y + (height + textHeight) / 2);
+            gant_core3.setFill(Color.BLUE);
+            canvas_X3 += width + 10;
+        }
+        for (int i = 0; i < ganttData_3.size(); i++) {
+            gant_core4.setFill(colorList[ganttData_4.get(i).getProcessId()]);
+            gant_core4.setFont(font);
+            int width = ganttData_3.get(i).getRunTime()*10;
+            gant_core4.fillRect(canvas_X4,canvas_Y, width, height);
+            String text = String.valueOf(ganttData_3.get(i).getProcessId());
+            double textWidth = gant_core4.getFont().getSize() * text.length();
+            double textHeight = gant_core4.getFont().getSize();
+            gant_core4.setFill(Color.WHITE);
+            gant_core4.fillText(text, canvas_X4 + (width - textWidth) / 2, canvas_Y + (height + textHeight) / 2);
+            gant_core4.setFill(Color.BLUE);
+            canvas_X4 += width + 10;
         }
     }
 
@@ -331,8 +363,23 @@ public class OsTotalController {
     public static void ganttStatusHandle(GanttPacket ganttPacket) {
         System.out.println("Core1");
         for (int i = 0; i<4; i++){
-            for (int j = 0; j<ganttPacket.getSize(i); j++)
-            ganttData_1.add(ganttPacket.getData(i,j));
+            if(i == 0) {
+                for (int j = 0; j < ganttPacket.getSize(i); j++)
+                    ganttData_1.add(ganttPacket.getData(i, j));
+            }
+            else if(i == 1) {
+                for (int j = 0; j < ganttPacket.getSize(i); j++)
+                    ganttData_2.add(ganttPacket.getData(i, j));
+            }
+            else if(i == 2) {
+                for (int j = 0; j < ganttPacket.getSize(i); j++)
+                    ganttData_3.add(ganttPacket.getData(i, j));
+            }
+            else if(i == 3) {
+                for (int j = 0; j < ganttPacket.getSize(i); j++)
+                    ganttData_4.add(ganttPacket.getData(i, j));
+            }
+
 
         }
     }
