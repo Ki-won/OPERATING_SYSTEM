@@ -51,6 +51,7 @@ public class HRRN implements ScheduleMethod {
                     }
                     else
                         CoreManager.getInstance().removeProcess(i);
+
                     roundTime[i] = 0;
                 }else{
                     ++roundTime[i];
