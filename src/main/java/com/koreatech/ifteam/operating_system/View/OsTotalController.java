@@ -346,11 +346,8 @@ public class OsTotalController {
 
     //프로세싱 완료 결과값 받는 함수
     public static void resultHandle(ProcessPacket processPacket) {
-        System.out.println("AT: " + processPacket.getArrivalTime());
-
         resultList.add(processPacket);
 
-        System.out.println("at:"+resultList.get(processPacket.getName()));
     }
 
 

@@ -19,6 +19,7 @@ public class Process implements Comparable<Process> {
     public Process(String name, int arrivalTime, int burstTime) {
         this.name = name;
         this.arrivalTime = arrivalTime;
+        this.id = Integer.parseInt(name);
         remainTime = this.burstTime = burstTime;
         turnaroundTime = 0;
         waitTime = 0;
