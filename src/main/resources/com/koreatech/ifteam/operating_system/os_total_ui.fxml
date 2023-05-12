@@ -197,22 +197,22 @@
             </columnConstraints>
             <Label fx:id="core1Label" prefHeight="14.0" prefWidth="46.0" text="Core 1">
                 <font>
-                    <Font name="Microsoft New Tai Lue" size="13.0"/>
+                    <Font name="Microsoft New Tai Lue" size="15.0"/>
                 </font>
             </Label>
             <Label fx:id="core2Label" text="Core 2" GridPane.rowIndex="1">
                 <font>
-                    <Font name="Microsoft New Tai Lue" size="13.0"/>
+                    <Font name="Microsoft New Tai Lue" size="15.0"/>
                 </font>
             </Label>
             <Label fx:id="core3Label" text="Core 3" GridPane.rowIndex="2">
                 <font>
-                    <Font name="Microsoft New Tai Lue" size="13.0"/>
+                    <Font name="Microsoft New Tai Lue" size="15.0"/>
                 </font>
             </Label>
             <Label fx:id="core4Label" text="Core 4" GridPane.rowIndex="3">
                 <font>
-                    <Font name="Microsoft New Tai Lue" size="13.0"/>
+                    <Font name="Microsoft New Tai Lue" size="15.0"/>
                 </font>
             </Label>
             <Canvas fx:id="gantCore1" height="45.0" width="1400.0" GridPane.columnIndex="1"/>
@@ -314,7 +314,6 @@
         </Label>
     </AnchorPane>
     <!-- 제목부분 -->
-
     <Label layoutX="881.0" prefHeight="27.0" prefWidth="142.0" text="made by !F Team">
         <font>
             <Font name="Microsoft New Tai Lue" size="18.0"/>
@@ -325,7 +324,6 @@
             <Font name="Microsoft New Tai Lue Bold" size="28.0"/>
         </font>
     </Label>
-    <Line endX="140.39999389648438" endY="480.5999755859375" layoutX="158.0" layoutY="205.0" startX="140.39999389648438" startY="201.39999389648438" strokeWidth="0.5" />
     <Line endX="838.0" endY="261.0" layoutX="168.0" layoutY="215.0" startX="66.0" startY="261.0" strokeWidth="0.5" />
     <Line endX="828.0" endY="320.79998779296875" layoutX="178.0" layoutY="225.0" startX="56.0" startY="320.79998779296875" strokeWidth="0.5" />
     <Line endX="818.0" endY="377.0" layoutX="188.0" layoutY="235.0" startX="46.0" startY="377.0" strokeWidth="0.5" />

@@ -1,5 +1,8 @@
 package com.koreatech.ifteam.operating_system.model;
 
+import com.koreatech.ifteam.operating_system.View.OsTotalController;
+import javafx.collections.ObservableList;
+
 public class SyncManager{ // 동기식 동작을 위한 기준(주체), Clock 관리
     private static SyncManager instance = new SyncManager();
     protected SyncManager(){
@@ -35,7 +38,6 @@ public class SyncManager{ // 동기식 동작을 위한 기준(주체), Clock �
         CoreManager.getInstance().clockUpdate();
 
         UIController.getInstance().coreStatusSend();
-
         CoreManager.getInstance().printInfo();
         ++clock;
     }

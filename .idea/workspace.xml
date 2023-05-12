@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f608134-c39c-41fc-80d9-7d62481dacac" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/OsTotalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/OsTotalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/Process.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/SyncManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/SyncManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/scheduling/RR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/scheduling/RR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/os_total_ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/os_total_ui.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,6 +162,8 @@
       <workItem from="1683770542698" duration="3470000" />
       <workItem from="1683774029157" duration="5840000" />
       <workItem from="1683803145934" duration="14547000" />
+      <workItem from="1683887492390" duration="758000" />
+      <workItem from="1683888303720" duration="2267000" />
     </task>
     <servers />
   </component>
