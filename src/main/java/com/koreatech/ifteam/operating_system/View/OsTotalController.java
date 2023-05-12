@@ -22,6 +22,7 @@ public class OsTotalController {
     private final String[] modeList = new String[4];
     private static ObservableList<ProcessPacket> resultList = FXCollections.observableArrayList();
     private static ObservableList<CorePacket> CoreList = FXCollections.observableArrayList();
+    private static ObservableList<Float> CorePower = FXCollections.observableArrayList();
 
     String algorithmChoice = "";
     int choiceNum = 0;
@@ -72,6 +73,8 @@ public class OsTotalController {
     private  TextField core3_power; // Core3 정보를 표시할 TextField
     @FXML
     private  TextField core4_power; // Core4 정보를 표시할 TextField
+    @FXML
+    private  TextField total_power;
 
     //core 선택 버튼 토글들
     @FXML
@@ -90,6 +93,9 @@ public class OsTotalController {
 
     public void initialize() {
 
+        for(int i = 0; i < 4; i++){
+            CorePower.add(0.0F);
+        }
         algorithmChoiceBox.getItems().addAll("FCFS", "RR", "SPN", "SRTN", "HRRN", "CUSTOM"); // "FCFS"와 "RR" 추가
 
         //전력양 초기화
@@ -98,6 +104,8 @@ public class OsTotalController {
         core2_power.setText(" ");
         core3_power.setText(" ");
         core4_power.setText(" ");
+        total_power.setText(" ");
+
 
         //inputlist 컬럼을 수정하는 부분
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -206,6 +214,7 @@ public class OsTotalController {
     @FXML
     private void onStartButtonClick(ActionEvent actionEvent) {
         int quantum = 0;
+        float total = 0.0f;
         if (timeQuantum.getText() != "") {
             quantum = Integer.parseInt(timeQuantum.getText());
             System.out.println("setTimeQuantum" + quantum);
@@ -220,6 +229,29 @@ public class OsTotalController {
         CoreManager.getInstance().printPowerUsage();
 
         outputTable.refresh();
+        for (int i = 0; i< 4; ++i){
+
+            total += CorePower.get(i);
+            if ( i == 0){
+                core1_power.setText(String.valueOf(CorePower.get(i)));
+                core1_power.setEditable(false);
+            }
+            if ( i == 1){
+                core2_power.setText(String.valueOf(CorePower.get(i)));
+                core2_power.setEditable(false);
+            }
+            if ( i == 2){
+                core3_power.setText(String.valueOf(CorePower.get(i)));
+                core3_power.setEditable(false);
+            }
+            if ( i == 3){
+                core4_power.setText(String.valueOf(CorePower.get(i)));
+                core4_power.setEditable(false);
+            }
+        }
+        total_power.setText(String.valueOf(total));
+        total_power.setEditable(false);
+
     }
 
     //프로세싱 완료 결과값 받는 함수
@@ -233,7 +265,9 @@ public class OsTotalController {
 
 
     public static void coreStatusHandle(CorePacket corePacket) {
-
+                for(int i = 0; i < 4; i++){
+                     CorePower.set(i, corePacket.powerUsageList[i]);
+                }
     }
 }
 

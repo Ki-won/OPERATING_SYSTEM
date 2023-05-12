@@ -275,7 +275,7 @@
                     <Font name="Microsoft New Tai Lue" size="14.0"/>
                 </font>
             </Label>
-            <TextField id="total_power" layoutX="8.0" layoutY="39.0" prefHeight="22.0" prefWidth="82.0"/>
+            <TextField fx:id="total_power" layoutX="8.0" layoutY="39.0" prefHeight="22.0" prefWidth="82.0"/>
         </AnchorPane>
     </AnchorPane>
     <!-- 여기가 run 및 알고리즘 선택하는 부분 -->

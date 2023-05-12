@@ -7,9 +7,8 @@
     <list default="true" id="3f608134-c39c-41fc-80d9-7d62481dacac" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/OsTotalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/OsTotalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/UiMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/UiMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/UIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/UIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/packet/ProcessPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/packet/ProcessPacket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/scheduling/CUSTOM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/scheduling/CUSTOM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/os_total_ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/os_total_ui.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +65,7 @@
       <recent name="C:\Users\seo\Desktop\BCSD\OPERATING_SYSTEM\src\main\java\com\koreatech\ifteam\operating_system\model" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.UiMain">
+  <component name="RunManager" selected="Application.UiMain">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.koreatech.ifteam.operating_system.UI.HelloApplication" />
       <module name="OPERATING_SYSTEM" />
@@ -134,8 +133,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.UiMain" />
-        <item itemvalue="애플리케이션.HelloApplication" />
+        <item itemvalue="Application.UiMain" />
       </list>
     </recent_temporary>
   </component>
