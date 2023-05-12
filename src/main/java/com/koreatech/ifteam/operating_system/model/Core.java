@@ -49,7 +49,7 @@ public class Core { // Core
     public CoreMode getMode() {return mode;}
     
 
-    // Setter
+    // Setter.
 
     public void allocate(Process process) { // 프로세스 할당
         if (this.process != null && process == null) {
