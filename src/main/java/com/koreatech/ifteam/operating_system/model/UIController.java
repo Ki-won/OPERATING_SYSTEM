@@ -29,13 +29,13 @@ public class UIController {
     // Packet Send
 
     public void coreStatusSend() { // 현재 처리중인 정보를 GUI에 송신
-        OsTotalController.getInstance().coreStatusHandle(CoreManager.getInstance().getPackets());
+        OsTotalController.coreStatusHandle(CoreManager.getInstance().getPackets());
     }
 
     public void resultSend(Process process) { // 처리 완료된 프로세스 정보를 GUI에 송신
         ProcessPacket tmp = process.getPacket();
         System.out.println("resultSend: "+tmp);
-        OsTotalController.getInstance().resultHandle(tmp);
+        OsTotalController.resultHandle(tmp);
     }
 
     public void readyProcessSend(Process process, int IOstate) { // ReadyQ에 들어오거나 나간 프로세스 정보를 GUI에 송신

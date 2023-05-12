@@ -7,43 +7,43 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 public class ProcessPacket {
-    IntegerProperty name;
-    IntegerProperty arrivalTime;
-    IntegerProperty operateTime;
-    IntegerProperty waitTime;
-    IntegerProperty turnaroundTime;
-    DoubleProperty normalizedTT;
+    int name;
+    int arrivalTime;
+    int operateTime;
+    int waitTime;
+    int turnaroundTime;
+    double normalizedTT;
 
     public int getName(){
-        return name.get();
+        return name;
     }
 
     public int getArrivalTime() {
-        return arrivalTime.get();
+        return arrivalTime;
     }
 
     public int getOperateTime() {
-        return operateTime.get();
+        return operateTime;
     }
 
     public int getWaitTime() {
-        return waitTime.get();
+        return waitTime;
     }
 
     public int getTurnaroundTime() {
-        return turnaroundTime.get();
+        return turnaroundTime;
     }
 
     public double getNormalizedTT() {
-        return normalizedTT.get();
+        return normalizedTT;
     }
 
     public ProcessPacket(int name, int arrivalTime, int operateTime, int waitTime, int turnaroundTime, double normalizedTT) {
-        this.name = new SimpleIntegerProperty(name);
-        this.arrivalTime = new SimpleIntegerProperty(arrivalTime);
-        this.operateTime = new SimpleIntegerProperty(operateTime);
-        this.waitTime = new SimpleIntegerProperty(waitTime);
-        this.turnaroundTime = new SimpleIntegerProperty(turnaroundTime);
-        this.normalizedTT = new SimpleDoubleProperty(normalizedTT);
+        this.name = name;
+        this.arrivalTime = arrivalTime;
+        this.operateTime = operateTime;
+        this.waitTime = waitTime;
+        this.turnaroundTime = turnaroundTime;
+        this.normalizedTT = normalizedTT;
     }
 }

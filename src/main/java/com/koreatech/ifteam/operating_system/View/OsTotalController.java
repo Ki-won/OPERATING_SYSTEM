@@ -8,6 +8,7 @@ import com.koreatech.ifteam.operating_system.model.UIController;
 import com.koreatech.ifteam.operating_system.model.packet.CorePacket;
 import com.koreatech.ifteam.operating_system.model.packet.InitPacket;
 import com.koreatech.ifteam.operating_system.model.packet.ProcessPacket;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,9 +20,15 @@ public class OsTotalController {
     private static final OsTotalController instance = new OsTotalController(); // singleton
     private final ObservableList<UiProcess> processList = FXCollections.observableArrayList();
     private final String[] modeList = new String[4];
-    private final ObservableList<ProcessPacket> resultList = FXCollections.observableArrayList();
+    private static ObservableList<ProcessPacket> resultList = FXCollections.observableArrayList();
+    private static ObservableList<CorePacket> CoreList = FXCollections.observableArrayList();
+
     String algorithmChoice = "";
     int choiceNum = 0;
+
+
+    ProcessPacket processPackets = new ProcessPacket(0, 0, 0, 0, 0, 0);
+    int [] saveResult = new int[6];
     //두개의 table
     @FXML
     private TableView<UiProcess> inputTable;
@@ -56,6 +63,16 @@ public class OsTotalController {
     private TextField btTextField;
     @FXML
     private TextField timeQuantum;
+    //전력양 표시하는 테이블
+    @FXML
+    public   TextField core1_power;  // Core1 정보를 표시할 TextField
+    @FXML
+    private  TextField core2_power; // Core2 정보를 표시할 TextField
+    @FXML
+    private  TextField core3_power; // Core3 정보를 표시할 TextField
+    @FXML
+    private  TextField core4_power; // Core4 정보를 표시할 TextField
+
     //core 선택 버튼 토글들
     @FXML
     private ToggleGroup core1ToggleGroup;
@@ -69,22 +86,18 @@ public class OsTotalController {
     @FXML
     private ChoiceBox<String> algorithmChoiceBox; // ChoiceBox 선언
     //전력양 추가
-    @FXML
-    private TextField core1_power;  // Core1 정보를 표시할 TextField
-    @FXML
-    private TextField core2_power; // Core2 정보를 표시할 TextField
-    @FXML
-    private TextField core3_power; // Core3 정보를 표시할 TextField
-    @FXML
-    private TextField core4_power; // Core4 정보를 표시할 TextField
-
-    public static OsTotalController getInstance() {
-        return instance;
-    }
 
 
     public void initialize() {
+
         algorithmChoiceBox.getItems().addAll("FCFS", "RR", "SPN", "SRTN", "HRRN", "CUSTOM"); // "FCFS"와 "RR" 추가
+
+        //전력양 초기화
+
+        core1_power.setText(" ");
+        core2_power.setText(" ");
+        core3_power.setText(" ");
+        core4_power.setText(" ");
 
         //inputlist 컬럼을 수정하는 부분
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -101,6 +114,13 @@ public class OsTotalController {
         // 셀 팩토리 설정
         inputTable.setItems(processList);
         outputTable.setItems(resultList);
+
+
+        outputTable.getSelectionModel().selectedItemProperty().addListener(
+                (ObservableValue<? extends ProcessPacket> observable, ProcessPacket oldValue, ProcessPacket newValue) -> {
+                    System.out.println("Selected item: " + newValue);
+                    // 수행할 처리
+                });
 
         //알고리즘 선택버튼
         algorithmChoiceBox.setOnAction(e -> {
@@ -127,12 +147,6 @@ public class OsTotalController {
                     break;
             }
             System.out.println("Selected algorithm: " + selectedAlgorithm + choiceNum);
-            //전력양 초기화
-            core1_power.setText(" ");
-            core2_power.setText(" ");
-            core3_power.setText(" ");
-            core4_power.setText(" ");
-
         });
 
         //토글 버튼 그룹 세팅
@@ -194,46 +208,32 @@ public class OsTotalController {
         int quantum = 0;
         if (timeQuantum.getText() != "") {
             quantum = Integer.parseInt(timeQuantum.getText());
-            System.out.println("setTimeQuantum"+quantum);
+            System.out.println("setTimeQuantum" + quantum);
         }
         ScheduleManager.getInstance().setValue(quantum);
 
         UIController.getInstance().initHandle(new InitPacket(processList, modeList, choiceNum));
+
         UIController.getInstance().StateHandle(0);
+
         ProcessManager.getInstance().printResult();
         CoreManager.getInstance().printPowerUsage();
 
-
+        outputTable.refresh();
     }
+
     //프로세싱 완료 결과값 받는 함수
-    public void resultHandle(ProcessPacket processPacket){
-        System.out.println("AT: "+processPacket.getArrivalTime());
-        resultList.add(processPacket); // add the countype object to the resultList
-        System.out.println(resultList.size());
-        System.out.println("AT: "+resultList.get(0).getArrivalTime());
+    public static void resultHandle(ProcessPacket processPacket) {
+        System.out.println("AT: " + processPacket.getArrivalTime());
 
+        resultList.add(processPacket);
+
+        System.out.println("at:"+resultList.get(processPacket.getName()));
     }
 
 
-    public void coreStatusHandle(CorePacket corePacket) {
-        core1_power = new TextField();
+    public static void coreStatusHandle(CorePacket corePacket) {
 
-        if (core1_power.getText() == null) {
-            core1_power.setText("");
-        }
-        core1_power.setText(String.valueOf(corePacket.powerUsageList[0]));
-        if (core2_power.getText() == null) {
-            core2_power.setText("");
-        }
-        core2_power.setText(String.valueOf(corePacket.powerUsageList[1]));
-        if (core3_power.getText() == null) {
-            core3_power.setText("");
-        }
-        core3_power.setText(String.valueOf(corePacket.powerUsageList[2]));
-        if (core4_power.getText() == null) {
-            core4_power.setText("");
-        }
-        core4_power.setText(String.valueOf(corePacket.powerUsageList[3]));
     }
 }
 
