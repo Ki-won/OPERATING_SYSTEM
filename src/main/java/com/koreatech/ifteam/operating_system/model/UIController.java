@@ -2,7 +2,7 @@ package com.koreatech.ifteam.operating_system.model;
 
 
 import com.koreatech.ifteam.operating_system.View.OsTotalController;
-import com.koreatech.ifteam.operating_system.model.packet.CorePacket;
+import com.koreatech.ifteam.operating_system.model.packet.GanttPacket;
 import com.koreatech.ifteam.operating_system.model.packet.InitPacket;
 import com.koreatech.ifteam.operating_system.model.packet.ProcessPacket;
 
@@ -17,19 +17,17 @@ public class UIController {
         return instance;
     }
 
-    
-    private void StateUpdateFromModel(int state) { // GUI func
+    public GanttPacket ganttPacket = new GanttPacket();
 
-    }
-
-    public void readyProcessHandle(ProcessPacket processPacket, int IOstate) {
-        
-    }
     
     // Packet Send
 
     public void coreStatusSend() { // 현재 처리중인 정보를 GUI에 송신
         OsTotalController.coreStatusHandle(CoreManager.getInstance().getPackets());
+    }
+
+    public void ganttDataSend() {
+        // View에 함수 만든거 호출 
     }
 
     public void resultSend(Process process) { // 처리 완료된 프로세스 정보를 GUI에 송신
@@ -39,12 +37,12 @@ public class UIController {
     }
 
     public void readyProcessSend(Process process, int IOstate) { // ReadyQ에 들어오거나 나간 프로세스 정보를 GUI에 송신
-        readyProcessHandle(process.getPacket(), IOstate); // IOState = 0, "IN" / IOState = 1, "OUT"
+        //readyProcessHandle(process.getPacket(), IOstate); // IOState = 0, "IN" / IOState = 1, "OUT"
     }
 
     public void StateSend(int state) { // 상태 정보를 GUI에 송신
         // state = 0, 정상 종료 / state = 1, 비정상 종료(ex. Interrupt)
-        StateUpdateFromModel(state);
+        //StateUpdateFromModel(state);
     }
     
     // Packet Handle

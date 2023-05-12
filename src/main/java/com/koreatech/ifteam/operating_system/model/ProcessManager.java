@@ -1,6 +1,5 @@
 package com.koreatech.ifteam.operating_system.model;
 
-import com.koreatech.ifteam.operating_system.View.OsTotalController;
 import com.koreatech.ifteam.operating_system.model.packet.ProcessPacket;
 
 import java.util.LinkedList;
@@ -25,7 +24,7 @@ public class ProcessManager { // Base Scheduling Model .....?
     private Queue<Process> oneBrustTimeQ = new LinkedList<Process>(); // 버스트 타임이 1초인 프로세스의 집합
 
     private List<Process> resultList = new LinkedList<Process>(); // 프로세스의 결과가 담긴 리스트
-    private int nextId = 1;
+    //private int nextId = 1;
 
     public void printInfo(){
         System.out.println("[info] processQ size: "+processQ.size());

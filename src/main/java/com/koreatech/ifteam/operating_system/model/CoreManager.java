@@ -21,6 +21,8 @@ public class CoreManager{
     private List<Core> coreList = new LinkedList<Core>();
     private boolean flag[]; // 각 프로세서가 사용 가능한지 판별하는 flag
 
+    
+
     public void clockUpdate() {
         manageCoreState();
     }

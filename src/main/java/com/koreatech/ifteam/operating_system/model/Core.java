@@ -1,6 +1,6 @@
 package com.koreatech.ifteam.operating_system.model;
 
-import com.koreatech.ifteam.operating_system.model.packet.CorePacket;
+import com.koreatech.ifteam.operating_system.model.packet.CoreDataToUI;
 
 enum State{
     Awake,
@@ -14,7 +14,12 @@ public class Core { // Core
     private CoreMode mode; // 프로세서 모드, E/P/OFF
     private State state = State.Sleep; // 프로세서가 깨어 있는지 판별하는 변수
     private float powerUsage; // 전력 사용량?
-    private int lastOperateTime;
+    private int lastOperateTime; // 마지막 작동 시간
+
+    // 한 프로세스 처리에 관련된 시간 관련 변수들
+    private int startTime; // 프로세스 처리 시작 시간
+    private int runTime; // 프로세스 처리에 걸린 시간
+    private int endTime; // 프로세스 처리 종료 시간
 
     private Process process; // 할당된 프로세스
 
@@ -47,11 +52,26 @@ public class Core { // Core
     // Setter
 
     public void allocate(Process process) { // 프로세스 할당
-        this.process = process;
-        if (process == null) 
+        if (this.process != null && process == null) {
+            endTime = SyncManager.getInstance().getClock();
+            runTime = endTime - startTime;
+            pushToCorePacket();
+            this.process = process;
             System.out.println(id + "코어 Empty");
-        else
-        System.out.println(id+"코어를"+" p"+process.id+" 에 할당");
+        } else {
+            if (this.process != null) {
+                endTime = SyncManager.getInstance().getClock();
+                runTime = endTime - startTime;
+                pushToCorePacket();
+            }
+            this.process = process;
+            startTime = SyncManager.getInstance().getClock();
+            System.out.println(id + "코어를" + " p" + process.id + " 에 할당");
+        }
+    }
+
+    public void pushToCorePacket() {
+        UIController.getInstance().ganttPacket.addCoreDataToUI(id, new CoreDataToUI(process.id, startTime, runTime, endTime));
     }
     
     // Functions

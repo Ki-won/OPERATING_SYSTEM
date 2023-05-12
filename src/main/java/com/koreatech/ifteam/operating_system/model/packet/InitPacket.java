@@ -2,7 +2,6 @@ package com.koreatech.ifteam.operating_system.model.packet;
 
 import com.koreatech.ifteam.operating_system.View.Data.UiProcess;
 import com.koreatech.ifteam.operating_system.model.CoreMode;
-import com.koreatech.ifteam.operating_system.model.Pair;
 import javafx.collections.ObservableList;
 
 import java.util.LinkedList;

@@ -1,10 +1,6 @@
 package com.koreatech.ifteam.operating_system.model;
 
 import com.koreatech.ifteam.operating_system.model.scheduling.FCFS;
-import com.koreatech.ifteam.operating_system.model.scheduling.HRRN;
-import com.koreatech.ifteam.operating_system.model.scheduling.SPN;
-import com.koreatech.ifteam.operating_system.model.scheduling.SRTN;
-import com.koreatech.ifteam.operating_system.model.scheduling.CUSTOM;
 
 public class projectMain{
     public static void main(String[] args){
