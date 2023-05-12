@@ -27,7 +27,7 @@ public class UIController {
     }
 
     public void ganttDataSend() {
-        // View에 함수 만든거 호출 
+        OsTotalController.ganttStatusHandle(ganttPacket);
     }
 
     public void resultSend(Process process) { // 처리 완료된 프로세스 정보를 GUI에 송신

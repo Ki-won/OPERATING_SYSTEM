@@ -62,7 +62,7 @@
             </font>
         </Button>
     </AnchorPane>
-    <!-- 여기부터 코어를 받는 부분 -->
+    <!-- 여기부터 코어를 받는 부분-->
         <AnchorPane layoutX="22.0" layoutY="271.0" prefHeight="251.0" prefWidth="194.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
 
             <Label layoutX="14.0" layoutY="14.0" text="ProcessorInPut">

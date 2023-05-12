@@ -44,7 +44,7 @@ public class CoreManager{
             Core getCore = coreList.get(i);
             if(getCore == null){
                 prcoessIdList[i] = -1;
-                powerUsageList[i] = -1.0f;
+                powerUsageList[i] = 0f;
             }else {
                 prcoessIdList[i] = getCore.getId();
                 powerUsageList[i] = getCore.getPowerUsage();

@@ -6,6 +6,7 @@ import com.koreatech.ifteam.operating_system.model.ProcessManager;
 import com.koreatech.ifteam.operating_system.model.ScheduleManager;
 import com.koreatech.ifteam.operating_system.model.UIController;
 import com.koreatech.ifteam.operating_system.model.packet.CorePacket;
+import com.koreatech.ifteam.operating_system.model.packet.GanttPacket;
 import com.koreatech.ifteam.operating_system.model.packet.InitPacket;
 import com.koreatech.ifteam.operating_system.model.packet.ProcessPacket;
 import javafx.beans.value.ObservableValue;
@@ -17,7 +18,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class OsTotalController {
-    private static final OsTotalController instance = new OsTotalController(); // singleton
     private final ObservableList<UiProcess> processList = FXCollections.observableArrayList();
     private final String[] modeList = new String[4];
     private static ObservableList<ProcessPacket> resultList = FXCollections.observableArrayList();
@@ -227,10 +227,9 @@ public class OsTotalController {
 
         ProcessManager.getInstance().printResult();
         CoreManager.getInstance().printPowerUsage();
-
         outputTable.refresh();
-        for (int i = 0; i< 4; ++i){
 
+        for (int i = 0; i< 4; ++i){
             total += CorePower.get(i);
             if ( i == 0){
                 core1_power.setText(String.valueOf(CorePower.get(i)));
@@ -249,6 +248,8 @@ public class OsTotalController {
                 core4_power.setEditable(false);
             }
         }
+
+
         total_power.setText(String.valueOf(total));
         total_power.setEditable(false);
 
@@ -268,6 +269,8 @@ public class OsTotalController {
                 for(int i = 0; i < 4; i++){
                      CorePower.set(i, corePacket.powerUsageList[i]);
                 }
+    }
+    public static void ganttStatusHandle(GanttPacket ganttPacket){
     }
 }
 
