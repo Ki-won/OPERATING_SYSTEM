@@ -22,7 +22,7 @@ public class projectMain{
         CoreMode modes[] = {CoreMode.P, CoreMode.E, CoreMode.OFF, CoreMode.OFF};
         CoreManager.getInstance().initCore(modes);
 
-        ScheduleManager.getInstance().setMethod(FCFS.getInstance(), "FCFS");
+        ScheduleManager.getInstance().setMethod(FCFS.getInstance(), "CFS");
 
         System.out.println("입력된 알고리즘");
 
