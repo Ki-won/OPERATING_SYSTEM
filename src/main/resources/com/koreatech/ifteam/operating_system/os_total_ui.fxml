@@ -16,6 +16,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.shape.Line?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
             prefWidth="1024.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -55,7 +56,7 @@
                 <Font name="Microsoft New Tai Lue" size="14.0"/>
             </font>
         </Button>
-        <Button layoutX="16.0" layoutY="184.0" mnemonicParsing="false"
+        <Button layoutX="16.0" layoutY="184.0" mnemonicParsing="false" onAction="#onResetButtonClick"
                 prefHeight="32.0" prefWidth="75.0" text="Reset">
             <font>
                 <Font name="Microsoft New Tai Lue" size="14.0"/>
@@ -89,7 +90,7 @@
                          text="E" toggleGroup="$core1ToggleGroup"/>
             <RadioButton fx:id="core1RadioP" layoutX="77.0" layoutY="36.0" mnemonicParsing="false"
                          text="P" toggleGroup="$core1ToggleGroup"/>
-            <RadioButton fx:id="core1RadioN" layoutX="122.0" layoutY="36.0" mnemonicParsing="false"
+            <RadioButton fx:id="core1RadioN" layoutX="122.0" layoutY="36.0" mnemonicParsing="false" selected="true"
                          text="NULL" toggleGroup="$core1ToggleGroup"/>
         </AnchorPane>
         <AnchorPane layoutX="6.0" layoutY="86.0" prefHeight="59.0" prefWidth="182.0">
@@ -101,7 +102,7 @@
                          text="E" toggleGroup="$core2ToggleGroup"/>
             <RadioButton fx:id="core2RadioP" layoutX="73.0" layoutY="37.0" mnemonicParsing="false"
                          text="P" toggleGroup="$core2ToggleGroup"/>
-            <RadioButton fx:id="core2RadioN" layoutX="125.0" layoutY="37.0" mnemonicParsing="false"
+            <RadioButton fx:id="core2RadioN" layoutX="125.0" layoutY="37.0" mnemonicParsing="false" selected="true"
                          text="NULL" toggleGroup="$core2ToggleGroup"/>
             <Label layoutX="14.0" layoutY="14.0" text="Core2" textOverrun="WORD_ELLIPSIS">
                 <font>
@@ -118,7 +119,7 @@
                          text="E" toggleGroup="$core3ToggleGroup"/>
             <RadioButton fx:id="core3RadioP" layoutX="73.0" layoutY="37.0" mnemonicParsing="false"
                          text="P" toggleGroup="$core3ToggleGroup"/>
-            <RadioButton fx:id="core3RadioN" layoutX="125.0" layoutY="37.0" mnemonicParsing="false"
+            <RadioButton fx:id="core3RadioN" layoutX="125.0" layoutY="37.0" mnemonicParsing="false" selected="true"
                          text="NULL" toggleGroup="$core3ToggleGroup"/>
             <Label layoutX="14.0" layoutY="14.0" text="Core3" textOverrun="WORD_ELLIPSIS">
                 <font>
@@ -135,7 +136,7 @@
                          text="E" toggleGroup="$core4ToggleGroup"/>
             <RadioButton fx:id="core4RadioP" layoutX="73.0" layoutY="37.0" mnemonicParsing="false"
                          text="P" toggleGroup="$core4ToggleGroup"/>
-            <RadioButton fx:id="core4RadioN" layoutX="125.0" layoutY="37.0" mnemonicParsing="false"
+            <RadioButton fx:id="core4RadioN" layoutX="125.0" layoutY="37.0" mnemonicParsing="false" selected="true"
                          text="NULL" toggleGroup="$core4ToggleGroup"/>
             <Label layoutX="14.0" layoutY="14.0" text="Core4" textOverrun="WORD_ELLIPSIS">
                 <font>
@@ -182,9 +183,8 @@
         </ScrollPane>
     </AnchorPane>
     <!-- 여기서부터 간트차트 만드는 부분 -->
-    <AnchorPane layoutX="234.0" layoutY="501.0" prefHeight="183.0" prefWidth="772.0"
-                style="-fx-border-color: #000000; -fx-border-width: 0.5;">
-        <GridPane id="chartGantt" layoutX="14.0" layoutY="5.0" prefHeight="167.0" prefWidth="750.0">
+    <ScrollPane layoutX="234.0" layoutY="407.0" prefHeight="277.0" prefWidth="772.0" style="-fx-border-color: #000000; -fx-border-width: 0.5;">
+        <GridPane fx:id="chartGantt" prefHeight="268.0" prefWidth="1524.0">
             <rowConstraints>
                 <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                 <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
@@ -192,18 +192,36 @@
                 <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <columnConstraints>
-                <ColumnConstraints maxWidth="43.19998779296875" minWidth="31.19998779296875"
-                                   prefWidth="43.19998779296875"/>
-                <ColumnConstraints maxWidth="719.2000122070312" minWidth="707.2000122070312"
-                                   prefWidth="707.2000122070312"/>
+                <ColumnConstraints maxWidth="326.4" minWidth="60.800048828125" prefWidth="80.0"/>
+                <ColumnConstraints maxWidth="1438.4000244140625" minWidth="1152.0" prefWidth="1400.0"/>
             </columnConstraints>
-            <Label fx:id="core1Label" prefHeight="14.0" prefWidth="46.0" text="Core 1"/>
-            <Label fx:id="core2Label" text="Core 2" GridPane.rowIndex="1"/>
-            <Label fx:id="core3Label" text="Core 3" GridPane.rowIndex="2"/>
-            <Label fx:id="core4Label" text="Core 4" GridPane.rowIndex="3"/>
-            <Canvas height="168.0" width="724.0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <Label fx:id="core1Label" prefHeight="14.0" prefWidth="46.0" text="Core 1">
+                <font>
+                    <Font name="Microsoft New Tai Lue" size="13.0"/>
+                </font>
+            </Label>
+            <Label fx:id="core2Label" text="Core 2" GridPane.rowIndex="1">
+                <font>
+                    <Font name="Microsoft New Tai Lue" size="13.0"/>
+                </font>
+            </Label>
+            <Label fx:id="core3Label" text="Core 3" GridPane.rowIndex="2">
+                <font>
+                    <Font name="Microsoft New Tai Lue" size="13.0"/>
+                </font>
+            </Label>
+            <Label fx:id="core4Label" text="Core 4" GridPane.rowIndex="3">
+                <font>
+                    <Font name="Microsoft New Tai Lue" size="13.0"/>
+                </font>
+            </Label>
+            <Canvas fx:id="gantCore1" height="45.0" width="1400.0" GridPane.columnIndex="1"/>
+            <Canvas fx:id="gantCore2" height="45.0" width="1400.0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <Canvas fx:id="gantCore3" height="45.0" width="1400.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            <Canvas fx:id="gantCore4" height="45.0" width="1400.0" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
         </GridPane>
-    </AnchorPane>
+    </ScrollPane>
+
     <!-- 여기서부터 전력양 나타내는 부분 -->
     <AnchorPane blendMode="SRC_ATOP" layoutX="827.0" layoutY="55.0" prefHeight="337.0" prefWidth="182.0"
                 style="-fx-border-color: #000000; -fx-border-width: 0.5;">
@@ -295,23 +313,8 @@
             </font>
         </Label>
     </AnchorPane>
-    <!-- 여기가 레디큐 추가되는 부분 -->
-    <AnchorPane layoutX="234.0" layoutY="454.0" prefHeight="38.0" prefWidth="772.0"
-                style="-fx-border-color: #000000; -fx-border-width: 0.5;">
-        <Label layoutX="14.0" layoutY="9.0" text="ReadyQ">
-            <font>
-                <Font size="15.0"/>
-            </font>
-        </Label>
-    </AnchorPane>
-    <AnchorPane layoutX="234.0" layoutY="404.0" prefHeight="38.0" prefWidth="772.0"
-                style="-fx-border-color: #000000; -fx-border-width: 0.5;">
-        <Label layoutX="14.0" layoutY="9.0" text="ReadyQ">
-            <font>
-                <Font size="15.0"/>
-            </font>
-        </Label>
-    </AnchorPane>
+    <!-- 제목부분 -->
+
     <Label layoutX="881.0" prefHeight="27.0" prefWidth="142.0" text="made by !F Team">
         <font>
             <Font name="Microsoft New Tai Lue" size="18.0"/>
@@ -322,4 +325,8 @@
             <Font name="Microsoft New Tai Lue Bold" size="28.0"/>
         </font>
     </Label>
+    <Line endX="140.39999389648438" endY="480.5999755859375" layoutX="158.0" layoutY="205.0" startX="140.39999389648438" startY="201.39999389648438" strokeWidth="0.5" />
+    <Line endX="838.0" endY="261.0" layoutX="168.0" layoutY="215.0" startX="66.0" startY="261.0" strokeWidth="0.5" />
+    <Line endX="828.0" endY="320.79998779296875" layoutX="178.0" layoutY="225.0" startX="56.0" startY="320.79998779296875" strokeWidth="0.5" />
+    <Line endX="818.0" endY="377.0" layoutX="188.0" layoutY="235.0" startX="46.0" startY="377.0" strokeWidth="0.5" />
 </AnchorPane>

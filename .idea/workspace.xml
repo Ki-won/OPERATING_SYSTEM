@@ -7,10 +7,6 @@
     <list default="true" id="3f608134-c39c-41fc-80d9-7d62481dacac" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/OsTotalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/OsTotalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/UiMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/View/UiMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/Core.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/CoreManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/CoreManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/UIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/koreatech/ifteam/operating_system/model/UIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/os_total_ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/koreatech/ifteam/operating_system/os_total_ui.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -176,6 +172,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NumberFormatException" package="java.lang" />
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.RuntimeException" package="java.lang" />
+          <option name="timeStamp" value="2" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
